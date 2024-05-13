@@ -1,6 +1,6 @@
-# Blog de Inteligência Artificial
+# GenTech
 
-Bem-vindo ao projeto Blog de Inteligência Artificial! Este é um blog dedicado a abordar diversos temas relacionados à inteligência artificial, como machine learning, deep learning, algoritmos de IA, ética em IA, entre outros. O projeto é desenvolvido utilizando Angular para o front-end, Spring Boot para o back-end e MongoDB como banco de dados. O aplicativo está implantado no Vercel para fácil acesso e uso.
+Bem-vindo ao GenTech, blog de Inteligência Artificial! Este é um blog dedicado a abordar diversos temas relacionados à inteligência artificial, como machine learning, deep learning, algoritmos de IA, ética em IA, entre outros. O projeto é desenvolvido utilizando Angular para o front-end, Spring Boot para o back-end e MongoDB como banco de dados. O aplicativo está implantado no Vercel para fácil acesso e uso.
 
 ## Funcionalidades
 
