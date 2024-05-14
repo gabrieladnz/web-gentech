@@ -1,1 +1,8 @@
-/* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: 'DollyRoman';
+  src: url('../src/assets/fonts/dolly-roman.ttf') format('truetype');
+}
+
+* {
+  font-family: 'DollyRoman', sans-serif;
+}
