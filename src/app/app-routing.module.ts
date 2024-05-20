@@ -12,9 +12,9 @@ const routes: Routes = [
   {
     path: 'cadastro',
     component: TelaCadastroComponent,
-  {,
+  },
   {
-    path: 'login', 
+    path: 'login',
     component: LoginComponent,
   },
   // Rota para capturar caminhos não correspondentes
@@ -28,4 +28,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
