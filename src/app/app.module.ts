@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { TelaCadastroComponent } from './pages/tela-cadastro/tela-cadastro.component';
+import { LoginComponent } from './pages/login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     NavbarComponent,
-    TelaCadastroComponent
+    TelaCadastroComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
