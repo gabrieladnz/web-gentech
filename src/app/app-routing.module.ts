@@ -12,9 +12,9 @@ const routes: Routes = [
   {
     path: 'cadastro',
     component: TelaCadastroComponent,
-  {,
+  },
   {
-    path: 'login', 
+    path: 'login',
     component: LoginComponent,
   },
   // Rota para capturar caminhos não correspondentes
