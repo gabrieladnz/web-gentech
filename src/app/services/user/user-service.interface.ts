@@ -1,9 +1,7 @@
 import { SuccessResponse } from "../../models/http/interface-http";
 
-export interface TesteRequest {
+/** Interface padrão dos dados enviados na Request */
+export interface TesteRequest {}
 
-}
-
-export interface TesteResponse extends SuccessResponse {
-
-}
+/** Interface padrão dos dados recebidos na Response */
+export interface TesteResponse extends SuccessResponse {}
