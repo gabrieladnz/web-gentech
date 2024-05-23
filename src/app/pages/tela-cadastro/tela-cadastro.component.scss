@@ -41,6 +41,14 @@
     border-radius: 15px;
     box-shadow: 0 8px 16px 0 #00000089;
 
+    &__titulo {
+      color: #000000;
+      font-weight: 600;
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+
     &__campos-form {
       display: flex;
       flex-direction: column;
@@ -48,6 +56,8 @@
     }
 
     &__botao {
+      margin-top: 20px;
+
       button {
         width: 90%;
         border-radius: 36px;
@@ -55,5 +65,106 @@
         font-size: 12px;
       }
     }
+
+    &__botao-avatar {
+      margin-top: 10px;
+      margin-bottom: 30px;
+    }
+  }
+}
+
+
+// Adaptação tela - Laptop
+@media screen and (max-width: 1024px) {
+  .page-cadastro__formulario {
+    width: 34%;
+  }
+
+  .page-cadastro__introducao {
+    width: 65%;
+  }
+
+  .page-cadastro__introducao__titulo {
+    font-size: 26px;
+  }
+
+  .page-cadastro__formulario__titulo {
+    font-size: 22px;
+  }
+
+  .page-cadastro__introducao__imagem {
+    img {
+      width: 85%;
+    }
+  }
+}
+
+// Tela - Tablet
+@media screen and (max-width: 768px) {
+  .page-cadastro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: auto;
+    height: auto;
+  }
+
+  .page-cadastro__introducao {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .page-cadastro__introducao__imagem {
+    img {
+      width: auto;
+    }
+  }
+
+  .page-cadastro__formulario__titulo {
+    font-size: 28px;
+  }
+
+  .page-cadastro__introducao__titulo {
+    text-align: center;
+  }
+
+  .page-cadastro__formulario {
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    margin-top: 30px;
+  }
+
+  .page-cadastro__formulario__campos-form {
+    width: 80%;
+  }
+
+  .page-cadastro__formulario__botao {
+    width: 80%;
+  }
+}
+
+// Tela - Mobile
+@media screen and (max-width: 425px) {
+  .page-cadastro__introducao__imagem {
+    img {
+      width: 100%;
+    }
+  }
+
+  .page-cadastro__formulario__campos-form {
+    width: auto;
+  }
+
+  .page-cadastro__formulario {
+    margin-top: 20px;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .page-cadastro__formulario__campos-form {
+    width: auto;
   }
 }

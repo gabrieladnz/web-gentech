@@ -9,7 +9,25 @@
   </section>
 
   <section class="page-cadastro__formulario">
-    <h2>Faça seu cadastro!</h2>
+    <h2 class="page-cadastro__formulario__titulo">Faça seu cadastro!</h2>
+    <div class="page-cadastro__formulario__botao-avatar">
+      <button mat-fab [matMenuTriggerFor]="menu">
+        <img *ngIf="avatarSelecionado" src="{{ exibirAvatar(avatarSelecionado) }}.svg" alt="Avatar Selecionado"
+          width="30" height="30">
+        <mat-icon *ngIf="!avatarSelecionado">person_add</mat-icon>
+      </button>
+    </div>
+
+    <!-- Menu avatar  -->
+    <mat-menu class="page-cadastro__formulario__menu" #menu="matMenu">
+      <mat-label style="font-weight: 600;">Escolha o seu avatar!</mat-label>
+      <div style="display: flex; flex-direction: row; flex-wrap: wrap;">
+        <figure *ngFor="let numero of numerosAvatar" mat-menu-item (click)="selecionarAvatar(numero)">
+          <img style="width: 55px;" src="{{ exibirAvatar(numero) }}.svg" alt="Avatar">
+        </figure>
+      </div>
+    </mat-menu>
+
     <!-- Formulário  -->
     <form class="page-cadastro__formulario__campos-form">
       <mat-form-field color="accent">
@@ -30,7 +48,7 @@
     </form>
     <!-- Botão cadastro  -->
     <footer class="page-cadastro__formulario__botao">
-      <button  mat-raised-button type="submit">CADASTRAR</button>
+      <button mat-raised-button type="submit">CADASTRAR</button>
     </footer>
   </section>
 </main>
