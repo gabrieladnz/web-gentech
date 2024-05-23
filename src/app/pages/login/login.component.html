@@ -1,23 +1,39 @@
 <main class="page-login">
   <!-- Título página -->
   <section class="page-login__apresentacao">
-    <h1 class="page-login__apresentacao__titulo">Bem-vindo(a) de volta!
+    <h1 class="page-login__apresentacao__titulo">Bem-vindo(a) de volta!<br>
       Faça login para explorar nossa comunidade</h1>
     <figure class="page-login__apresentacao__imagem">
-      <img>
+      <img src="../../../assets/animations/figure-login.svg">
     </figure>
   </section>
 
   <!-- Formulário  -->
   <section class="page-login__formulario">
+    <figure>
+      <img src="../../../assets/images/logotipo.svg">
+    </figure>
     <h2 class="page-login__formulario__titulo">Acesse sua conta</h2>
     <p class="page-login__formulario__texto">E interaja em uma comunidade ativa na área da Inteligência Artificial.</p>
 
     <form class="page-login__formulario__campos-form">
+      <mat-label>Usuário</mat-label>
+      <mat-form-field color="accent">
+        <mat-label>Usuário</mat-label>
+        <input matInput placeholder="Usuário" required>
+      </mat-form-field>
 
+      <mat-label>Senha</mat-label>
+      <mat-form-field color="accent">
+        <mat-label>Senha</mat-label>
+        <input matInput placeholder="Senha" [type]="hide ? 'password' : 'text'" required>
+        <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </mat-form-field>
+
+      <p style="text-align: left;">Não possui conta? <span>Cadastre-se</span></p>
     </form>
     <footer class="page-login__formulario__botao">
-      <button>ENTRAR</button>
+      <button mat-raised-button>ENTRAR</button>
     </footer>
   </section>
 </main>

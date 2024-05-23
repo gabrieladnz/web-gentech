@@ -2,4 +2,22 @@
 
 * {
   font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+.page-login {
+  .mat-mdc-raised-button:not(:disabled) {
+    background-color: #1E3D4A;
+    color: #FFFFFF;
+  }
+
+  .mat-mdc-raised-button:disabled {
+    background-color: #1E3D4A;
+  }
 }
