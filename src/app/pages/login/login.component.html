@@ -14,26 +14,25 @@
       <img src="../../../assets/images/logotipo.svg">
     </figure>
     <h2 class="page-login__formulario__titulo">Acesse sua conta</h2>
-    <p class="page-login__formulario__texto">E interaja em uma comunidade ativa na área da Inteligência Artificial.</p>
+    <p class="page-login__formulario__texto">E interaja com uma comunidade ativa na área da Inteligência Artificial.</p>
 
     <form class="page-login__formulario__campos-form">
-      <mat-label>Usuário</mat-label>
       <mat-form-field color="accent">
         <mat-label>Usuário</mat-label>
         <input matInput placeholder="Usuário" required>
       </mat-form-field>
 
-      <mat-label>Senha</mat-label>
       <mat-form-field color="accent">
         <mat-label>Senha</mat-label>
         <input matInput placeholder="Senha" [type]="hide ? 'password' : 'text'" required>
         <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
       </mat-form-field>
 
-      <p style="text-align: left;">Não possui conta? <span>Cadastre-se</span></p>
+      <p class="page-login__formulario__campos-form__cadastro">Não possui conta? <span
+          routerLink="/cadastro">Cadastre-se</span></p>
     </form>
     <footer class="page-login__formulario__botao">
-      <button mat-raised-button>ENTRAR</button>
+      <button mat-raised-button type="submit">ENTRAR</button>
     </footer>
   </section>
 </main>

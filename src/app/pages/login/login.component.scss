@@ -6,35 +6,38 @@
   background-color: #0A2029;
 
   &__apresentacao {
-    padding: 3em;
     width: 60%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 
     &__titulo {
       color: #FFFFFF;
       font-weight: 600;
-      font-size: 35px;
-      margin-top: 30px;
+      font-size: 28px;
+      margin-top: 50px;
     }
 
     &__imagem {
-      margin-top: 20px;
-
       img {
-        width: 820px;
-        // height: 300px;
+        width: 100%;
       }
     }
   }
 
   &__formulario {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
     padding: 3em;
     width: 30%;
     text-align: center;
+
     background-color: #DFEBF2;
     border-radius: 15px;
+    box-shadow: 0 8px 16px 0 #00000089;
 
     &__titulo {
       color: #000000;
@@ -46,31 +49,131 @@
     &__texto {
       font-size: 14px;
       font-weight: 500;
-      margin-top: 15px;
+      padding: 0.8em;
     }
 
     &__campos-form {
       display: flex;
       flex-direction: column;
-      margin-top: 20px;
+      margin-top: 10px;
       padding: 1em;
 
-      mat-label {
+      &__cadastro {
         text-align: left;
-        font-weight: 600;
-        margin-bottom: 5px;
+        font-size: 13px;
+
+        span {
+          font-weight: 600;
+          color: #356B8C;
+          cursor: pointer;
+        }
       }
     }
 
     &__botao {
-      margin-top: 40px;
+      margin-top: 20px;
+      margin-bottom: 30px;
 
       button {
         width: 90%;
         border-radius: 36px;
-        padding: 1.7em 8em;
-        font-size: 14px;
+        padding: 1.4em;
+        font-size: 12px;
       }
     }
+  }
+}
+
+// Adaptação tela - Laptop
+@media screen and (max-width: 1024px) {
+  .page-login__formulario {
+    width: 34%;
+  }
+
+  .page-login__apresentacao {
+    width: 65%;
+  }
+
+  .page-login__apresentacao__titulo {
+    font-size: 26px;
+  }
+
+  .page-login__formulario__titulo {
+    font-size: 22px;
+  }
+
+  .page-login__apresentacao__imagem {
+    img {
+      width: 85%;
+    }
+  }
+}
+
+// Tela - Tablet
+@media screen and (max-width: 768px) {
+  .page-login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: auto;
+    height: auto;
+  }
+
+  .page-login__apresentacao {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .page-login__apresentacao__imagem {
+    img {
+      width: auto;
+    }
+  }
+
+  .page-login__formulario__titulo {
+    font-size: 28px;
+  }
+
+  .page-login__apresentacao__titulo {
+    text-align: center;
+  }
+
+  .page-login__formulario {
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+  }
+
+  .page-login__formulario__campos-form {
+    width: 80%;
+  }
+
+  .page-login__formulario__botao {
+    width: 80%;
+  }
+}
+
+// Tela - Mobile
+@media screen and (max-width: 425px) {
+  .page-login__apresentacao__imagem {
+    img {
+      width: 100%;
+    }
+  }
+
+  .page-login__formulario__campos-form {
+    width: auto;
+  }
+
+  .page-login__formulario {
+    margin-top: 20px;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .page-login__formulario__campos-form {
+    width: auto;
   }
 }
