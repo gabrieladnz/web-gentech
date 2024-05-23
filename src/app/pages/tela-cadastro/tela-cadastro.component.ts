@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrl: './tela-cadastro.component.scss'
 })
 export class TelaCadastroComponent {
-
+  public hide = true;
 }
