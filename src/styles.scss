@@ -1,8 +1,36 @@
-@font-face {
-  font-family: 'DollyRoman';
-  src: url('../src/assets/fonts/dolly-roman.ttf') format('truetype');
-}
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 
 * {
-  font-family: 'DollyRoman', sans-serif;
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+.page-login, .page-cadastro {
+  .mat-mdc-raised-button:not(:disabled) {
+    background-color: #1E3D4A;
+    color: #FFFFFF;
+  }
+
+  .mat-mdc-raised-button:disabled {
+    background-color: #1E3D4A;
+  }
+
+  .mat-mdc-fab.mat-accent {
+    background-color: #1E3D4A;
+  }
+}
+
+.mat-mdc-menu-content, .mat-mdc-menu-content .mat-mdc-menu-item .mat-mdc-menu-item-text {
+  padding: 1em !important;
+  text-align: center;
+}
+
+.mat-mdc-menu-item {
+  width: auto !important;
 }

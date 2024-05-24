@@ -1,30 +1,54 @@
-<div id="divBody">
-    <div id="divCad">
-        <div id="divImage">
-            <img src="../../assets/Images/do-utilizador.png">
-            <h1>Crie uma conta</h1>
-        </div>
-        <div id="divCampos">
-            <label id="labelNome" class="campos">
-                <p>Nome completo</p>
-                <input type="text" id="email">
-            </label>
-            <label id="labelNickName" class="campos">
-                <p>Crie um nome de usuário</p>
-                <input type="text" id="email">
-            </label>
-            <label id="labelEmail" class="campos">
-                <p>Email</p>
-                <input type="text" id="email">
-            </label>
-            <label id="labelSenha" class="campos">
-                <p>Crie uma senha</p>
-                <input type="text" id="email">
-            </label>
-        </div>
-        <div id="divButtons">
-            <button class="btnCad">Cadastrar</button>
-            <button class="btnCad">Cancelar</button>
-        </div>
+<main class="page-cadastro">
+  <section class="page-cadastro__introducao">
+    <!-- Título  -->
+    <h1 class="page-cadastro__introducao__titulo">Cadastre-se<br>E faça parte da nossa comunidade!</h1>
+    <!-- Imagem  -->
+    <figure class="page-cadastro__introducao__imagem">
+      <img src="../../../assets/animations/figure-cadastro.svg">
+    </figure>
+  </section>
+
+  <section class="page-cadastro__formulario">
+    <h2 class="page-cadastro__formulario__titulo">Faça seu cadastro!</h2>
+    <div class="page-cadastro__formulario__botao-avatar">
+      <button mat-fab [matMenuTriggerFor]="menu">
+        <img *ngIf="avatarSelecionado" src="{{ exibirAvatar(avatarSelecionado) }}.svg" alt="Avatar Selecionado"
+          width="30" height="30">
+        <mat-icon *ngIf="!avatarSelecionado">person_add</mat-icon>
+      </button>
     </div>
-</div>
+
+    <!-- Menu avatar  -->
+    <mat-menu class="page-cadastro__formulario__menu" #menu="matMenu">
+      <mat-label style="font-weight: 600;">Escolha o seu avatar!</mat-label>
+      <div style="display: flex; flex-direction: row; flex-wrap: wrap;">
+        <figure *ngFor="let numero of numerosAvatar" mat-menu-item (click)="selecionarAvatar(numero)">
+          <img style="width: 55px;" src="{{ exibirAvatar(numero) }}.svg" alt="Avatar">
+        </figure>
+      </div>
+    </mat-menu>
+
+    <!-- Formulário  -->
+    <form class="page-cadastro__formulario__campos-form">
+      <mat-form-field color="accent">
+        <mat-label>Usuário</mat-label>
+        <input matInput placeholder="Usuário" required>
+      </mat-form-field>
+
+      <mat-form-field color="accent">
+        <mat-label>E-mail</mat-label>
+        <input matInput placeholder="E-mail" required>
+      </mat-form-field>
+
+      <mat-form-field color="accent">
+        <mat-label>Senha</mat-label>
+        <input matInput placeholder="Senha" [type]="hide ? 'password' : 'text'" required>
+        <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </mat-form-field>
+    </form>
+    <!-- Botão cadastro  -->
+    <footer class="page-cadastro__formulario__botao">
+      <button mat-raised-button type="submit">CADASTRAR</button>
+    </footer>
+  </section>
+</main>
