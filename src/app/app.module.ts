@@ -7,6 +7,8 @@ import { HomeComponent } from './pages/home/home.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { TelaCadastroComponent } from './pages/tela-cadastro/tela-cadastro.component';
 import { LoginComponent } from './pages/login/login.component';
+import { ArtigosComponent } from './pages/artigos/artigos.component';
+
 import { MatButtonModule } from '@angular/material/button';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { MatInputModule } from '@angular/material/input';
@@ -34,6 +36,7 @@ import {MatMenuModule} from '@angular/material/menu';
     NavbarComponent,
     TelaCadastroComponent,
     LoginComponent,
+    ArtigosComponent,
   ],
   imports: [
     BrowserModule,

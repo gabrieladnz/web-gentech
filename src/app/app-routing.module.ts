@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { TelaCadastroComponent } from './pages/tela-cadastro/tela-cadastro.component';
 import { LoginComponent } from './pages/login/login.component'
+import { ArtigosComponent } from './pages/artigos/artigos.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,10 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
+  },
+  {
+    path: 'artigos',
+    component: ArtigosComponent,
   },
   // Rota para capturar caminhos não correspondentes
   {
