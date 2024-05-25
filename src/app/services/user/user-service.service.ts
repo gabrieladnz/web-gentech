@@ -16,7 +16,7 @@ export class UserServiceService extends RequestService {
 
   /**
  * Método para realizar o login do usuário.
- * 
+ *
  * @param data - Dados de solicitação de login, contendo nome de usuário e senha.
  * @returns Uma promise que responde em um LoginResponse se o login for bem-sucedido.
  * @throws ErrorResponse se o login falhar.
@@ -24,7 +24,7 @@ export class UserServiceService extends RequestService {
   public async login(data: LoginRequest): Promise<LoginResponse> {
     try {
       return await lastValueFrom(
-        this.httpClient.post<LoginResponse>(this.BASE_URL + '/rota-back-end', data)
+        this.httpClient.post<LoginResponse>(this.BASE_URL + '/login', data)
       );
     } catch (error) {
       const errorResponse: ErrorResponse = {

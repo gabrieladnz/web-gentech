@@ -26,7 +26,7 @@ export class LoginComponent {
   protected async loginUsuario(): Promise<void> {
     try {
       console.log(this.loginForm.value)
-      // const loginResponse = await this.userService.login(this.loginForm.value);
+      const loginResponse = await this.userService.login(this.loginForm.value);
     } catch (error) {
       this.errorMessage = `${(error as ErrorResponse).message}`;
     }
