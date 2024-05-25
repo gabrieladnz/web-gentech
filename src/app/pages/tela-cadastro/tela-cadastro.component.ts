@@ -1,17 +1,36 @@
 import { Component } from '@angular/core';
+import {
+  AbstractControl,
+  FormBuilder,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
+import { ErrorResponse } from '../../models/http/interface-http';
+import { UserServiceService } from '../../services/user/user-service.service';
 
 @Component({
   selector: 'app-tela-cadastro',
   templateUrl: './tela-cadastro.component.html',
-  styleUrl: './tela-cadastro.component.scss'
+  styleUrl: './tela-cadastro.component.scss',
 })
 export class TelaCadastroComponent {
   public hide: boolean = true;
   public numerosAvatar: number[] = [];
   public avatarSelecionado!: number;
+  public errorMessage = '';
+  protected cadastroForm!: FormGroup;
+  protected emailPattern = /^[A-Za-z0-9.%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
 
-  public constructor() {
+  public constructor(private formBuilder: FormBuilder, private userService: UserServiceService) {
     this.gerarNumerosAleatorios();
+
+    this.cadastroForm = this.formBuilder.group({
+      fullName: ['', [Validators.required]],
+      userName: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.pattern(this.emailPattern)]],
+      password: ['', [Validators.required, Validators.min(3)]],
+      profilePhotoUrl: [''],
+    });
   }
 
   /**
@@ -30,7 +49,7 @@ export class TelaCadastroComponent {
    * @returns caminho com o svg do avatar gerado
    */
   protected exibirAvatar(numeroGerado: number): string {
-    return 'https://api.multiavatar.com/' + numeroGerado
+    return 'https://api.multiavatar.com/' + numeroGerado;
   }
 
   /**
@@ -40,5 +59,21 @@ export class TelaCadastroComponent {
    */
   protected selecionarAvatar(number: number): void {
     this.avatarSelecionado = number;
+    this.cadastroForm.patchValue({ profilePhotoUrl: this.exibirAvatar(this.avatarSelecionado) });
+  }
+
+  protected get emailInput(): AbstractControl<string> | null {
+    return this.cadastroForm.get('email');
+  }
+
+  /**
+   * Função responsável por realizar o cadastro do usuário comum
+   */
+  protected async cadastrarUsuario(): Promise<void> {
+    try {
+      // const cadastroResponse = await this.userService.cadastro(this.cadastroForm.value);
+    } catch (error) {
+      this.errorMessage = `${(error as ErrorResponse).message}`;
+    }
   }
 }

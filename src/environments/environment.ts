@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  baseUrl: 'link-api-producao'
+  baseUrl: 'https://blog-hes-api.onrender.com/'
 };
