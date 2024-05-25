@@ -30,5 +30,7 @@ export interface CadastroResponse extends SuccessResponse {
  * Extende de uma resposta genérica de sucesso.
  */
 export interface LoginResponse extends SuccessResponse {
-  data: {}
+  data: {
+    token: string;
+  }
 }
