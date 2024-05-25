@@ -16,15 +16,15 @@
     <h2 class="page-login__formulario__titulo">Acesse sua conta</h2>
     <p class="page-login__formulario__texto">E interaja com uma comunidade ativa na área da Inteligência Artificial.</p>
 
-    <form class="page-login__formulario__campos-form">
+    <form [formGroup]="loginForm" class="page-login__formulario__campos-form">
       <mat-form-field color="accent">
         <mat-label>Usuário</mat-label>
-        <input matInput placeholder="Usuário" required>
+        <input matInput placeholder="Usuário" formControlName="userName" required>
       </mat-form-field>
 
       <mat-form-field color="accent">
         <mat-label>Senha</mat-label>
-        <input matInput placeholder="Senha" [type]="hide ? 'password' : 'text'" required>
+        <input matInput placeholder="Senha" formControlName="password" [type]="hide ? 'password' : 'text'" required>
         <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
       </mat-form-field>
 
@@ -32,7 +32,7 @@
           routerLink="/cadastro">Cadastre-se</span></p>
     </form>
     <footer class="page-login__formulario__botao">
-      <button mat-raised-button type="submit">ENTRAR</button>
+      <button [disabled]="loginForm.invalid" (click)="loginUsuario()" mat-raised-button type="submit">ENTRAR</button>
     </footer>
   </section>
 </main>

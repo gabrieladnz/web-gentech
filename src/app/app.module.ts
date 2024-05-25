@@ -26,6 +26,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatDividerModule} from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import {MatMenuModule} from '@angular/material/menu';
     MatFormFieldModule,
     MatIconModule,
     MatSelectModule,
-    MatMenuModule
+    MatMenuModule,
+    HttpClientModule
   ],
   providers: [
     provideAnimationsAsync()

@@ -32,26 +32,35 @@
     </mat-menu>
 
     <!-- Formulário  -->
-    <form class="page-cadastro__formulario__campos-form">
+    <form [formGroup]="cadastroForm" class="page-cadastro__formulario__campos-form">
+      <mat-form-field color="accent">
+        <mat-label>Nome</mat-label>
+        <input matInput placeholder="Nome" formControlName="fullName" required>
+      </mat-form-field>
+
       <mat-form-field color="accent">
         <mat-label>Usuário</mat-label>
-        <input matInput placeholder="Usuário" required>
+        <input matInput placeholder="Usuário" formControlName="userName" required>
       </mat-form-field>
 
       <mat-form-field color="accent">
         <mat-label>E-mail</mat-label>
-        <input matInput placeholder="E-mail" required>
+        <input matInput placeholder="E-mail" formControlName="email" required>
+        <mat-error style="font-weight: 600;" *ngIf="emailInput?.errors?.['pattern']">
+          Por favor, insira um e-mail válido.
+        </mat-error>
       </mat-form-field>
 
       <mat-form-field color="accent">
         <mat-label>Senha</mat-label>
-        <input matInput placeholder="Senha" [type]="hide ? 'password' : 'text'" required>
+        <input matInput placeholder="Senha" formControlName="password" [type]="hide ? 'password' : 'text'" required>
         <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
       </mat-form-field>
     </form>
     <!-- Botão cadastro  -->
     <footer class="page-cadastro__formulario__botao">
-      <button mat-raised-button type="submit">CADASTRAR</button>
+      <button [disabled]="cadastroForm.invalid" (click)="cadastrarUsuario()" mat-raised-button
+        type="submit">CADASTRAR</button>
     </footer>
   </section>
 </main>
