@@ -29,6 +29,7 @@ import {MatDividerModule} from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
 import { HttpClientModule } from '@angular/common/http';
+import { ArtigoSelecionadoComponent } from './components/artigo-selecionado/artigo-selecionado.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { HttpClientModule } from '@angular/common/http';
     TelaCadastroComponent,
     LoginComponent,
     ArtigosComponent,
+    ArtigoSelecionadoComponent,
   ],
   imports: [
     BrowserModule,
