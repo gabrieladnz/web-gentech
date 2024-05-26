@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, lastValueFrom } from 'rxjs';
 import { ErrorResponse } from '../../models/http/interface-http';
 import { LoginRequest, LoginResponse } from './user-service.interface';
+import { CadastroRequest, CadastroResponse } from './user-service.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -34,6 +35,23 @@ export class UserServiceService extends RequestService {
       throw errorResponse;
     }
   }
+
+  /**
+ * Método para realizar o cadastro de um novo usuário.
+ *
+ * @param data - Dados de solicitação de cadastro, contendo nome de usuário, senha e email.
+ * @returns Uma Promise que resolve com um CadastroResponse se o cadastro for bem-sucedido.
+ * @throws ErrorResponse se o cadastro falhar.
+ */
+  public async cadastrar(data: CadastroRequest): Promise<CadastroResponse> {
+    try {
+      return await lastValueFrom(this.httpClient.post<CadastroResponse>(this.BASE_URL + '/rota-back-end', data));
+    } catch (error) {
+      const errorResponse: ErrorResponse = {
+        success: false,
+        message: 'Erro ao cadastrar usuário'
+      };
+      throw errorResponse;
+    }
+  }
 }
-
-
