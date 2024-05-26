@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UserServiceService } from '../../services/user/user-service.service';
+import { ErrorResponse } from '../../models/http/interface-http';
+import { TokenService } from '../../services/token/token.service';
 
 @Component({
   selector: 'app-login',
@@ -6,5 +10,26 @@ import { Component } from '@angular/core';
   styleUrl: './login.component.scss'
 })
 export class LoginComponent {
+  public hide = true;
+  public errorMessage = '';
+  protected loginForm!: FormGroup;
 
+  public constructor(private formBuilder: FormBuilder, private userService: UserServiceService, private tokenService: TokenService) {
+    this.loginForm = this.formBuilder.group({
+      userName: ['', [Validators.required]],
+      password: ['', [Validators.required, Validators.min(3)]],
+    });
+  }
+
+  /**
+   * Função responsável por realizar o login do usuário
+   */
+  protected async loginUsuario(): Promise<void> {
+    try {
+      const loginResponse = await this.userService.login(this.loginForm.value);
+      this.tokenService.save(loginResponse.data.token);
+    } catch (error) {
+      this.errorMessage = `${(error as ErrorResponse).message}`;
+    }
+  }
 }
