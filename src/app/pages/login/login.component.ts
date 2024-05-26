@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserServiceService } from '../../services/user/user-service.service';
 import { ErrorResponse } from '../../models/http/interface-http';
+import { TokenService } from '../../services/token/token.service';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,7 @@ export class LoginComponent {
   public errorMessage = '';
   protected loginForm!: FormGroup;
 
-  public constructor(private formBuilder: FormBuilder, private userService: UserServiceService) {
+  public constructor(private formBuilder: FormBuilder, private userService: UserServiceService, private tokenService: TokenService) {
     this.loginForm = this.formBuilder.group({
       userName: ['', [Validators.required]],
       password: ['', [Validators.required, Validators.min(3)]],
@@ -25,8 +26,8 @@ export class LoginComponent {
    */
   protected async loginUsuario(): Promise<void> {
     try {
-      console.log(this.loginForm.value)
-      // const loginResponse = await this.userService.login(this.loginForm.value);
+      const loginResponse = await this.userService.login(this.loginForm.value);
+      this.tokenService.save(loginResponse.data.token);
     } catch (error) {
       this.errorMessage = `${(error as ErrorResponse).message}`;
     }
