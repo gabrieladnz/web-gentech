@@ -17,3 +17,21 @@ export interface LoginRequest {
 export interface LoginResponse extends SuccessResponse {
   data: {}
 }
+
+/**
+ * Interface que representa uma solicitação de cadastro.
+ * Contém o nome de usuário, senha e email necessários para o cadastro.
+ */
+export interface CadastroRequest {
+  username: string;
+  password: string;
+  email: string;
+}
+
+/**
+ * Interface que representa uma resposta bem-sucedida de cadastro.
+ * Extende de uma resposta genérica de sucesso.
+ */
+export interface CadastroResponse extends SuccessResponse {
+  data: {};
+}
