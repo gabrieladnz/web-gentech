@@ -71,7 +71,7 @@ export class TelaCadastroComponent {
    */
   protected async cadastrarUsuario(): Promise<void> {
     try {
-      // const cadastroResponse = await this.userService.cadastro(this.cadastroForm.value);
+      const cadastroResponse = await this.userService.cadastrar(this.cadastroForm.value);
     } catch (error) {
       this.errorMessage = `${(error as ErrorResponse).message}`;
     }

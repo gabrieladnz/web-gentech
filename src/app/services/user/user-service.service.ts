@@ -45,7 +45,7 @@ export class UserServiceService extends RequestService {
  */
   public async cadastrar(data: CadastroRequest): Promise<CadastroResponse> {
     try {
-      return await lastValueFrom(this.httpClient.post<CadastroResponse>(this.BASE_URL + '/rota-back-end', data));
+      return await lastValueFrom(this.httpClient.post<CadastroResponse>(this.BASE_URL + '/register_common_user', data));
     } catch (error) {
       const errorResponse: ErrorResponse = {
         success: false,
