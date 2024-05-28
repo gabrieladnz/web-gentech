@@ -31,6 +31,11 @@
       </div>
     </mat-menu>
 
+    <mat-error style="margin-bottom: 10px;" *ngIf="credenciaisInvalidas">
+      <mat-icon>error</mat-icon>
+      <h5>Dados de cadastro inválidos, verifique e tente novamente.</h5>
+    </mat-error>
+
     <!-- Formulário  -->
     <form [formGroup]="cadastroForm" class="page-cadastro__formulario__campos-form">
       <mat-form-field color="accent">

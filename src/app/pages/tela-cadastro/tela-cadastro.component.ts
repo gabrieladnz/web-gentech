@@ -21,6 +21,7 @@ export class TelaCadastroComponent {
   public errorMessage = '';
   protected cadastroForm!: FormGroup;
   protected emailPattern = /^[A-Za-z0-9.%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+  protected credenciaisInvalidas: boolean = false;
 
   public constructor(private formBuilder: FormBuilder, private userService: UserServiceService, private router: Router) {
     this.gerarNumerosAleatorios();
@@ -75,6 +76,7 @@ export class TelaCadastroComponent {
       const cadastroResponse = await this.userService.cadastrar(this.cadastroForm.value);
       this.router.navigate(['/login']);
     } catch (error) {
+      this.credenciaisInvalidas = true;
       this.errorMessage = `${(error as ErrorResponse).message}`;
     }
   }
