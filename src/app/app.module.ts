@@ -30,6 +30,7 @@ import { MatIconModule } from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
 import { HttpClientModule } from '@angular/common/http';
 import { ArtigoSelecionadoComponent } from './components/artigo-selecionado/artigo-selecionado.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { ArtigoSelecionadoComponent } from './components/artigo-selecionado/arti
     LoginComponent,
     ArtigosComponent,
     ArtigoSelecionadoComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
