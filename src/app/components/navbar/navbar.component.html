@@ -1,1 +1,27 @@
-<nav></nav>
+<nav class="navbar">
+  <figure class="navbar__logotipo">
+    <img src="assets/images/logotipo.svg">
+  </figure>
+
+  <article class="navbar__menu-pages">
+    <p class="navbar__menu-pages__texto" routerLink="/home"><span>Início</span></p>
+    <p class="navbar__menu-pages__texto" routerLink="/artigos"><span>Artigos</span></p>
+    <p class="navbar__menu-pages__texto" routerLink="/forum"><span>Fórum</span></p>
+
+    <div>
+      <button class="navbar__menu-pages__botao" [matMenuTriggerFor]="menu"><mat-icon
+          class="login-icon">account_circle</mat-icon><span>Login</span></button>
+    </div>
+  </article>
+
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item routerLink="/login">
+      <mat-icon>login</mat-icon>
+      <span>Login</span>
+    </button>
+    <button mat-menu-item routerLink="/cadastro">
+      <mat-icon>app_registration</mat-icon>
+      <span>Cadastro</span>
+    </button>
+  </mat-menu>
+</nav>
