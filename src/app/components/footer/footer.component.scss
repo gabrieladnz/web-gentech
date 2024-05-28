@@ -1,0 +1,64 @@
+.footer {
+  background-color: #356B8C;
+  padding: 1em;
+
+  &__topicos {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 3em 0 3em;
+
+    &__texto {
+      color: #FFFFFF;
+
+      h4 {
+        margin-bottom: 20px;
+      }
+
+      p {
+        margin-bottom: 5px;
+      }
+    }
+
+    &__imagem {
+      display: flex;
+      align-items: center;
+
+      img {
+        width: 40px;
+      }
+
+      p {
+        font-size: 22px;
+        font-weight: 600;
+        margin-left: 5px;
+      }
+    }
+  }
+
+  &__rodape {
+    margin-top: 40px;
+    text-align: center;
+
+    p {
+      font-weight: 600;
+      color: #FFFFFF;
+    }
+  }
+}
+
+// Tela mobile
+@media screen and (max-width: 425px) {
+  .footer__topicos {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+  }
+
+  .footer__topicos__texto {
+    margin-top: 20px;
+  }
+
+  .footer__topicos__imagem {
+    justify-content: center;
+  }
+}
