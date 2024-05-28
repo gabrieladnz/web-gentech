@@ -14,6 +14,7 @@ export class LoginComponent {
   public hide = true;
   public errorMessage = '';
   protected loginForm!: FormGroup;
+  protected credenciaisInvalidas: boolean = false;
 
   public constructor(private formBuilder: FormBuilder, private userService: UserServiceService, private tokenService: TokenService, private router: Router) {
     this.loginForm = this.formBuilder.group({
@@ -31,6 +32,7 @@ export class LoginComponent {
       this.tokenService.save(loginResponse.data.token);
       this.router.navigate(['/home']);
     } catch (error) {
+      this.credenciaisInvalidas = true;
       this.errorMessage = `${(error as ErrorResponse).message}`;
     }
   }
