@@ -26,7 +26,7 @@
   <!-- Seção artigos  -->
   <section class="home__artigos">
     <div class="home__artigos__categorias">
-      <button class="home__artigos__categorias__botao"></button>
+      <button *ngFor="let categorias of listaCategorias" mat-flat-button class="home__artigos__categorias__botao">{{ categorias.categoria }}</button>
     </div>
 
     <div class="home__artigos__categorias">
@@ -35,9 +35,9 @@
           <img>
         </figure>
         <article class="home__artigos__categorias__card__conteudo">
-          <button></button>
-          <h2></h2>
-          <p></p>
+          <button mat-flat-button>categoria</button>
+          <h2>título</h2>
+          <p>blablablabla</p>
           <a>Ler mais...</a>
         </article>
       </div>

@@ -7,11 +7,13 @@
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   height: 100%;
 }
 
-.page-login, .page-cadastro {
+.page-login,
+.page-cadastro {
   .mat-mdc-raised-button:not(:disabled) {
     background-color: #1E3D4A;
     color: #FFFFFF;
@@ -33,9 +35,23 @@ html, body {
     font-weight: 500;
     color: #FFFFFF;
   }
+
+  .mat-mdc-unelevated-button:not(:disabled) {
+    background-color: #0A2029;
+    color: #FFFFFF;
+  }
 }
 
-.mat-mdc-menu-content, .mat-mdc-menu-content .mat-mdc-menu-item .mat-mdc-menu-item-text {
+.home__sobre__botao {
+  .mat-mdc-raised-button:not(:disabled) {
+    background-color: #D9D9D9;
+    font-weight: 600;
+    color: #000000;
+  }
+}
+
+.mat-mdc-menu-content,
+.mat-mdc-menu-content .mat-mdc-menu-item .mat-mdc-menu-item-text {
   padding: 1em !important;
   text-align: center;
 }
