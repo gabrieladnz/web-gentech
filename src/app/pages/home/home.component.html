@@ -1,9 +1,58 @@
+<!-- Navbar  -->
 <app-navbar></app-navbar>
-<main>
-  <section>
-    <article>
-      <h1>Blog GenTech</h1>
-    </article>
+<!-- Conteúdo central  -->
+<main class="home">
+  <section class="home__introducao">
+    <div class="home__introducao__texto">
+      <article class="home__introducao__texto__h1">
+        <div>
+          <h1>Blog GenTech</h1>
+          <p>Bem-vindo ao GenTech! Seu destino definitivo para explorar o fascinante mundo da Inteligência Artificial (IA).
+            Este blog foi criado para entusiastas, profissionais e curiosos que desejam se aprofundar no universo da IA,
+            suas aplicações, inovações e impactos na sociedade.</p>
+        </div>
+
+        <div>
+          <button mat-raised-button>Saiba mais</button>
+        </div>
+      </article>
+      <figure class="home__introducao__texto__imagem">
+        <img src="assets/images/image-home.svg">
+      </figure>
+    </div>
+  </section>
+
+  <section class="home__artigos">
+    <h1>Artiiiiiiiiigo</h1>
+  </section>
+
+  <section class="home__sobre">
+    <h2 class="home__sobre__titulo">Sobre a GenTech</h2>
+    <div class="home__sobre__3-sobre">
+      <div>
+        <mat-icon></mat-icon>
+        <h3>Artigos informativos</h3>
+        <p>Desde introduções básicas até análises aprofundadas de tecnologias avançadas, cobrimos tudo o que você
+          precisa saber sobre IA.</p>
+      </div>
+
+      <div>
+        <mat-icon></mat-icon>
+        <h3>Fóruns de discussão</h3>
+        <p>Junte-se ao nosso fórum para discutir projetos, trocar conhecimentos e resolver dúvidas com outros membros.
+        </p>
+      </div>
+
+      <div>
+        <mat-icon></mat-icon>
+        <h3>Comunidade interativa</h3>
+        <p>Expanda seu conhecimento e faça parte de uma comunidade vibrante e engajada.</p>
+      </div>
+    </div>
+    <div class="home__sobre__botao">
+      <button mat-raised-button>Participe!</button>
+    </div>
   </section>
 </main>
+<!-- Footer  -->
 <app-footer></app-footer>

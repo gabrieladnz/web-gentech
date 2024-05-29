@@ -27,6 +27,14 @@ html, body {
   }
 }
 
+.home {
+  .mat-mdc-raised-button:not(:disabled) {
+    background-color: #356B8C;
+    font-weight: 500;
+    color: #FFFFFF;
+  }
+}
+
 .mat-mdc-menu-content, .mat-mdc-menu-content .mat-mdc-menu-item .mat-mdc-menu-item-text {
   padding: 1em !important;
   text-align: center;

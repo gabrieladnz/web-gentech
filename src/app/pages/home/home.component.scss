@@ -1,0 +1,96 @@
+.home {
+
+  &__introducao {
+    padding: 2.5em;
+    background-color: #DFEBF2;
+
+    &__texto {
+      display: flex;
+      justify-content: space-between;
+      border-radius: 15px;
+      background-color: #4780998c;
+
+      &__h1 {
+        padding: 4em;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 50%;
+
+        h1 {
+          font-size: 32px;
+        }
+
+        p {
+          width: 70%;
+          margin-top: 20px;
+          text-align: justify;
+          letter-spacing: 1px;
+        }
+
+        button {
+          margin-top: 10px;
+          padding: 1em 4em 1em 4em;
+        }
+      }
+
+      &__imagem {}
+    }
+  }
+
+  &__artigos {
+    padding: 2.5em;
+    background-color: #DFEBF2;
+  }
+
+  &__sobre {
+    padding: 2.5em;
+    background-color: #0A2029;
+    color: #FFFFFF;
+
+    &__titulo {
+      font-size: 26px;
+    }
+
+    &__3-sobre {
+      display: flex;
+    }
+
+    &__botao {
+      text-align: center;
+
+      button {
+        padding: 1em 4em 1em 4em;
+      }
+    }
+  }
+}
+
+// Tela - Desktop
+@media screen and (max-width: 1024px) {
+  .home__introducao__texto__h1 {
+    width: 100%;
+  }
+
+  .home__introducao__texto__imagem {
+    img {
+      width: 100%;
+    }
+  }
+
+  .home__introducao__texto {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+
+    p {
+      width: auto;
+    }
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .home__introducao__texto__h1 {
+    padding: 2em;
+  }
+}
