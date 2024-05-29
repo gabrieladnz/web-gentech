@@ -1,8 +1,7 @@
 .home {
-
   &__introducao {
     padding: 2.5em;
-    background-color: #DFEBF2;
+    background-color: #dfebf2;
 
     &__texto {
       display: flex;
@@ -34,19 +33,41 @@
         }
       }
 
-      &__imagem {}
+      &__imagem {
+      }
     }
   }
 
   &__artigos {
     padding: 2.5em;
-    background-color: #DFEBF2;
+    background-color: #dfebf2;
+
+    &__categorias {
+
+      &__botao {
+
+      }
+    }
+
+    &__artigos-principais {
+
+      &__card {
+
+        &__imagem {
+
+        }
+
+        &__conteudo {
+          
+        }
+      }
+    }
   }
 
   &__sobre {
     padding: 2.5em;
-    background-color: #0A2029;
-    color: #FFFFFF;
+    background-color: #0a2029;
+    color: #ffffff;
 
     &__titulo {
       font-size: 26px;
@@ -82,6 +103,7 @@
     &__botao {
       text-align: center;
       margin-top: 20px;
+      padding-bottom: 3em;
 
       button {
         padding: 1em 4em 1em 4em;
