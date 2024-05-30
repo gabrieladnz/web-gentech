@@ -4,6 +4,7 @@
   flex-direction: column;
   align-items: center;
   padding: 2.5em;
+  height: 100%;
 
   &__head {
     &__return {
@@ -14,6 +15,11 @@
         background: none;
         font-size: 16px;
         font-weight: 600;
+        margin-left: 5px;
+      }
+
+      mat-icon {
+        cursor: pointer;
       }
     }
 
@@ -28,14 +34,15 @@
       button {
         border: none;
         border-radius: 25px;
+        margin-left: 10px;
+
         background-color: #1c3b89;
         color: #ffffff;
       }
 
       &__input {
         padding: 0px 10px 0px 25px;
-        width: 35vw;
-        height: 2.5em;
+        width: 45vw;
         border-radius: 16px;
         border: 1px solid #e6e4f0;
         outline: none;
@@ -49,11 +56,12 @@
     margin-top: 50px;
 
     &__artigo {
-      width: 40%;
+      width: 55%;
       background-color: #b1aeae;
       border-radius: 15px;
 
-      &__imagem {}
+      &__imagem {
+      }
 
       &__postagem {
         background-color: #fffdfd;
@@ -71,7 +79,7 @@
         p {
           color: #b1aeae;
           text-align: justify;
-          margin-bottom: 10px;
+          margin-bottom: 20px;
         }
 
         button {
@@ -84,5 +92,26 @@
         }
       }
     }
+  }
+}
+
+// Tela tablet
+@media screen and (max-width: 768px) {
+  .body-artigos__head__search__input {
+    width: 65vw;
+  }
+
+  .body-artigos__lista-artigos__artigo {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .body-artigos {
+    height: auto;
+  }
+
+  .body-artigos__lista-artigos__artigo {
+    width: auto;
   }
 }
