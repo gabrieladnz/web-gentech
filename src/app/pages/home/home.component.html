@@ -26,21 +26,24 @@
   <!-- Seção artigos  -->
   <section class="home__artigos">
     <div class="home__artigos__categorias">
-      <button *ngFor="let categorias of listaCategorias" mat-flat-button class="home__artigos__categorias__botao">{{ categorias.categoria }}</button>
+      <button *ngFor="let categorias of listaCategorias" mat-flat-button class="home__artigos__categorias__botao">{{
+        categorias.categoria }}</button>
     </div>
 
-    <div class="home__artigos__categorias">
-      <div class="home__artigos__categorias__card">
-        <figure class="home__artigos__categorias__card__imagem">
+    <div class="home__artigos__artigos-principais">
+
+      <div *ngFor="let artigos of listaArtigos" class="home__artigos__artigos-principais__card">
+        <figure class="home__artigos__artigos-principais__card__imagem">
           <img>
         </figure>
-        <article class="home__artigos__categorias__card__conteudo">
-          <button mat-flat-button>categoria</button>
-          <h2>título</h2>
-          <p>blablablabla</p>
-          <a>Ler mais...</a>
+        <article class="home__artigos__artigos-principais__card__conteudo">
+          <button mat-flat-button>{{artigos.categoria}}</button>
+          <h3>{{ artigos.titulo }}</h3>
+          <p>{{ artigos.texto }}</p>
+          <a href="">Ler mais...</a>
         </article>
       </div>
+
     </div>
   </section>
   <!-- Seção sobre  -->
@@ -75,7 +78,7 @@
     </div>
 
     <div class="home__sobre__botao">
-      <button mat-raised-button>Participe!</button>
+      <button mat-raised-button routerLink="/login">Participe!</button>
     </div>
   </section>
 </main>

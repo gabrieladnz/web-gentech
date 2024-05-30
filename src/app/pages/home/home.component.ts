@@ -19,5 +19,30 @@ export class HomeComponent {
     }
   ];
 
+  protected listaArtigos = [{
+    caminhoImagem: '',
+    categoria: 'IA',
+    titulo: 'O futuro da IA',
+    texto: 'blablablablablablablablablablab',
+  },
+  {
+    caminhoImagem: '',
+    categoria: 'IA',
+    titulo: 'O futuro da IA',
+    texto: 'blablablablablablablablablablab',
+  },
+  {
+    caminhoImagem: '',
+    categoria: 'IA',
+    titulo: 'O futuro da IA',
+    texto: 'blablablablablablablablablablab',
+  },
+  {
+    caminhoImagem: '',
+    categoria: 'IA',
+    titulo: 'O futuro da IA',
+    texto: 'blablablablablablablablablablab',
+  }]
+
   public constructor() { }
 }

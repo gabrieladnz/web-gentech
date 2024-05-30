@@ -1,14 +1,15 @@
 .footer {
-  background-color: #356B8C;
+  background-color: #356b8c;
   padding: 1em;
 
   &__topicos {
     display: flex;
     justify-content: space-between;
     padding: 0 3em 0 3em;
+    margin-top: 20px;
 
     &__texto {
-      color: #FFFFFF;
+      color: #ffffff;
 
       h4 {
         margin-bottom: 20px;
@@ -38,10 +39,11 @@
   &__rodape {
     margin-top: 40px;
     text-align: center;
+    margin-bottom: 20px;
 
     p {
       font-weight: 600;
-      color: #FFFFFF;
+      color: #ffffff;
     }
   }
 }
