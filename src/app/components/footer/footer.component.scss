@@ -18,6 +18,11 @@
       p {
         margin-bottom: 5px;
       }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
     }
 
     &__imagem {
@@ -26,6 +31,7 @@
 
       img {
         width: 40px;
+        cursor: pointer;
       }
 
       p {
