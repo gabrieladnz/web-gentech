@@ -1,37 +1,38 @@
 <app-navbar></app-navbar>
-<body class="body-artigos">
+<main class="body-artigos">
 
-  <section class="head">
-    <div>
-      <button class="head__return">← Retornar</button>
-      <h1>Artigos</h1>
+  <section class="body-artigos__head">
+    <div class="body-artigos__head__return">
+      <mat-icon>keyboard_backspace</mat-icon>
+      <button>Retornar</button>
     </div>
-    <div class="head__search">
-      <input type="search" placeholder="Buscar..." class="head__search__input">
-      <button type="menu" class="head__search__menu-btn">↓</button>
+
+    <div class="body-artigos__head__search">
+      <h1>Artigos</h1>
+
+      <div style="display: flex;">
+        <input type="text" class="body-artigos__head__search__input" placeholder="Buscar artigo...">
+        <button mat-mini-fab><mat-icon>arrow_drop_down</mat-icon></button>
+      </div>
     </div>
   </section>
 
-
-  <main class="artigos">
-
-    <section class="artigos__artigo">
-      <figure class="artigos__artigo__avatar-user">
-        <img src="../../../assets/images/do-utilizador.png" alt="avatar-autor" >
+  <section class="body-artigos__lista-artigos">
+    <div class="body-artigos__lista-artigos__artigo">
+      <figure class="body-artigos__lista-artigos__artigo__imagem">
+        <img src="" alt="avatar-tutor">
+        <img src="" alt="capa-artigo">
       </figure>
-      
-      <article class="artigos__artigo__post">
-        <p class="artigos__artigo__post__categoria">categoria</p>
-        <h3 class="artigos__artigo__post__titulo">Título do artigo</h3>
-        <div class="artigos__artigo__post__conteudo">
-          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-            industry's standard dummy text ever since the 1500s, when an unknown printer took a galle</p>
-          <p class="artigos__artigo__post__conteudo__ler-mais">Ler mais...</p>
-        </div>
+
+      <article class="body-artigos__lista-artigos__artigo__postagem">
+        <button mat-flat-button>categoria</button>
+        <h3>Título do artigo</h3>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+          industry's standard dummy text ever since the 1500s, when an unknown printer took a galle</p>
+        <a href="">Ler mais...</a>
       </article>
-    </section>
+    </div>
+  </section>
 
-  </main>
-
-</body>
+</main>
 <app-footer></app-footer>
