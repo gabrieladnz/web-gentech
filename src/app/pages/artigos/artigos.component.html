@@ -1,12 +1,37 @@
 <app-navbar></app-navbar>
-<main class="artigos">
+<body class="body-artigos">
 
-  <article class="artigos__artigo">
-    <h3 class="artigos__artigo__titulo">Título do artigo</h3>
-    <div class="artigos__artigo__conteudo">
-      <p>Texto do artigo</p>
+  <section class="head">
+    <div>
+      <button class="head__return">← Retornar</button>
+      <h1>Artigos</h1>
     </div>
-  </article>
+    <div class="head__search">
+      <input type="search" placeholder="Buscar..." class="head__search__input">
+      <button type="menu" class="head__search__menu-btn">↓</button>
+    </div>
+  </section>
 
-</main>
+
+  <main class="artigos">
+
+    <section class="artigos__artigo">
+      <figure class="artigos__artigo__avatar-user">
+        <img src="../../../assets/images/do-utilizador.png" alt="avatar-autor" >
+      </figure>
+      
+      <article class="artigos__artigo__post">
+        <p class="artigos__artigo__post__categoria">categoria</p>
+        <h3 class="artigos__artigo__post__titulo">Título do artigo</h3>
+        <div class="artigos__artigo__post__conteudo">
+          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+            industry's standard dummy text ever since the 1500s, when an unknown printer took a galle</p>
+          <p class="artigos__artigo__post__conteudo__ler-mais">Ler mais...</p>
+        </div>
+      </article>
+    </section>
+
+  </main>
+
+</body>
 <app-footer></app-footer>
