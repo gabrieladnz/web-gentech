@@ -32,6 +32,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ArtigoSelecionadoComponent } from './components/artigo-selecionado/artigo-selecionado.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { CommonModule } from '@angular/common';
+import { PainelAdminComponent } from './pages/painel-admin/painel-admin.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { CommonModule } from '@angular/common';
     ArtigosComponent,
     ArtigoSelecionadoComponent,
     FooterComponent,
+    PainelAdminComponent,
   ],
   imports: [
     BrowserModule,
