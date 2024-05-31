@@ -41,6 +41,12 @@
     border-radius: 15px;
     box-shadow: 0 8px 16px 0 #00000089;
 
+    figure {
+      img {
+        cursor: pointer;
+      }
+    }
+
     &__titulo {
       color: #000000;
       font-weight: 600;

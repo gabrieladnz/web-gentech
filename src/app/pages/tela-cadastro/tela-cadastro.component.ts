@@ -7,6 +7,7 @@ import {
 } from '@angular/forms';
 import { ErrorResponse } from '../../models/http/interface-http';
 import { UserServiceService } from '../../services/user/user-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tela-cadastro',
@@ -20,8 +21,9 @@ export class TelaCadastroComponent {
   public errorMessage = '';
   protected cadastroForm!: FormGroup;
   protected emailPattern = /^[A-Za-z0-9.%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+  protected credenciaisInvalidas: boolean = false;
 
-  public constructor(private formBuilder: FormBuilder, private userService: UserServiceService) {
+  public constructor(private formBuilder: FormBuilder, private userService: UserServiceService, private router: Router) {
     this.gerarNumerosAleatorios();
 
     this.cadastroForm = this.formBuilder.group({
@@ -72,7 +74,9 @@ export class TelaCadastroComponent {
   protected async cadastrarUsuario(): Promise<void> {
     try {
       const cadastroResponse = await this.userService.cadastrar(this.cadastroForm.value);
+      this.router.navigate(['/login']);
     } catch (error) {
+      this.credenciaisInvalidas = true;
       this.errorMessage = `${(error as ErrorResponse).message}`;
     }
   }

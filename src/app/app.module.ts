@@ -31,6 +31,8 @@ import {MatMenuModule} from '@angular/material/menu';
 import { HttpClientModule } from '@angular/common/http';
 import { ArtigoSelecionadoComponent } from './components/artigo-selecionado/artigo-selecionado.component';
 import { ForumSelecionadoComponent } from './components/forum-selecionado/forum-selecionado.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -42,6 +44,7 @@ import { ForumSelecionadoComponent } from './components/forum-selecionado/forum-
     ArtigosComponent,
     ArtigoSelecionadoComponent,
     ForumSelecionadoComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
@@ -54,7 +57,7 @@ import { ForumSelecionadoComponent } from './components/forum-selecionado/forum-
     MatIconModule,
     MatSelectModule,
     MatMenuModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [
     provideAnimationsAsync()

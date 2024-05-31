@@ -1,0 +1,89 @@
+.navbar {
+  background-color: #DFEBF2;
+  padding: 0.5em 10em 0.5em 4em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &__logotipo {
+    img {
+      width: 40px;
+      cursor: pointer;
+    }
+  }
+
+  &__menu-pages {
+    display: flex;
+
+    span {
+      cursor: pointer;
+    }
+
+    &__texto {
+      text-shadow: 0.5px 0px 0px rgba(0, 0, 0, 0.5);
+      font-size: 16px;
+      padding-right: 3em;
+    }
+
+    &__botao {
+      border: none;
+      border-radius: 8px;
+      background-color: #0A2029;
+      color: #FFFFFF;
+
+      font-size: 16px;
+      width: 110px;
+      position: absolute;
+      top: 0;
+      padding-top: 1.5em;
+      padding-bottom: 0.1em;
+    }
+  }
+}
+
+.login-icon {
+  display: none;
+}
+
+
+// Tela - Mobile
+@media screen and (max-width: 425px) {
+  .navbar {
+    padding: 0;
+    justify-content: space-around;
+  }
+
+  .navbar__logotipo {
+    img {
+      width: 30px;
+    }
+  }
+
+  .navbar__menu-pages {
+    align-items: center;
+  }
+
+  .navbar__menu-pages__texto {
+    font-size: 14px;
+    padding-right: 1em;
+
+  }
+
+  .navbar__menu-pages__botao {
+    position: relative;
+    font-size: 14px;
+    padding: auto;
+    position: relative;
+    top: auto;
+    padding: 0.3em;
+    width: auto;
+
+    span {
+      display: none;
+    }
+
+    .login-icon {
+      display: inline;
+    }
+  }
+}

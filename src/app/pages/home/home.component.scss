@@ -1,0 +1,191 @@
+.home {
+  &__introducao {
+    padding: 2.5em;
+    background-color: #dfebf2;
+
+    &__texto {
+      display: flex;
+      justify-content: space-between;
+      border-radius: 15px;
+      background-color: #4780998c;
+
+      &__h1 {
+        padding: 4em;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        h1 {
+          font-size: 32px;
+        }
+
+        p {
+          width: 70%;
+          margin-top: 20px;
+          text-align: justify;
+          letter-spacing: 0.5px;
+        }
+
+        button {
+          margin-top: 10px;
+          padding: 1em 4em 1em 4em;
+        }
+      }
+
+      &__imagem {
+      }
+    }
+  }
+
+  &__artigos {
+    padding: 2.5em;
+    background-color: #dfebf2;
+
+    &__categorias {
+      &__botao {
+        margin-right: 10px;
+        border-radius: 25px;
+        padding: 0 2em 0 2em;
+      }
+    }
+
+    &__artigos-principais {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      padding-bottom: 3em;
+
+      &__card {
+        margin-top: 40px;
+        background-color: #b1aeae;
+        border-radius: 15px;
+        width: auto;
+        height: auto;
+
+        &__imagem {
+          border-radius: 15px;
+        }
+
+        &__conteudo {
+          background-color: #fffdfd;
+          padding: 1em;
+          border-radius: 15px;
+
+          p {
+            color: #6c6262;
+            margin-top: 10px;
+            margin-bottom: 20px;
+          }
+
+          button {
+            background-color: #2f2e2e80;
+            color: #ffffff;
+
+            height: 20px;
+            font-size: 12px;
+            border-radius: 25px;
+            margin-bottom: 20px;
+          }
+        }
+      }
+    }
+  }
+
+  &__sobre {
+    padding: 2.5em;
+    background-color: #0a2029;
+    color: #ffffff;
+
+    &__titulo {
+      font-size: 26px;
+      margin-bottom: 20px;
+    }
+
+    &__3-sobre {
+      display: flex;
+      text-align: center;
+      justify-content: space-around;
+      padding: 1em;
+
+      figure {
+        text-align: center;
+      }
+
+      img {
+        width: 40px;
+      }
+
+      h3 {
+        text-align: center !important;
+      }
+
+      p,
+      h3 {
+        margin-top: 20px;
+        width: 300px;
+        text-align: justify;
+      }
+    }
+
+    &__botao {
+      text-align: center;
+      margin-top: 20px;
+      padding-bottom: 3em;
+
+      button {
+        padding: 1em 4em 1em 4em;
+      }
+    }
+  }
+}
+
+// Tela - Desktop
+@media screen and (max-width: 1024px) {
+  .home__introducao__texto__h1 {
+    width: 100%;
+  }
+
+  .home__introducao__texto__imagem {
+    img {
+      width: 100%;
+    }
+  }
+
+  .home__introducao__texto {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+
+    p {
+      width: auto;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .home__sobre__3-sobre {
+    flex-direction: column;
+    align-items: center;
+
+    div {
+      margin-bottom: 40px;
+    }
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .home__introducao__texto__h1 {
+    padding: 2em;
+  }
+
+  .home__artigos__artigos-principais {
+    justify-content: center;
+  }
+
+  .home__artigos__categorias {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+  }
+}
