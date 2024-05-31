@@ -30,6 +30,7 @@ import { MatIconModule } from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
 import { HttpClientModule } from '@angular/common/http';
 import { ArtigoSelecionadoComponent } from './components/artigo-selecionado/artigo-selecionado.component';
+import { ForumSelecionadoComponent } from './components/forum-selecionado/forum-selecionado.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { CommonModule } from '@angular/common';
 
@@ -42,6 +43,7 @@ import { CommonModule } from '@angular/common';
     LoginComponent,
     ArtigosComponent,
     ArtigoSelecionadoComponent,
+    ForumSelecionadoComponent,
     FooterComponent,
   ],
   imports: [
