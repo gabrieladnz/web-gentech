@@ -1,6 +1,5 @@
 <app-navbar></app-navbar>
 <main class="body-artigos">
-
   <section class="body-artigos__head">
     <div class="body-artigos__head__return">
       <mat-icon (click)="retornarPagina()">keyboard_backspace</mat-icon>
@@ -10,29 +9,34 @@
     <div class="body-artigos__head__search">
       <h1>Artigos</h1>
 
-      <div style="display: flex;">
-        <input type="text" class="body-artigos__head__search__input" placeholder="Buscar artigo...">
+      <div style="display: flex">
+        <input
+          type="search"
+          (input)="filtrarInput($event)"
+          class="body-artigos__head__search__input"
+          placeholder="Buscar artigo..."
+        />
         <button mat-mini-fab><mat-icon>arrow_drop_down</mat-icon></button>
       </div>
     </div>
   </section>
 
-  <section class="body-artigos__lista-artigos">
+  <section *ngFor="let artigoListado of artigosFiltrados" class="body-artigos__lista-artigos">
     <div class="body-artigos__lista-artigos__artigo">
       <figure class="body-artigos__lista-artigos__artigo__imagem">
-        <img src="" alt="avatar-tutor">
-        <img src="" alt="capa-artigo">
+        <img src="" alt="avatar-tutor" />
+        <img src="" alt="capa-artigo" />
       </figure>
 
       <article class="body-artigos__lista-artigos__artigo__postagem">
-        <button mat-flat-button>categoria</button>
-        <h3>Título do artigo</h3>
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-          industry's standard dummy text ever since the 1500s, when an unknown printer took a galle</p>
+        <button mat-flat-button>{{ artigoListado.categoria }}</button>
+        <h3>{{ artigoListado.titulo }}</h3>
+        <p>
+          {{ artigoListado.texto}}
+        </p>
         <a href="">Ler mais...</a>
       </article>
     </div>
   </section>
-
 </main>
 <app-footer></app-footer>
