@@ -5,6 +5,7 @@ import { TelaCadastroComponent } from './pages/tela-cadastro/tela-cadastro.compo
 import { LoginComponent } from './pages/login/login.component'
 import { ArtigosComponent } from './pages/artigos/artigos.component';
 import { ArtigoSelecionadoComponent } from './components/artigo-selecionado/artigo-selecionado.component';
+import { ForumComponent } from './pages/forum/forum.component';
 
 const routes: Routes = [
   {
@@ -25,6 +26,10 @@ const routes: Routes = [
   },
   { path: 'artigo-selecionado', 
     component: ArtigoSelecionadoComponent
+  },
+  {
+    path: 'forum',
+    component: ForumComponent
   },
   // Rota para capturar caminhos não correspondentes
   {
