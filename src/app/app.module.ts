@@ -33,6 +33,7 @@ import { ArtigoSelecionadoComponent } from './components/artigo-selecionado/arti
 import { FooterComponent } from './components/footer/footer.component';
 import { CommonModule } from '@angular/common';
 import { PainelAdminComponent } from './pages/painel-admin/painel-admin.component';
+import { ModalPublicarArtigoComponent } from './components/modais/modal-publicar-artigo/modal-publicar-artigo.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { PainelAdminComponent } from './pages/painel-admin/painel-admin.componen
     ArtigoSelecionadoComponent,
     FooterComponent,
     PainelAdminComponent,
+    ModalPublicarArtigoComponent,
   ],
   imports: [
     BrowserModule,
