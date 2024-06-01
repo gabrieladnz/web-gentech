@@ -1,99 +1,138 @@
 .page-forum {
-  background-color: #1E293B;
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  height: 100%;
-
-  &__header {
+    background-color: #1E293B;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    width: 50%;
+    width: 100%;
+    min-height: 100vh;
 
-    &__title {
-      color: #FFFFFF;
-      font-weight: 600;
-      font-size: 28px;
-      margin-top: 50px;
-    }
+    &__search {
+        display: flex;
+        justify-content: center;
+        margin: 2em 0;
 
-    &__image {
-      img {
-        width: 100%;
-      }
-    }
-  }
-
-  &__content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 3em;
-    width: 40%;
-    text-align: center;
-    background-color: #F0F4F8;
-    border-radius: 15px;
-    box-shadow: 0 8px 16px 0 #00000089;
-
-    figure {
-      img {
-        cursor: pointer;
-      }
-    }
-
-    &__title {
-      color: #000000;
-      font-weight: 600;
-      font-size: 24px;
-      margin-top: 10px;
-      margin-bottom: 10px;
-    }
-
-    &__topics {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-
-      &__item {
-        width: 100%;
-        margin-bottom: 20px;
-        background-color: #FFFFFF;
-        border-radius: 8px;
-        padding: 1em;
-        box-shadow: 0 4px 8px 0 #0000001A;
-
-        &__title {
-          color: #111827;
-          font-weight: 600;
-          font-size: 20px;
+        &__input {
+            padding: 0.5em;
+            border-radius: 5px;
+            border: 1px solid #ccc;
         }
 
-        &__description {
-          color: #4B5563;
-          font-size: 16px;
-          margin-top: 10px;
-        }
-
-        &__footer {
-          margin-top: 20px;
-          display: flex;
-          justify-content: flex-end;
-
-          button {
-            border-radius: 8px;
-            padding: 0.8em;
-            font-size: 14px;
+        &__button {
+            margin-left: 0.5em;
+            padding: 0.5em 1em;
+            border-radius: 5px;
             background-color: #1E40AF;
             color: #FFFFFF;
+            border: none;
 
             &:hover {
-              background-color: #1E3A8A;
+                background-color: #1E3A8A;
             }
-          }
         }
-      }
     }
-  }
+
+    &__content {
+        background-color: #F0F4F8;
+        border-radius: 8px;
+        padding: 3em;
+        box-shadow: 0 8px 16px 0 #00000089;
+        width: 60%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        &__title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #000000;
+            margin-bottom: 0.5em;
+        }
+
+        &__author {
+            font-size: 18px;
+            color: #4B5563;
+            margin-bottom: 1em;
+        }
+
+        &__preview {
+            font-size: 16px;
+            color: #4B5563;
+            margin-bottom: 1em;
+        }
+
+        &__comment-button {
+            padding: 0.8em 1.5em;
+            border-radius: 8px;
+            background-color: #1E40AF;
+            color: #FFFFFF;
+            border: none;
+
+            &:hover {
+                background-color: #1E3A8A;
+            }
+        }
+
+        &__comments {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+
+            &__form {
+                display: flex;
+                flex-direction: column;
+                margin-bottom: 2em;
+
+                label {
+                    margin-bottom: 0.5em;
+                }
+
+                textarea {
+                    padding: 1em;
+                    border: 1px solid #ccc;
+                    border-radius: 5px;
+                }
+
+                button {
+                    margin-top: 1em;
+                    border-radius: 8px;
+                    padding: 0.8em 1.5em;
+                    font-size: 14px;
+                    background-color: #1E40AF;
+                    color: #FFFFFF;
+                    border: none;
+
+                    &:hover {
+                        background-color: #1E3A8A;
+                    }
+                }
+            }
+
+            &__list {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+
+                &__item {
+                    margin-bottom: 20px;
+                    border-bottom: 1px solid #ccc;
+                    padding-bottom: 10px;
+
+                    &__header {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        margin-bottom: 0.5em;
+
+                        p {
+                            margin: 0;
+                        }
+                    }
+
+                    &__content {
+                        color: #4B5563;
+                    }
+                }
+            }
+        }
+    }
 }
