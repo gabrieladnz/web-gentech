@@ -1,1 +1,27 @@
-<p>modal-publicar-artigo works!</p>
+<h2 mat-dialog-title>Olá!</h2>
+<mat-dialog-content>
+  <p>Publique o seu artigo na GenTech preenchendo os campos abaixo.</p>
+  <!-- Formulário -->
+  <form style="    display: flex;
+  flex-direction: column;">
+    <mat-form-field>
+      <mat-label>Título</mat-label>
+      <input matInput required>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Conteúdo</mat-label>
+      <textarea matInput required=""></textarea>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Categoria</mat-label>
+      <input matInput>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<!-- Botões  -->
+<mat-dialog-actions>
+  <button mat-button (click)="cancelarCriacao()">Cancelar</button>
+  <button mat-button cdkFocusInitial>Criar</button>
+</mat-dialog-actions>

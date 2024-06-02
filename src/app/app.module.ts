@@ -60,6 +60,7 @@ import { ModalPublicarArtigoComponent } from './components/modais/modal-publicar
     MatSelectModule,
     MatMenuModule,
     HttpClientModule,
+    MatDialogModule
   ],
   providers: [
     provideAnimationsAsync()

@@ -3,8 +3,7 @@
   background-color: #dfebf2;
   height: 70%;
 
-  &__titulo {
-  }
+  &__titulo {}
 
   &__menu-geral {
     display: flex;
@@ -21,20 +20,21 @@
       padding: 1em;
       background-color: #fffdfd;
 
-      button {
-
-      }
+      button {}
 
       mat-icon {
         border: none;
         margin-top: 20px;
+        font-size: 48px;
+        width: 48px;
+        height: 45px;
+        color: #0a2029;
+        cursor: pointer;
       }
     }
 
-    &__editar-perfil {
-    }
+    &__editar-perfil {}
 
-    &__criar-publicacao {
-    }
+    &__criar-publicacao {}
   }
 }
