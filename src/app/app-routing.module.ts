@@ -5,6 +5,7 @@ import { TelaCadastroComponent } from './pages/tela-cadastro/tela-cadastro.compo
 import { LoginComponent } from './pages/login/login.component'
 import { ArtigosComponent } from './pages/artigos/artigos.component';
 import { ArtigoSelecionadoComponent } from './components/artigo-selecionado/artigo-selecionado.component';
+import { ForumComponent } from './pages/forum/forum.component';
 import { ForumSelecionadoComponent } from './components/forum-selecionado/forum-selecionado.component';
 
 const routes: Routes = [
@@ -24,10 +25,16 @@ const routes: Routes = [
     path: 'artigos',
     component: ArtigosComponent,
   },
-  { path: 'artigo-selecionado', 
+  { 
+    path: 'artigo-selecionado', 
     component: ArtigoSelecionadoComponent
   },
-  {path: 'forum-selecionado',
+  {
+    path: 'forum',
+    component: ForumComponent
+  },
+  {
+    path: 'forum-selecionado',
     component: ForumSelecionadoComponent
   },
   // Rota para capturar caminhos não correspondentes

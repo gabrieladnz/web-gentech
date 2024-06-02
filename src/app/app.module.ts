@@ -33,6 +33,7 @@ import { ArtigoSelecionadoComponent } from './components/artigo-selecionado/arti
 import { ForumSelecionadoComponent } from './components/forum-selecionado/forum-selecionado.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { CommonModule } from '@angular/common';
+import { ForumComponent } from './pages/forum/forum.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { CommonModule } from '@angular/common';
     ArtigoSelecionadoComponent,
     ForumSelecionadoComponent,
     FooterComponent,
+    ForumComponent,
   ],
   imports: [
     BrowserModule,
