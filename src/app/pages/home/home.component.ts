@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { UserServiceService } from '../../services/user/user-service.service';
+import { ErrorResponse } from '../../models/http/interface-http';
+import { Artigo } from '../artigos/artigo.interface';
 
 @Component({
   selector: 'app-home',
@@ -6,6 +9,8 @@ import { Component } from '@angular/core';
   styleUrl: './home.component.scss',
 })
 export class HomeComponent {
+  public errorMessage = '';
+
   // objeto temporário
   protected listaCategorias = [
     {
@@ -19,30 +24,19 @@ export class HomeComponent {
     }
   ];
 
-  protected listaArtigos = [{
-    caminhoImagem: '',
-    categoria: 'IA',
-    titulo: 'O futuro da IA',
-    texto: 'blablablablablablablablablablab',
-  },
-  {
-    caminhoImagem: '',
-    categoria: 'IA',
-    titulo: 'O futuro da IA',
-    texto: 'blablablablablablablablablablab',
-  },
-  {
-    caminhoImagem: '',
-    categoria: 'IA',
-    titulo: 'O futuro da IA',
-    texto: 'blablablablablablablablablablab',
-  },
-  {
-    caminhoImagem: '',
-    categoria: 'IA',
-    titulo: 'O futuro da IA',
-    texto: 'blablablablablablablablablablab',
-  }]
+  protected listaArtigos: Artigo[] = [];;
 
-  public constructor() { }
+  public constructor(private userService: UserServiceService) {
+    this.listarArtigos();
+  }
+
+  protected async listarArtigos(): Promise<void> {
+    try {
+      const retorno = await this.userService.listarTodosArtigos();
+      this.listaArtigos = retorno.data.allPublication.slice(0, 8);
+      console.log(this.listaArtigos, retorno.data.allPublication);
+    } catch (error) {
+      this.errorMessage = `${(error as ErrorResponse).message}`;
+    }
+  }
 }

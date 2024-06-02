@@ -10,12 +10,8 @@
       <h1>Artigos</h1>
 
       <div style="display: flex">
-        <input
-          type="search"
-          (input)="filtrarInput($event)"
-          class="body-artigos__head__search__input"
-          placeholder="Buscar artigo..."
-        />
+        <input type="search" (input)="filtrarInput($event)" class="body-artigos__head__search__input"
+          placeholder="Buscar artigo..." />
         <button mat-mini-fab><mat-icon>arrow_drop_down</mat-icon></button>
       </div>
     </div>
@@ -24,15 +20,15 @@
   <section *ngFor="let artigoListado of artigosFiltrados" class="body-artigos__lista-artigos">
     <div class="body-artigos__lista-artigos__artigo">
       <figure class="body-artigos__lista-artigos__artigo__imagem">
-        <img src="" alt="avatar-tutor" />
-        <img src="" alt="capa-artigo" />
+        <img src="{{ artigoListado.author.profilePhotoUrl}}" alt="avatar-tutor" />
+        <img src="{{ artigoListado.coverImageUrl }}" alt="capa-artigo" />
       </figure>
 
       <article class="body-artigos__lista-artigos__artigo__postagem">
-        <button mat-flat-button>{{ artigoListado.categoria }}</button>
-        <h3>{{ artigoListado.titulo }}</h3>
+        <button mat-flat-button>{{ artigoListado.category?.name }}</button>
+        <h3>{{ artigoListado.title }}</h3>
         <p>
-          {{ artigoListado.texto}}
+          {{ artigoListado.publicationContent}}
         </p>
         <a href="">Ler mais...</a>
       </article>
