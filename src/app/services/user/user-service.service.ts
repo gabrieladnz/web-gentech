@@ -1,16 +1,19 @@
 import { Injectable } from '@angular/core';
 import { RequestService } from '../request/request.service';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, lastValueFrom } from 'rxjs';
 import { ErrorResponse } from '../../models/http/interface-http';
 import { CriarArtigoRequest, CriarArtigoResponse, DeletarArtigoRequest, DeletarArtigoResponse, EditarArtigoResponse, ListarTodosArtigosResponse, LoginRequest, LoginResponse } from './user-service.interface';
 import { CadastroRequest, CadastroResponse } from './user-service.interface';
+import { TokenService } from '../token/token.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserServiceService extends RequestService {
-  public constructor(protected override httpClient: HttpClient) {
+  token = this.tokenService.get();
+
+  public constructor(protected override httpClient: HttpClient, private tokenService: TokenService) {
     super(httpClient);
   }
 
@@ -64,7 +67,8 @@ export class UserServiceService extends RequestService {
    */
   public async criarUsuarioAdmin(data: CadastroRequest): Promise<CadastroResponse> {
     try {
-      return await lastValueFrom(this.httpClient.post<CadastroResponse>(this.BASE_URL + '/register_common_admin', data));
+      const headers = new HttpHeaders({ 'Authorization': `Bearer ${this.token}` });
+      return await lastValueFrom(this.httpClient.post<CadastroResponse>(this.BASE_URL + '/register_common_admin', data, { headers }));
     } catch (error) {
       const errorResponse: ErrorResponse = {
         success: false,
@@ -79,7 +83,8 @@ export class UserServiceService extends RequestService {
    */
   public async criarArtigo(data: CriarArtigoRequest): Promise<CriarArtigoResponse> {
     try {
-      return await lastValueFrom(this.httpClient.post<CriarArtigoResponse>(this.BASE_URL + '/publication-create', data))
+      const headers = new HttpHeaders({ 'Authorization': `Bearer ${this.token}` });
+      return await lastValueFrom(this.httpClient.post<CriarArtigoResponse>(this.BASE_URL + '/publication/create', data, { headers }))
     } catch (error) {
       const errorResponse: ErrorResponse = {
         success: false,
@@ -91,7 +96,8 @@ export class UserServiceService extends RequestService {
 
   public async editarArtigoCriado(slug: string, data: CriarArtigoRequest): Promise<EditarArtigoResponse> {
     try {
-      return await lastValueFrom(this.httpClient.patch<EditarArtigoResponse>(`${this.BASE_URL}/publication/edit/${slug}`, data));
+      const headers = new HttpHeaders({ 'Authorization': `Bearer ${this.token}` });
+      return await lastValueFrom(this.httpClient.patch<EditarArtigoResponse>(`${this.BASE_URL}/publication/edit/${slug}`, data, { headers }));
     } catch (error) {
       const errorResponse: ErrorResponse = {
         success: false,
@@ -103,7 +109,8 @@ export class UserServiceService extends RequestService {
 
   public async deletarArtigoCriado(data: DeletarArtigoRequest): Promise<DeletarArtigoResponse> {
     try {
-      return await lastValueFrom(this.httpClient.delete<DeletarArtigoResponse>(`${this.BASE_URL}/publication/delete/${data.slug}`));
+      const headers = new HttpHeaders({ 'Authorization': `Bearer ${this.token}` });
+      return await lastValueFrom(this.httpClient.delete<DeletarArtigoResponse>(`${this.BASE_URL}/publication/delete/${data}`, { headers }));
     } catch (error) {
       const errorResponse: ErrorResponse = {
         success: false,

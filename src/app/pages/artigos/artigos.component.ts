@@ -3,6 +3,8 @@ import { Location } from '@angular/common';
 import { ErrorResponse } from '../../models/http/interface-http';
 import { UserServiceService } from '../../services/user/user-service.service';
 import { Artigo } from './artigo.interface';
+import { ModalEditarArtigoComponent } from '../../components/modais/modal-editar-artigo/modal-editar-artigo.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-artigos',
@@ -14,7 +16,7 @@ export class ArtigosComponent {
   protected artigos: Artigo[] = [];
   protected artigosFiltrados: Artigo[] = [];
 
-  constructor(private location: Location, private userService: UserServiceService) {
+  constructor(private location: Location, private userService: UserServiceService, public dialog: MatDialog) {
     this.exibirArtigos();
   }
 
@@ -35,5 +37,27 @@ export class ArtigosComponent {
     } catch (error) {
       this.errorMessage = `${(error as ErrorResponse).message}`;
     }
+  }
+
+  protected async deletarArtigoSelecionado(data: any): Promise<void> {
+    try {
+      await this.userService.deletarArtigoCriado(data);
+    } catch (error) {
+      this.errorMessage = `${(error as ErrorResponse).message}`;
+    }
+  }
+
+  protected editarArtigoSelecionado(dadosArtigo: any): void {
+    const dialogRef = this.dialog.open(ModalEditarArtigoComponent, {
+      disableClose: false,
+      data: {
+        slug: dadosArtigo.slug,
+        title: dadosArtigo.title,
+        publicationContent: dadosArtigo.publicationContent
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+    });
   }
 }

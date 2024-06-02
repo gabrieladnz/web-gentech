@@ -55,14 +55,14 @@
     display: flex;
     justify-content: center;
     margin-top: 50px;
+    width: 90%;
 
     &__artigo {
       width: 55%;
       background-color: #b1aeae;
       border-radius: 15px;
 
-      &__imagem {
-      }
+      &__imagem {}
 
       &__postagem {
         background-color: #fffdfd;
@@ -70,6 +70,15 @@
 
         border-radius: 15px;
         padding: 1em;
+
+        div {
+          display: flex;
+          justify-content: space-between;
+
+          mat-icon {
+            cursor: pointer;
+          }
+        }
 
         h3 {
           font-weight: 600;

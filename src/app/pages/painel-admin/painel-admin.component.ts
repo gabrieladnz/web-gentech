@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalPublicarArtigoComponent } from '../../components/modais/modal-publicar-artigo/modal-publicar-artigo.component';
+import { UserServiceService } from '../../services/user/user-service.service';
+import { ErrorResponse } from '../../models/http/interface-http';
+import { ModalCadastrarAdminComponent } from '../../components/modais/modal-cadastrar-admin/modal-cadastrar-admin.component';
 
 @Component({
   selector: 'app-painel-admin',
@@ -8,14 +11,15 @@ import { ModalPublicarArtigoComponent } from '../../components/modais/modal-publ
   styleUrl: './painel-admin.component.scss'
 })
 export class PainelAdminComponent {
+  public errorMessage = '';
+
   public constructor(public dialog: MatDialog) {}
 
-  criarArtigo(): void {
-    const dialogRef = this.dialog.open(ModalPublicarArtigoComponent, {
-      disableClose: true,
-    });
+  protected criarArtigo(): void {
+    this.dialog.open(ModalPublicarArtigoComponent, { disableClose: true });
+  }
 
-    dialogRef.afterClosed().subscribe(result => {
-    });
+  protected cadastrarAdmin(): void {
+    this.dialog.open(ModalCadastrarAdminComponent, { disableClose: true });
   }
 }

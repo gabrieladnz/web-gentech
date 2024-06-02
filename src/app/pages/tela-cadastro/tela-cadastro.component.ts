@@ -35,7 +35,6 @@ export class TelaCadastroComponent {
     });
   }
 
-
   protected gerarNumerosAleatorios(): void {
     for (let i = 0; i < 8; i++) {
       this.numerosAvatar.push(Math.floor(Math.random() * 100) + 1);

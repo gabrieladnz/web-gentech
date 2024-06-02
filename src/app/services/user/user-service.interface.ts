@@ -39,7 +39,6 @@ export interface CadastroResponse extends SuccessResponse {
   data: {};
 }
 
-
 /**
  * Interface que representa uma resposta bem-sucedida de login.
  * Extende de uma resposta genérica de sucesso.
