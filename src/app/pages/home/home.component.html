@@ -7,7 +7,8 @@
       <article class="home__introducao__texto__h1">
         <div>
           <h1>Blog GenTech</h1>
-          <p>Bem-vindo ao GenTech! Seu destino definitivo para explorar o fascinante mundo da Inteligência Artificial. Os avanços nas IAs generativas têm sido cada vez mais notáveis ao longo dos anos, mas desde 2020,
+          <p>Bem-vindo ao GenTech! Seu destino definitivo para explorar o fascinante mundo da Inteligência Artificial.
+            Os avanços nas IAs generativas têm sido cada vez mais notáveis ao longo dos anos, mas desde 2020,
             estamos testemunhando uma aceleração significativa, este blog foi criado para entusiastas e
             curiosos que desejam se aprofundar nesse universo. <strong>Veja como será o futuro da programação na era da
               Inteligência Artificial!</strong></p>
@@ -37,9 +38,9 @@
           <img>
         </figure>
         <article class="home__artigos__artigos-principais__card__conteudo">
-          <button mat-flat-button>{{artigos.categoria}}</button>
-          <h3>{{ artigos.titulo }}</h3>
-          <p>{{ artigos.texto }}</p>
+          <button mat-flat-button>{{artigos.category?.name}}</button>
+          <h3>{{ artigos.title }}</h3>
+          <p>{{ artigos.publicationContent }}</p>
           <a href="">Ler mais...</a>
         </article>
       </div>

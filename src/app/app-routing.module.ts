@@ -5,6 +5,7 @@ import { TelaCadastroComponent } from './pages/tela-cadastro/tela-cadastro.compo
 import { LoginComponent } from './pages/login/login.component'
 import { ArtigosComponent } from './pages/artigos/artigos.component';
 import { ArtigoSelecionadoComponent } from './components/artigo-selecionado/artigo-selecionado.component';
+import { PainelAdminComponent } from './pages/painel-admin/painel-admin.component';
 import { ForumComponent } from './pages/forum/forum.component';
 import { ForumSelecionadoComponent } from './components/forum-selecionado/forum-selecionado.component';
 
@@ -24,6 +25,10 @@ const routes: Routes = [
   {
     path: 'artigos',
     component: ArtigosComponent,
+  },
+  {
+    path: 'painel-admin',
+    component: PainelAdminComponent
   },
   { 
     path: 'artigo-selecionado', 

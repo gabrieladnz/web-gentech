@@ -33,6 +33,11 @@ import { ArtigoSelecionadoComponent } from './components/artigo-selecionado/arti
 import { ForumSelecionadoComponent } from './components/forum-selecionado/forum-selecionado.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { CommonModule } from '@angular/common';
+
+import { PainelAdminComponent } from './pages/painel-admin/painel-admin.component';
+import { ModalPublicarArtigoComponent } from './components/modais/modal-publicar-artigo/modal-publicar-artigo.component';
+import { ModalEditarArtigoComponent } from './components/modais/modal-editar-artigo/modal-editar-artigo.component';
+import { ModalCadastrarAdminComponent } from './components/modais/modal-cadastrar-admin/modal-cadastrar-admin.component';
 import { ForumComponent } from './pages/forum/forum.component';
 
 @NgModule({
@@ -46,6 +51,10 @@ import { ForumComponent } from './pages/forum/forum.component';
     ArtigoSelecionadoComponent,
     ForumSelecionadoComponent,
     FooterComponent,
+    PainelAdminComponent,
+    ModalPublicarArtigoComponent,
+    ModalEditarArtigoComponent,
+    ModalCadastrarAdminComponent,
     ForumComponent,
   ],
   imports: [
@@ -60,6 +69,7 @@ import { ForumComponent } from './pages/forum/forum.component';
     MatSelectModule,
     MatMenuModule,
     HttpClientModule,
+    MatDialogModule
   ],
   providers: [
     provideAnimationsAsync()

@@ -1,0 +1,40 @@
+.painel {
+  padding: 2.5em;
+  background-color: #dfebf2;
+  height: 70%;
+
+  &__titulo {}
+
+  &__menu-geral {
+    display: flex;
+    justify-content: flex-start;
+    gap: 20px;
+
+    &__criar-publicacao,
+    &__editar-perfil {
+      margin-top: 20px;
+      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.319);
+      text-align: center;
+      border-radius: 10px;
+
+      padding: 1em;
+      background-color: #fffdfd;
+
+      button {}
+
+      mat-icon {
+        border: none;
+        margin-top: 20px;
+        font-size: 48px;
+        width: 48px;
+        height: 45px;
+        color: #0a2029;
+        cursor: pointer;
+      }
+    }
+
+    &__editar-perfil {}
+
+    &__criar-publicacao {}
+  }
+}
