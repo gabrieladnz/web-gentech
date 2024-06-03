@@ -22,6 +22,7 @@ export class TelaCadastroComponent {
   protected cadastroForm!: FormGroup;
   protected emailPattern = /^[A-Za-z0-9.%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
   protected credenciaisInvalidas: boolean = false;
+  public carregando = false;
 
   public constructor(private formBuilder: FormBuilder, private userService: UserServiceService, private router: Router) {
     this.gerarNumerosAleatorios();
@@ -69,12 +70,16 @@ export class TelaCadastroComponent {
    * Função responsável por realizar o cadastro do usuário comum
    */
   protected async cadastrarUsuario(): Promise<void> {
+    this.carregando = true;
+
     try {
       const cadastroResponse = await this.userService.cadastrar(this.cadastroForm.value);
+      this.carregando = false;
       this.router.navigate(['/login']);
     } catch (error) {
       this.credenciaisInvalidas = true;
       this.errorMessage = `${(error as ErrorResponse).message}`;
+      this.carregando = false;
     }
   }
 }

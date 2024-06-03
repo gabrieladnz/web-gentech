@@ -30,10 +30,15 @@
       <button *ngFor="let categorias of listaCategorias" mat-flat-button class="home__artigos__categorias__botao">{{
         categorias.categoria }}</button>
     </div>
+    <!-- Loading  -->
+    <figure *ngIf="carregando" style="display: flex; justify-content: center; margin-top: 40px;">
+      <div class="custom-loader"></div>
+    </figure>
 
     <div class="home__artigos__artigos-principais">
 
-      <div *ngFor="let artigos of listaArtigos" class="home__artigos__artigos-principais__card">
+      <div *ngFor="let artigos of listaArtigos" class="home__artigos__artigos-principais__card"
+        (click)="abrirArtigo(artigos)">
         <figure class="home__artigos__artigos-principais__card__imagem">
           <img>
         </figure>
@@ -41,7 +46,7 @@
           <button mat-flat-button>{{artigos.category?.name}}</button>
           <h3>{{ artigos.title }}</h3>
           <p>{{ artigos.publicationContent }}</p>
-          <a href="">Ler mais...</a>
+          <a (click)="abrirArtigo(artigos)">Ler mais...</a>
         </article>
       </div>
 

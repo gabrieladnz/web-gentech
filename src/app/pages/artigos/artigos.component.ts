@@ -5,6 +5,7 @@ import { UserServiceService } from '../../services/user/user-service.service';
 import { Artigo } from './artigo.interface';
 import { ModalEditarArtigoComponent } from '../../components/modais/modal-editar-artigo/modal-editar-artigo.component';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-artigos',
@@ -15,8 +16,9 @@ export class ArtigosComponent {
   public errorMessage = '';
   protected artigos: Artigo[] = [];
   protected artigosFiltrados: Artigo[] = [];
+  public carregando = true;
 
-  constructor(private location: Location, private userService: UserServiceService, public dialog: MatDialog) {
+  constructor(private location: Location, private userService: UserServiceService, public dialog: MatDialog, private router: Router) {
     this.exibirArtigos();
   }
 
@@ -32,16 +34,18 @@ export class ArtigosComponent {
     try {
       const retorno = await this.userService.listarTodosArtigos();
       this.artigos = retorno.data.allPublication;
-      this.artigosFiltrados = [...this.artigos]
-      console.log(this.artigos, retorno.data.allPublication, this.artigosFiltrados);
+      this.artigosFiltrados = [...this.artigos];
+      this.carregando = false;
     } catch (error) {
       this.errorMessage = `${(error as ErrorResponse).message}`;
+      this.carregando = false;
     }
   }
 
   protected async deletarArtigoSelecionado(data: any): Promise<void> {
     try {
       await this.userService.deletarArtigoCriado(data);
+      this.exibirArtigos();
     } catch (error) {
       this.errorMessage = `${(error as ErrorResponse).message}`;
     }
@@ -53,11 +57,18 @@ export class ArtigosComponent {
       data: {
         slug: dadosArtigo.slug,
         title: dadosArtigo.title,
-        publicationContent: dadosArtigo.publicationContent
+        publicationContent: dadosArtigo.publicationContent,
+        category: dadosArtigo.category.name
       }
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe(retorno => {
+      console.log(retorno);
+      this.exibirArtigos();
     });
+  }
+
+  protected abrirArtigo(dadosArtigo: any): void {
+    this.router.navigate(["/artigo-selecionado"], { state: { dadosArtigo } })
   }
 }

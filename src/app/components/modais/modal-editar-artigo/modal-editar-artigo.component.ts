@@ -18,8 +18,8 @@ export class ModalEditarArtigoComponent {
     this.editarArtigoForm = this.formBuilder.group({
       title: [data.title, [Validators.required]],
       publicationContent: [data.publicationContent, [Validators.required]],
-      coverImageUrl: [''],
-      category: [''],
+      coverImageUrl: [data.coverImageUrl],
+      category: [data.category],
     });
 
     this.slug = data.slug;
