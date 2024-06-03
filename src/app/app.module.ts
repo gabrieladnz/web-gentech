@@ -30,6 +30,15 @@ import { MatIconModule } from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
 import { HttpClientModule } from '@angular/common/http';
 import { ArtigoSelecionadoComponent } from './components/artigo-selecionado/artigo-selecionado.component';
+import { ForumSelecionadoComponent } from './components/forum-selecionado/forum-selecionado.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { CommonModule } from '@angular/common';
+
+import { PainelAdminComponent } from './pages/painel-admin/painel-admin.component';
+import { ModalPublicarArtigoComponent } from './components/modais/modal-publicar-artigo/modal-publicar-artigo.component';
+import { ModalEditarArtigoComponent } from './components/modais/modal-editar-artigo/modal-editar-artigo.component';
+import { ModalCadastrarAdminComponent } from './components/modais/modal-cadastrar-admin/modal-cadastrar-admin.component';
+import { ForumComponent } from './pages/forum/forum.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +49,13 @@ import { ArtigoSelecionadoComponent } from './components/artigo-selecionado/arti
     LoginComponent,
     ArtigosComponent,
     ArtigoSelecionadoComponent,
+    ForumSelecionadoComponent,
+    FooterComponent,
+    PainelAdminComponent,
+    ModalPublicarArtigoComponent,
+    ModalEditarArtigoComponent,
+    ModalCadastrarAdminComponent,
+    ForumComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,7 +68,8 @@ import { ArtigoSelecionadoComponent } from './components/artigo-selecionado/arti
     MatIconModule,
     MatSelectModule,
     MatMenuModule,
-    HttpClientModule
+    HttpClientModule,
+    MatDialogModule
   ],
   providers: [
     provideAnimationsAsync()

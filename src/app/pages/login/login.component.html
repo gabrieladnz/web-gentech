@@ -11,10 +11,15 @@
   <!-- Formulário  -->
   <section class="page-login__formulario">
     <figure>
-      <img src="../../../assets/images/logotipo.svg">
+      <img routerLink="/home" src="../../../assets/images/logotipo.svg">
     </figure>
     <h2 class="page-login__formulario__titulo">Acesse sua conta</h2>
     <p class="page-login__formulario__texto">E interaja com uma comunidade ativa na área da Inteligência Artificial.</p>
+
+    <mat-error *ngIf="credenciaisInvalidas">
+      <mat-icon>error</mat-icon>
+      <h5>Credenciais inválidas, verifique e tente novamente.</h5>
+    </mat-error>
 
     <form [formGroup]="loginForm" class="page-login__formulario__campos-form">
       <mat-form-field color="accent">
@@ -31,6 +36,11 @@
       <p class="page-login__formulario__campos-form__cadastro">Não possui conta? <span
           routerLink="/cadastro">Cadastre-se</span></p>
     </form>
+    <!-- Loading  -->
+    <figure *ngIf="carregando" style="display: flex; justify-content: center; margin-top: 10px;">
+      <div class="custom-loader"></div>
+    </figure>
+    
     <footer class="page-login__formulario__botao">
       <button [disabled]="loginForm.invalid" (click)="loginUsuario()" mat-raised-button type="submit">ENTRAR</button>
     </footer>

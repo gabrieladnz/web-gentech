@@ -1,1 +1,92 @@
-<p>home works!</p>
+<!-- Navbar  -->
+<app-navbar></app-navbar>
+<!-- Conteúdo central  -->
+<main class="home">
+  <section class="home__introducao">
+    <div class="home__introducao__texto">
+      <article class="home__introducao__texto__h1">
+        <div>
+          <h1>Blog GenTech</h1>
+          <p>Bem-vindo ao GenTech! Seu destino definitivo para explorar o fascinante mundo da Inteligência Artificial.
+            Os avanços nas IAs generativas têm sido cada vez mais notáveis ao longo dos anos, mas desde 2020,
+            estamos testemunhando uma aceleração significativa, este blog foi criado para entusiastas e
+            curiosos que desejam se aprofundar nesse universo. <strong>Veja como será o futuro da programação na era da
+              Inteligência Artificial!</strong></p>
+        </div>
+
+        <div>
+          <button mat-raised-button>Saiba mais</button>
+        </div>
+      </article>
+
+      <figure class="home__introducao__texto__imagem">
+        <img src="assets/images/image-home.svg">
+      </figure>
+    </div>
+  </section>
+  <!-- Seção artigos  -->
+  <section class="home__artigos">
+    <div class="home__artigos__categorias">
+      <button *ngFor="let categorias of listaCategorias" mat-flat-button class="home__artigos__categorias__botao">{{
+        categorias.categoria }}</button>
+    </div>
+    <!-- Loading  -->
+    <figure *ngIf="carregando" style="display: flex; justify-content: center; margin-top: 40px;">
+      <div class="custom-loader"></div>
+    </figure>
+
+    <div class="home__artigos__artigos-principais">
+
+      <div *ngFor="let artigos of listaArtigos" class="home__artigos__artigos-principais__card"
+        (click)="abrirArtigo(artigos)">
+        <figure class="home__artigos__artigos-principais__card__imagem">
+          <img>
+        </figure>
+        <article class="home__artigos__artigos-principais__card__conteudo">
+          <button mat-flat-button>{{artigos.category?.name}}</button>
+          <h3>{{ artigos.title }}</h3>
+          <p>{{ artigos.publicationContent }}</p>
+          <a (click)="abrirArtigo(artigos)">Ler mais...</a>
+        </article>
+      </div>
+
+    </div>
+  </section>
+  <!-- Seção sobre  -->
+  <section class="home__sobre">
+    <h2 class="home__sobre__titulo">Sobre a GenTech</h2>
+    <div class="home__sobre__3-sobre">
+      <div>
+        <figure>
+          <img src="assets/icons/icon-artigo.svg">
+        </figure>
+        <h3>Artigos informativos</h3>
+        <p>Desde introduções básicas até análises aprofundadas de tecnologias avançadas, cobrimos tudo o que você
+          precisa saber sobre IA.</p>
+      </div>
+
+      <div>
+        <figure>
+          <img src="assets/icons/icon-forum.svg">
+        </figure>
+        <h3>Fóruns de discussão</h3>
+        <p>Junte-se ao nosso fórum para discutir projetos, trocar conhecimentos e resolver dúvidas com outros membros.
+        </p>
+      </div>
+
+      <div>
+        <figure>
+          <img src="assets/icons/icon-comunidade.svg">
+        </figure>
+        <h3>Comunidade interativa</h3>
+        <p>Expanda seu conhecimento e faça parte de uma comunidade vibrante e engajada.</p>
+      </div>
+    </div>
+
+    <div class="home__sobre__botao">
+      <button mat-raised-button routerLink="/login">Participe!</button>
+    </div>
+  </section>
+</main>
+<!-- Footer  -->
+<app-footer></app-footer>

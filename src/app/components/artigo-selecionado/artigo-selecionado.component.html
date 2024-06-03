@@ -1,10 +1,41 @@
-<main class="artigos">
-
-    <article class="artigos__artigo-selecionado">
-      <h3 class="artigos__artigo-selecionado__titulo">Título do Artigo Selecionado</h3>
-      <div class="artigos__artigo-selecionado__conteudo">
-        <p>Descrição do artigo selecionado</p>
+<app-navbar></app-navbar>
+<main class="artigo-selecionado">
+  <div>
+    <section class="artigo-selecionado__introducao">
+      <div class="artigo-selecionado__introducao__retornar">
+        <mat-icon (click)="retornarPagina()">keyboard_backspace</mat-icon>
+        <button>Retornar</button>
       </div>
-    </article>
+
+      <div class="artigo-selecionado__introducao__categoria">
+        <button  mat-flat-button>{{ category }}</button>
+        <p>{{ createAt }}</p>
+      </div>
+
+      <h1>{{ title }}</h1>
+
+      <div class="artigo-selecionado__introducao__autor">
+        <figure class="artigo-selecionado__introducao__autor__perfil">
+          <!-- <button mat-fab [matMenuTriggerFor]="menu">
+            <img *ngIf="avatarSelecionado" src="{{ exibirAvatar(avatarSelecionado) }}.svg" alt="Avatar Selecionado"
+              width="30" height="30">
+            <mat-icon *ngIf="!avatarSelecionado">person_add</mat-icon>
+          </button> -->
+          <img src="{{ profilePhotoUrl }}" width="30" height="30">
+        </figure>
+        <article class="artigo-selecionado__introducao__autor__nome">
+          <p>{{ author }}</p>
+          <p>{{ username }}</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="artigo-selecionado__texto">
+      <figure>
+        <img src="{{ coverImageUrl }}">
+      </figure>
+      <p>{{ publicationContent }}</p>
+    </section>
+  </div>
 </main>
-  
+<app-footer></app-footer>

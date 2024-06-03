@@ -1,0 +1,27 @@
+<h2 mat-dialog-title>Olá!</h2>
+<mat-dialog-content>
+  <p>Publique o seu artigo na GenTech preenchendo os campos abaixo.</p>
+  <!-- Formulário -->
+  <form [formGroup]="criarArtigoForm" style="    display: flex;
+  flex-direction: column;">
+    <mat-form-field>
+      <mat-label>Título</mat-label>
+      <input formControlName="title" matInput required>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Conteúdo</mat-label>
+      <textarea formControlName="publicationContent" matInput required=""></textarea>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Categoria</mat-label>
+      <input formControlName="category" matInput>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<!-- Botões  -->
+<mat-dialog-actions style="display: flex; justify-content: center;">
+  <button mat-button (click)="cancelarCriacao()">Cancelar</button>
+  <button mat-button [disabled]="criarArtigoForm.invalid" (click)="criarArtigo()" cdkFocusInitial>Criar</button>
+</mat-dialog-actions>

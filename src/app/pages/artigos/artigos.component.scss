@@ -1,28 +1,144 @@
-.artigos {
-    margin-top: 210px;
+.body-artigos {
+  background-color: #dfebf2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2.5em;
+  min-height: 100%;
+  height: auto;
+
+  &__head {
+    &__return {
+      display: flex;
+
+      button {
+        border: none;
+        background: none;
+        font-size: 16px;
+        font-weight: 600;
+        margin-left: 5px;
+      }
+
+      mat-icon {
+        cursor: pointer;
+      }
+    }
+
+    &__search {
+      margin-top: 40px;
+
+      h1 {
+        font-size: 40px;
+        margin-bottom: 20px;
+      }
+
+      button {
+        border: none;
+        border-radius: 25px;
+        margin-left: 10px;
+
+        background-color: #1c3b89;
+        color: #ffffff;
+      }
+
+      &__input {
+        padding: 0px 10px 0px 25px;
+        width: 45vw;
+        border-radius: 16px;
+        border: 1px solid #e6e4f0;
+        outline: none;
+      }
+    }
+  }
+
+  &__lista-artigos {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+    width: 90%;
 
     &__artigo {
-        width: 850px;
-        height: 300px;
-        border: 0.5px solid black;
-        background-color: #D9D9D9;
+      width: 55%;
+      background-color: #b1aeae;
+      border-radius: 15px;
+      cursor: pointer;
 
-        &__titulo {
-            margin-left: 20px;
+      &__imagem {}
+
+      &__postagem {
+        background-color: #fffdfd;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.319);
+
+        border-radius: 15px;
+        padding: 1em;
+
+        div {
+          display: flex;
+          justify-content: space-between;
+
+          mat-icon {
+            cursor: pointer;
+          }
         }
 
-        &__conteudo {
-            margin-left: 40px;
-            margin-right: 40px;
-            height: 60%;
-            background-color: #ffffff;
-            padding-left: 15px;
-            padding-right: 15px;
-            padding-bottom: 15px;
-            padding-top: 0.5px;
+        h3 {
+          font-weight: 600;
+          margin-top: 5px;
+          margin-bottom: 5px;
         }
+
+        p {
+          color: #b1aeae;
+          text-align: justify;
+          margin-bottom: 20px;
+        }
+
+        button {
+          background-color: #2f2e2e80;
+          color: #ffffff;
+          height: 20px;
+          font-size: 12px;
+          border-radius: 25px;
+          margin-bottom: 10px;
+        }
+      }
     }
+  }
+}
+
+// Tela tablet
+@media screen and (max-width: 768px) {
+  .body-artigos__head__search__input {
+    width: 65vw;
+  }
+
+  .body-artigos__lista-artigos__artigo {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .body-artigos {
+    height: auto;
+  }
+
+  .body-artigos__lista-artigos__artigo {
+    width: auto;
+  }
+}
+
+// Animação
+.custom-loader {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background:
+    radial-gradient(farthest-side,#356b8c 94%,#0000) top/8px 8px no-repeat,
+    conic-gradient(#0000 30%,#356b8c);
+  -webkit-mask: radial-gradient(farthest-side,#0000 calc(100% - 8px),#000 0);
+  animation:s3 1s infinite linear;
+}
+
+@keyframes s3{
+  100%{transform: rotate(1turn)}
 }

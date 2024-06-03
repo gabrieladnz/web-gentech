@@ -7,6 +7,7 @@ import {
 } from '@angular/forms';
 import { ErrorResponse } from '../../models/http/interface-http';
 import { UserServiceService } from '../../services/user/user-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tela-cadastro',
@@ -20,8 +21,10 @@ export class TelaCadastroComponent {
   public errorMessage = '';
   protected cadastroForm!: FormGroup;
   protected emailPattern = /^[A-Za-z0-9.%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+  protected credenciaisInvalidas: boolean = false;
+  public carregando = false;
 
-  public constructor(private formBuilder: FormBuilder, private userService: UserServiceService) {
+  public constructor(private formBuilder: FormBuilder, private userService: UserServiceService, private router: Router) {
     this.gerarNumerosAleatorios();
 
     this.cadastroForm = this.formBuilder.group({
@@ -33,9 +36,6 @@ export class TelaCadastroComponent {
     });
   }
 
-  /**
-   * Gera 8 números aleatórios
-   */
   protected gerarNumerosAleatorios(): void {
     for (let i = 0; i < 8; i++) {
       this.numerosAvatar.push(Math.floor(Math.random() * 100) + 1);
@@ -70,10 +70,16 @@ export class TelaCadastroComponent {
    * Função responsável por realizar o cadastro do usuário comum
    */
   protected async cadastrarUsuario(): Promise<void> {
+    this.carregando = true;
+
     try {
       const cadastroResponse = await this.userService.cadastrar(this.cadastroForm.value);
+      this.carregando = false;
+      this.router.navigate(['/login']);
     } catch (error) {
+      this.credenciaisInvalidas = true;
       this.errorMessage = `${(error as ErrorResponse).message}`;
+      this.carregando = false;
     }
   }
 }

@@ -1,0 +1,32 @@
+
+<h2 mat-dialog-title>Cadastro de Admin</h2>
+<mat-dialog-content>
+  <p>Insira os dados nos campos abaixo para cadastrar um administrador.</p>
+  <form [formGroup]="registerFormAdmin" style="display: flex; flex-direction: column;">
+    <mat-form-field color="accent">
+      <mat-label>Nome</mat-label>
+      <input matInput placeholder="Nome" formControlName="fullName" required>
+    </mat-form-field>
+
+    <mat-form-field color="accent">
+      <mat-label>Usuário</mat-label>
+      <input matInput placeholder="Usuário" formControlName="userName" required>
+    </mat-form-field>
+
+    <mat-form-field color="accent">
+      <mat-label>E-mail</mat-label>
+      <input matInput placeholder="E-mail" formControlName="email" required>
+    </mat-form-field>
+
+    <mat-form-field color="accent">
+      <mat-label>Senha</mat-label>
+      <input matInput placeholder="Senha" formControlName="password" [type]="hide ? 'password' : 'text'" required>
+      <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions style="display: flex; justify-content: center;">
+  <button mat-button (click)="cancelarCriacao()">Cancelar</button>
+  <button mat-button [disabled]="registerFormAdmin.invalid" (click)="cadastrarAdmin()" cdkFocusInitial>Criar</button>
+</mat-dialog-actions>
