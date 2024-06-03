@@ -36,6 +36,11 @@
       <p class="page-login__formulario__campos-form__cadastro">Não possui conta? <span
           routerLink="/cadastro">Cadastre-se</span></p>
     </form>
+    <!-- Loading  -->
+    <figure *ngIf="carregando" style="display: flex; justify-content: center; margin-top: 10px;">
+      <div class="custom-loader"></div>
+    </figure>
+    
     <footer class="page-login__formulario__botao">
       <button [disabled]="loginForm.invalid" (click)="loginUsuario()" mat-raised-button type="submit">ENTRAR</button>
     </footer>

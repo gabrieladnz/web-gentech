@@ -17,11 +17,15 @@
     </div>
   </section>
 
+  <!-- Loading  -->
+  <figure *ngIf="carregando" style="display: flex; justify-content: center; margin-top: 40px;">
+    <div class="custom-loader"></div>
+  </figure>
   <section *ngFor="let artigoListado of artigosFiltrados" class="body-artigos__lista-artigos">
     <div class="body-artigos__lista-artigos__artigo">
-      <figure class="body-artigos__lista-artigos__artigo__imagem">
+      <figure class="body-artigos__lista-artigos__artigo__imagem" (click)="abrirArtigo(artigoListado)">
         <img src="{{ artigoListado.author.profilePhotoUrl}}" />
-        <img src="{{ artigoListado.coverImageUrl }}"  />
+        <img src="{{ artigoListado.coverImageUrl }}" />
       </figure>
 
       <article class="body-artigos__lista-artigos__artigo__postagem">
@@ -29,11 +33,11 @@
           <button mat-flat-button>{{ artigoListado.category?.name }}</button>
           <mat-icon [matMenuTriggerFor]="menu">more_vert</mat-icon>
         </div>
-        <h3>{{ artigoListado.title }}</h3>
-        <p>
+        <h3 (click)="abrirArtigo(artigoListado)">{{ artigoListado.title }}</h3>
+        <p (click)="abrirArtigo(artigoListado)">
           {{ artigoListado.publicationContent}}
         </p>
-        <a href="">Ler mais...</a>
+        <a (click)="abrirArtigo(artigoListado)">Ler mais...</a>
       </article>
 
       <mat-menu #menu="matMenu">

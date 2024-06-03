@@ -15,6 +15,7 @@ export class LoginComponent {
   public errorMessage = '';
   protected loginForm!: FormGroup;
   protected credenciaisInvalidas: boolean = false;
+  public carregando = false;
 
   public constructor(private formBuilder: FormBuilder, private userService: UserServiceService, private tokenService: TokenService, private router: Router) {
     this.loginForm = this.formBuilder.group({
@@ -27,13 +28,17 @@ export class LoginComponent {
    * Função responsável por realizar o login do usuário
    */
   protected async loginUsuario(): Promise<void> {
+    this.carregando = true;
+    
     try {
       const loginResponse = await this.userService.login(this.loginForm.value);
       this.tokenService.save(loginResponse.data.token);
       this.router.navigate(['/home']);
+      this.carregando = false;
     } catch (error) {
       this.credenciaisInvalidas = true;
       this.errorMessage = `${(error as ErrorResponse).message}`;
+      this.carregando = false;
     }
   }
 }
