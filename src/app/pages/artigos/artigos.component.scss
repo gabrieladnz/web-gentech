@@ -63,7 +63,12 @@
       border-radius: 15px;
       cursor: pointer;
 
-      &__imagem {}
+      &__imagem {
+        img {
+          border-radius: 15px;
+          width: 100%;
+        }
+      }
 
       &__postagem {
         background-color: #fffdfd;
@@ -125,6 +130,10 @@
   .body-artigos__lista-artigos__artigo {
     width: auto;
   }
+
+  .botao-categoria {
+    height: auto !important;
+  }
 }
 
 // Animação
@@ -133,12 +142,14 @@
   height: 50px;
   border-radius: 50%;
   background:
-    radial-gradient(farthest-side,#356b8c 94%,#0000) top/8px 8px no-repeat,
-    conic-gradient(#0000 30%,#356b8c);
-  -webkit-mask: radial-gradient(farthest-side,#0000 calc(100% - 8px),#000 0);
-  animation:s3 1s infinite linear;
+    radial-gradient(farthest-side, #356b8c 94%, #0000) top/8px 8px no-repeat,
+    conic-gradient(#0000 30%, #356b8c);
+  -webkit-mask: radial-gradient(farthest-side, #0000 calc(100% - 8px), #000 0);
+  animation: s3 1s infinite linear;
 }
 
-@keyframes s3{
-  100%{transform: rotate(1turn)}
+@keyframes s3 {
+  100% {
+    transform: rotate(1turn)
+  }
 }
