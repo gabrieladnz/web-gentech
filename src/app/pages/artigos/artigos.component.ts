@@ -58,7 +58,8 @@ export class ArtigosComponent {
         slug: dadosArtigo.slug,
         title: dadosArtigo.title,
         publicationContent: dadosArtigo.publicationContent,
-        category: dadosArtigo.category.name
+        category: dadosArtigo.category.name,
+        coverImageUrl: dadosArtigo.coverImageUrl
       }
     });
 
