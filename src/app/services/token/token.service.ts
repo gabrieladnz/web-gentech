@@ -44,4 +44,7 @@ export class TokenService {
     });
   }
 
+  public usuarioAutenticado(): boolean {
+    return !!this.get();
+  }
 }

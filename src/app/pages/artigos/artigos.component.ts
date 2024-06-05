@@ -6,6 +6,7 @@ import { Artigo } from './artigo.interface';
 import { ModalEditarArtigoComponent } from '../../components/modais/modal-editar-artigo/modal-editar-artigo.component';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { TokenService } from '../../services/token/token.service';
 
 @Component({
   selector: 'app-artigos',
@@ -18,7 +19,7 @@ export class ArtigosComponent {
   protected artigosFiltrados: Artigo[] = [];
   public carregando = true;
 
-  constructor(private location: Location, private userService: UserServiceService, public dialog: MatDialog, private router: Router) {
+  constructor(private location: Location, public tokenService: TokenService, private userService: UserServiceService, public dialog: MatDialog, private router: Router) {
     this.exibirArtigos();
   }
 
@@ -58,7 +59,8 @@ export class ArtigosComponent {
         slug: dadosArtigo.slug,
         title: dadosArtigo.title,
         publicationContent: dadosArtigo.publicationContent,
-        category: dadosArtigo.category.name
+        category: dadosArtigo.category.name,
+        coverImageUrl: dadosArtigo.coverImageUrl
       }
     });
 

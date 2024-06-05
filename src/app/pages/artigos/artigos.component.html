@@ -37,12 +37,17 @@
         class="body-artigos__lista-artigos__artigo__imagem"
         (click)="abrirArtigo(artigoListado)"
       >
-        <img src="{{ artigoListado.coverImageUrl }}" />
+        <img
+          [ngStyle]="{ height: artigoListado.coverImageUrl ? '240px' : 'auto' }"
+          [src]="artigoListado.coverImageUrl"
+        />
       </figure>
 
       <article class="body-artigos__lista-artigos__artigo__postagem">
-        <div>
-          <button class="botao-categoria" mat-flat-button>{{ artigoListado.category?.name }}</button>
+        <div *ngIf="tokenService.usuarioAutenticado()">
+          <button class="botao-categoria" mat-flat-button>
+            {{ artigoListado.category?.name }}
+          </button>
           <mat-icon [matMenuTriggerFor]="menu">more_vert</mat-icon>
         </div>
         <h3 (click)="abrirArtigo(artigoListado)">{{ artigoListado.title }}</h3>
@@ -58,7 +63,9 @@
             height="60"
             src="{{ artigoListado.author.profilePhotoUrl }}"
           />
-          <p style="font-weight: 600; margin-left: 5px; color: #356b8c;">{{ artigoListado.author.fullName }}</p>
+          <p style="font-weight: 600; margin-left: 5px; color: #356b8c">
+            {{ artigoListado.author.fullName }}
+          </p>
         </div>
         <p (click)="abrirArtigo(artigoListado)">
           {{ artigoListado.publicationContent | slice : 0 : 400

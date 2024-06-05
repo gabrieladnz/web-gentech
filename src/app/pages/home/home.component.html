@@ -45,7 +45,7 @@
         <article class="home__artigos__artigos-principais__card__conteudo">
           <button mat-flat-button>{{artigos.category?.name}}</button>
           <h3>{{ artigos.title }}</h3>
-          <p>{{ artigos.publicationContent | slice:0:200 }}{{ artigos.publicationContent.length > 200 ? '...' : '' }}</p>
+          <p style="text-align: justify">{{ artigos.publicationContent | slice:0:200 }}{{ artigos.publicationContent.length > 200 ? '...' : '' }}</p>
           <a (click)="abrirArtigo(artigos)">Ler mais...</a>
         </article>
       </div>
