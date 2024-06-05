@@ -15,15 +15,19 @@
   </article>
 
   <mat-menu #menu="matMenu">
-    <button mat-menu-item routerLink="/login">
+    <button *ngIf="!tokenService.usuarioAutenticado()" mat-menu-item routerLink="/login">
       <mat-icon>login</mat-icon>
       <span>Login</span>
+    </button>
+    <button *ngIf="tokenService.usuarioAutenticado()" mat-menu-item (click)="fazerLogout()">
+      <mat-icon>login</mat-icon>
+      <span>Logout</span>
     </button>
     <button mat-menu-item routerLink="/cadastro">
       <mat-icon>app_registration</mat-icon>
       <span>Cadastro</span>
     </button>
-    <button mat-menu-item routerLink="/painel-admin">
+    <button *ngIf="tokenService.usuarioAutenticado()" mat-menu-item routerLink="/painel-admin">
       <mat-icon>person</mat-icon>
       <span>Minha conta</span>
     </button>
