@@ -10,37 +10,22 @@
       <h1>Artigos</h1>
 
       <div style="display: flex">
-        <input
-          type="search"
-          (input)="filtrarInput($event)"
-          class="body-artigos__head__search__input"
-          placeholder="Buscar artigo..."
-        />
+        <input type="search" (input)="filtrarInput($event)" class="body-artigos__head__search__input"
+          placeholder="Buscar artigo..." />
         <button mat-mini-fab><mat-icon>arrow_drop_down</mat-icon></button>
       </div>
     </div>
   </section>
 
   <!-- Loading  -->
-  <figure
-    *ngIf="carregando"
-    style="display: flex; justify-content: center; margin-top: 40px"
-  >
+  <figure *ngIf="carregando" style="display: flex; justify-content: center; margin-top: 40px">
     <div class="custom-loader"></div>
   </figure>
-  <section
-    *ngFor="let artigoListado of artigosFiltrados"
-    class="body-artigos__lista-artigos"
-  >
+  <section *ngFor="let artigoListado of artigosFiltrados" class="body-artigos__lista-artigos">
     <div class="body-artigos__lista-artigos__artigo">
-      <figure
-        class="body-artigos__lista-artigos__artigo__imagem"
-        (click)="abrirArtigo(artigoListado)"
-      >
-        <img
-          [ngStyle]="{ height: artigoListado.coverImageUrl ? '240px' : 'auto' }"
-          [src]="artigoListado.coverImageUrl"
-        />
+      <figure class="body-artigos__lista-artigos__artigo__imagem" (click)="abrirArtigo(artigoListado)">
+        <img [ngStyle]="{ height: artigoListado.coverImageUrl ? '240px' : 'auto' }"
+          [src]="artigoListado.coverImageUrl" />
       </figure>
 
       <article class="body-artigos__lista-artigos__artigo__postagem">
@@ -51,18 +36,12 @@
           <mat-icon [matMenuTriggerFor]="menu">more_vert</mat-icon>
         </div>
         <h3 (click)="abrirArtigo(artigoListado)">{{ artigoListado.title }}</h3>
-        <div
-          style="
+        <div style="
             display: flex;
             align-items: flex-end;
             justify-content: flex-start;
-          "
-        >
-          <img
-            width="40"
-            height="60"
-            src="{{ artigoListado.author.profilePhotoUrl }}"
-          />
+          ">
+          <img width="40" height="60" src="{{ artigoListado.author.profilePhotoUrl }}" />
           <p style="font-weight: 600; margin-left: 5px; color: #356b8c">
             {{ artigoListado.author.fullName }}
           </p>
@@ -78,10 +57,7 @@
         <button mat-menu-item (click)="editarArtigoSelecionado(artigoListado)">
           Editar
         </button>
-        <button
-          mat-menu-item
-          (click)="deletarArtigoSelecionado(artigoListado.slug)"
-        >
+        <button mat-menu-item (click)="deletarArtigoSelecionado(artigoListado.slug)">
           Excluir
         </button>
       </mat-menu>
