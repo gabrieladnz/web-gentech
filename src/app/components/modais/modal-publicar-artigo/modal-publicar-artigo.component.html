@@ -11,13 +11,29 @@
 
     <mat-form-field>
       <mat-label>Conteúdo</mat-label>
-      <textarea formControlName="publicationContent" matInput required=""></textarea>
+      <textarea formControlName="publicationContent" matInput required></textarea>
     </mat-form-field>
 
     <mat-form-field>
       <mat-label>Categoria</mat-label>
-      <input formControlName="category" matInput>
+      <input formControlName="category" matInput required>
     </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Capa do artigo</mat-label>
+      <input placeholder="Insira a URL da imagem desejada" (change)="carregarImagem($event)" formControlName="coverImageUrl"
+        matInput required>
+    </mat-form-field>
+
+    <!-- Seleção de foto do computador  -->
+    <!-- <div style="margin-top: 16px; display: flex; flex-direction: column;">
+      <label for="fileInput">Insira a capa do artigo:</label>
+      <input type="file" id="fileInput" formControlName="coverImageUrl" (change)="processarImagem($event)" accept="image/*">
+    </div> -->
+
+    <div *ngIf="previaImagem" style="margin-top: 10px; text-align: center;">
+      <img [src]="previaImagem" alt="Pré-visualização da imagem" style="max-width: 100%; max-height: 300px;">
+    </div>
   </form>
 </mat-dialog-content>
 <!-- Botões  -->
