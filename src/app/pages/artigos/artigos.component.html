@@ -30,7 +30,7 @@
       </figure>
 
       <article class="body-artigos__lista-artigos__artigo__postagem">
-        <div *ngIf="tokenService.usuarioAutenticado()">
+        <div *ngIf="tokenService.usuarioAutenticado() && adminService.retornoAdmin()">
           <button class="botao-categoria" mat-flat-button>
             {{ artigoListado.category?.name }}
           </button>
