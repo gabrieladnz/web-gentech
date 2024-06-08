@@ -10,11 +10,12 @@ export class AdminService {
   constructor(private http: HttpClient) { }
 
   public alterarStatusAdmin(admin: boolean): void {
-    console.log(admin);
+    console.log("mudou",admin);
     this.usuarioAdmin = admin;
   }
 
   public retornoAdmin(): boolean {
+    console.log(this.usuarioAdmin);
     return this.usuarioAdmin;
   }
 }
