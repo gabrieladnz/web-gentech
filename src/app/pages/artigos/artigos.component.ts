@@ -7,6 +7,7 @@ import { ModalEditarArtigoComponent } from '../../components/modais/modal-editar
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { TokenService } from '../../services/token/token.service';
+import { AdminService } from '../../services/admin/admin.service';
 
 @Component({
   selector: 'app-artigos',
@@ -19,7 +20,7 @@ export class ArtigosComponent {
   protected artigosFiltrados: Artigo[] = [];
   public carregando = true;
 
-  constructor(private location: Location, public tokenService: TokenService, private userService: UserServiceService, public dialog: MatDialog, private router: Router) {
+  constructor(private location: Location, public tokenService: TokenService, private userService: UserServiceService, public dialog: MatDialog, private router: Router, public adminService: AdminService) {
     this.exibirArtigos();
   }
 
