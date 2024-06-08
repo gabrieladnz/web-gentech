@@ -12,6 +12,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class ModalPublicarArtigoComponent {
   public errorMessage = '';
   protected criarArtigoForm!: FormGroup;
+  protected previaImagem: string | ArrayBuffer | null = null;
 
   public constructor(public dialogRef: MatDialogRef<ModalPublicarArtigoComponent>, private userService: UserServiceService, private formBuilder: FormBuilder) {
     this.criarArtigoForm = this.formBuilder.group({
@@ -34,4 +35,23 @@ export class ModalPublicarArtigoComponent {
       this.errorMessage = `${(error as ErrorResponse).message}`;
     }
   }
+
+  protected carregarImagem(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    (input.value) ? this.previaImagem = input.value : this.previaImagem = null;
+  }
+
+  // protected processarImagem(event: Event): void {
+  //   const input = event.target as HTMLInputElement;
+  //   if (input.files && input.files[0]) {
+  //     const file = input.files[0];
+  //     this.criarArtigoForm.patchValue({ image: file });
+
+  //     const reader = new FileReader();
+  //     reader.onload = () => {
+  //       this.previaImagem = reader.result;
+  //     };
+  //     reader.readAsDataURL(file);
+  //   }
+  // }
 }
