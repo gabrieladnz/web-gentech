@@ -1,21 +1,24 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AdminService {
   private usuarioAdmin: boolean = false;
 
-  constructor(private http: HttpClient) { }
-
-  public alterarStatusAdmin(admin: boolean): void {
-    console.log("mudou",admin);
-    this.usuarioAdmin = admin;
+  constructor() {
+    const salvarEstadoAdmin = localStorage.getItem('usuarioAdmin');
+    if (salvarEstadoAdmin !== null) {
+      this.usuarioAdmin = JSON.parse(salvarEstadoAdmin);
+    }
   }
 
   public retornoAdmin(): boolean {
-    console.log(this.usuarioAdmin);
     return this.usuarioAdmin;
+  }
+
+  public alterarStatusAdmin(isAdmin: boolean): void {
+    this.usuarioAdmin = isAdmin;
+    localStorage.setItem('usuarioAdmin', JSON.stringify(this.usuarioAdmin));
   }
 }
