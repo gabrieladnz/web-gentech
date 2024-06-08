@@ -10,7 +10,7 @@
 
   <!-- Formulário  -->
   <section class="page-login__formulario">
-    <figure>
+    <figure id="login-logo">
       <img routerLink="/home" src="../../../assets/images/logotipo.svg">
     </figure>
     <h2 class="page-login__formulario__titulo">Acesse sua conta</h2>
@@ -40,7 +40,7 @@
     <figure *ngIf="carregando" style="display: flex; justify-content: center; margin-top: 10px;">
       <div class="custom-loader"></div>
     </figure>
-    
+
     <footer class="page-login__formulario__botao">
       <button [disabled]="loginForm.invalid" (click)="loginUsuario()" mat-raised-button type="submit">ENTRAR</button>
     </footer>
