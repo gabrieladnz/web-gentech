@@ -66,28 +66,36 @@
   }
 
   &__texto {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
     &__imagem {
       margin-top: 30px;
 
-      display: flex;
-      justify-content: center;
-
       img {
         border-radius: 15px;
-        width: 70%;
+        width: 100%;
       }
     }
 
     &__paragrafo {
       margin-top: 30px;
+      margin-bottom: 30px;
       display: flex;
       justify-content: center;
+      width: 900px;
     }
 
     p {
-      width: 70%;
       text-align: justify;
     }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .artigo-selecionado__texto__paragrafo {
+    width: auto;
   }
 }
 
