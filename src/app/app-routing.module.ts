@@ -8,6 +8,7 @@ import { ArtigoSelecionadoComponent } from './components/artigo-selecionado/arti
 import { PainelAdminComponent } from './pages/painel-admin/painel-admin.component';
 import { ForumComponent } from './pages/forum/forum.component';
 import { ForumSelecionadoComponent } from './components/forum-selecionado/forum-selecionado.component';
+import { PerfilAutorComponent } from './pages/perfil-autor/perfil-autor.component';
 
 const routes: Routes = [
   {
@@ -41,6 +42,9 @@ const routes: Routes = [
   {
     path: 'forum-selecionado',
     component: ForumSelecionadoComponent
+  },
+  { path: 'perfil-autor', 
+    component: PerfilAutorComponent 
   },
   // Rota para capturar caminhos não correspondentes
   {
