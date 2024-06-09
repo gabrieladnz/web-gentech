@@ -39,6 +39,7 @@ import { ModalPublicarArtigoComponent } from './components/modais/modal-publicar
 import { ModalEditarArtigoComponent } from './components/modais/modal-editar-artigo/modal-editar-artigo.component';
 import { ModalCadastrarAdminComponent } from './components/modais/modal-cadastrar-admin/modal-cadastrar-admin.component';
 import { ForumComponent } from './pages/forum/forum.component';
+import { ModalPublicarForumComponent } from './components/modais/modal-publicar-forum/modal-publicar-forum.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { ForumComponent } from './pages/forum/forum.component';
     ModalEditarArtigoComponent,
     ModalCadastrarAdminComponent,
     ForumComponent,
+    ModalPublicarForumComponent,
   ],
   imports: [
     BrowserModule,
