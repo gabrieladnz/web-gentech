@@ -12,7 +12,7 @@
       <h1>Fórum</h1>
       <div style="display: flex;">
         <input type="search" class="page-forum__search__input" placeholder="Buscar fórum..." />
-        <button mat-mini-fab><mat-icon>arrow_drop_down</mat-icon></button>
+        <button mat-mini-fab><mat-icon>add</mat-icon></button>
       </div>
     </div>
   </section>
@@ -25,7 +25,7 @@
   <!-- Conteúdo Principal -->
   <section class="page-forum__content">
     <!-- Postagem -->
-    <div class="page-forum__content__post">
+    <div [ngClass]="['elevar', 'page-forum__content__post']">
       <figure class="page-forum__content__post__imagem">
         <img>
       </figure>

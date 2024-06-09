@@ -45,4 +45,9 @@ export class HomeComponent {
   protected abrirArtigo(dadosArtigo: any): void {
     this.router.navigate(["/artigo-selecionado"], { state: { dadosArtigo } })
   }
-}
+
+  protected scrollSectionSobre(): void {
+    const element = document.getElementById('sobre');
+    (element) ? element.scrollIntoView({ behavior: 'smooth' }) : "";
+  }
+ }
