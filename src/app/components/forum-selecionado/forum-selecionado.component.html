@@ -1,18 +1,45 @@
-<main class="forum-s">
-    <section class="forum-s__corpo">
-        <section class="forum-s__corpo__coment-p">
-            <article>
-                <h3 class="forum-s__corpo__coment-p__titulo">titulo</h3>
-                <p class="forum-s__corpo__coment-p__texto">texto</p>
-                <input type="text" placeholder="comente aqui">
+<main class="forum">
+    <section class="forum__body">
+        <section class="forum__body__comments">
+            <article class="forum__body__comments__post">
+                <div class="forum__body__comments__post-content">
+                    <figure class="forum__body__comments__post-content__user-icon">
+                        <img class="forum__user-icon" src="../../../assets/images/do-utilizador.png"
+                            alt="ícone do usuário">
+                    </figure>
+                    <div class="forum__body__comments__post-content__text-section">
+                        <header class="forum__body__comments__post-content__text-section__postagem">
+                            <h2 class="forum__body__comments__post-content__title">titulo</h2>
+                            <p class="forum__body__comments__post-content__text">Lorem Ipsum is simply dummy text of the
+                                printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy
+                                text ever since the 1500s, when an unknown printer took a galle</p>
+                        </header>
+                        <input type="text" placeholder="comente aqui"
+                            class="forum__body__comments__post-content__input">
+                    </div>
+                </div>
             </article>
-        </section>
-        <section class="forum-s__corpo__coment-p__comentario">
-            <article>
-                <h5 class="forum-s__corpo__coment-p__comentario__titulo">titulo</h5>
-                <p class="forum-s__corpo__coment-p__comentario__texto">texto</p>
-                <button class="forum-s__corpo__coment-p__comentario__btn-comentar">comentar</button>
-                <button class="forum-s__corpo__coment-p__comentario__btn-curtir">curtir</button>
+            <article class="forum__body__comments__comment">
+                <div class="forum__body__comments__comment-content">
+                    <figure class="forum__body__comments__comment-content__profile-image">
+                        <img class="forum__user-icon" src="../../../assets/images/do-utilizador.png"
+                            alt="ícone do usuário">
+                    </figure>
+                    <div class="forum__body__comments__comment-content__text-section">
+                        <h5 class="forum__body__comments__comment-content__text-section__title">titulo</h5>
+                        <p class="forum__body__comments__comment-content__text-section__text">texto</p>
+                        <footer class="forum__body__comments__coment-content__text-section__comment-actions">
+                            <button
+                                class="forum__body__comments__comment-content__text-section__comment-actions__button-comment"><img
+                                    src="../../../assets/icons/comentar.svg" alt="comentar"></button>
+                            <button class="forum__body__comments__comment-content__text-section__comment-actions__button-like"
+                                (click)=curtir()>
+                                <img [src]="likeImageSrc">
+                            </button>
+                        </footer>
+                    </div>
+                </div>
+
             </article>
         </section>
     </section>
