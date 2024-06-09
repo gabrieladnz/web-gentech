@@ -26,13 +26,16 @@
                             alt="ícone do usuário">
                     </figure>
                     <div class="forum__body__comments__comment-content__text-section">
-                        <h5 class="forum__body__comments__comment-content__text-section__title">titulo</h5>
-                        <p class="forum__body__comments__comment-content__text-section__text">texto</p>
+                        <div>
+                            <h5 class="forum__body__comments__comment-content__text-section__title">titulo</h5>
+                            <p class="forum__body__comments__comment-content__text-section__text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galle.</p>
+                        </div>
                         <footer class="forum__body__comments__coment-content__text-section__comment-actions">
                             <button
                                 class="forum__body__comments__comment-content__text-section__comment-actions__button-comment"><img
                                     src="../../../assets/icons/comentar.svg" alt="comentar"></button>
-                            <button class="forum__body__comments__comment-content__text-section__comment-actions__button-like"
+                            <button
+                                class="forum__body__comments__comment-content__text-section__comment-actions__button-like"
                                 (click)=curtir()>
                                 <img [src]="likeImageSrc">
                             </button>
