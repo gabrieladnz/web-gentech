@@ -30,7 +30,6 @@ export class TokenService {
    * @param token o token a ser armazenado
    */
   public save(token: string): void {
-    console.log("Saving token", token)
     window[this.type].setItem(this.tokenUser, token);
   }
 

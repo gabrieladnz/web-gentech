@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalPublicarArtigoComponent } from '../../components/modais/modal-publicar-artigo/modal-publicar-artigo.component';
-import { UserServiceService } from '../../services/user/user-service.service';
-import { ErrorResponse } from '../../models/http/interface-http';
 import { ModalCadastrarAdminComponent } from '../../components/modais/modal-cadastrar-admin/modal-cadastrar-admin.component';
 
 @Component({

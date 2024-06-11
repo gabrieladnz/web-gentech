@@ -175,3 +175,39 @@
     width: auto;
   }
 }
+
+// Animações
+@keyframes shake {
+  0% {
+    transform: rotate(0);
+  }
+
+  25% {
+    transform: rotate(-5deg);
+  }
+
+  50% {
+    transform: rotate(5deg);
+  }
+
+  75% {
+    transform: rotate(-5deg);
+  }
+
+  100% {
+    transform: rotate(0);
+  }
+}
+
+#cadastro-imagem img {
+  cursor: pointer;
+  animation: shake 0.5s ease;
+}
+
+.elevar {
+  transition: transform 0.3s ease;
+}
+
+.elevar:hover {
+  transform: translateY(-3px);
+}

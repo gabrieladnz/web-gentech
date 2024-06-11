@@ -22,7 +22,7 @@
     <div class="custom-loader"></div>
   </figure>
   <section *ngFor="let artigoListado of artigosFiltrados" class="body-artigos__lista-artigos">
-    <div class="body-artigos__lista-artigos__artigo"  [style.background-image]="'url(' + artigoListado.coverImageUrl + ')'">
+    <div [ngClass]="['elevar', 'body-artigos__lista-artigos__artigo']"   [style.background-image]="'url(' + artigoListado.coverImageUrl + ')'">
       <figure class="body-artigos__lista-artigos__artigo__imagem" (click)="abrirArtigo(artigoListado)">
         <!-- <img [ngStyle]="{ height: artigoListado.coverImageUrl ? '240px' : 'auto' }"
           [src]="artigoListado.coverImageUrl" /> -->
@@ -30,7 +30,7 @@
       </figure>
 
       <article class="body-artigos__lista-artigos__artigo__postagem">
-        <div *ngIf="tokenService.usuarioAutenticado()">
+        <div *ngIf="tokenService.usuarioAutenticado() && adminService.retornoAdmin()">
           <button class="botao-categoria" mat-flat-button>
             {{ artigoListado.category?.name }}
           </button>

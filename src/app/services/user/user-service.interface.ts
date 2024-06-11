@@ -46,6 +46,7 @@ export interface CadastroResponse extends SuccessResponse {
 export interface LoginResponse extends SuccessResponse {
   data: {
     token: string;
+    isAdmin:  boolean;
   };
 }
 
