@@ -41,6 +41,7 @@ import { ModalCadastrarAdminComponent } from './components/modais/modal-cadastra
 import { ForumComponent } from './pages/forum/forum.component';
 import { ModalPublicarForumComponent } from './components/modais/modal-publicar-forum/modal-publicar-forum.component';
 import { PerfilAutorComponent } from './pages/perfil-autor/perfil-autor.component';
+import { MarkdownModule } from 'ngx-markdown';
 
 @NgModule({
   declarations: [
@@ -73,7 +74,8 @@ import { PerfilAutorComponent } from './pages/perfil-autor/perfil-autor.componen
     MatSelectModule,
     MatMenuModule,
     HttpClientModule,
-    MatDialogModule
+    MatDialogModule,
+    MarkdownModule.forRoot(),
   ],
   providers: [
     provideAnimationsAsync()
