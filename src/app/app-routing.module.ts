@@ -9,6 +9,9 @@ import { PainelAdminComponent } from './pages/painel-admin/painel-admin.componen
 import { ForumComponent } from './pages/forum/forum.component';
 import { ForumSelecionadoComponent } from './components/forum-selecionado/forum-selecionado.component';
 import { PerfilAutorComponent } from './pages/perfil-autor/perfil-autor.component';
+import { AuthGuard } from './services/auth-guard/auth.guard';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './services/auth-guard/auth.interceptor';
 
 const routes: Routes = [
   {
@@ -29,10 +32,11 @@ const routes: Routes = [
   },
   {
     path: 'painel-admin',
-    component: PainelAdminComponent
+    component: PainelAdminComponent,
+    canActivate: [AuthGuard]
   },
-  { 
-    path: 'artigo-selecionado', 
+  {
+    path: 'artigo-selecionado',
     component: ArtigoSelecionadoComponent
   },
   {
@@ -56,5 +60,6 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
+  providers: [AuthGuard, { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }]
 })
 export class AppRoutingModule { }

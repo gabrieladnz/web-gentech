@@ -197,6 +197,7 @@
   }
 }
 
+// Animações
 .custom-loader {
   width: 50px;
   height: 50px;
@@ -210,4 +211,12 @@
 
 @keyframes s3{
   100%{transform: rotate(1turn)}
+}
+
+.elevar {
+  transition: transform 0.3s ease;
+}
+
+.elevar:hover {
+  transform: translateY(-3px);
 }

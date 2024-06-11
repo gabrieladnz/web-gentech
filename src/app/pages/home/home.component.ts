@@ -35,7 +35,6 @@ export class HomeComponent {
     try {
       const retorno = await this.userService.listarTodosArtigos();
       this.listaArtigos = retorno.data.allPublication.slice(0, 8);
-      console.log(this.listaArtigos, retorno.data.allPublication);
       this.carregando = false;
     } catch (error) {
       this.errorMessage = `${(error as ErrorResponse).message}`;
@@ -46,4 +45,9 @@ export class HomeComponent {
   protected abrirArtigo(dadosArtigo: any): void {
     this.router.navigate(["/artigo-selecionado"], { state: { dadosArtigo } })
   }
-}
+
+  protected scrollSectionSobre(): void {
+    const element = document.getElementById('sobre');
+    (element) ? element.scrollIntoView({ behavior: 'smooth' }) : "";
+  }
+ }

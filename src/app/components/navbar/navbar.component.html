@@ -27,7 +27,7 @@
       <mat-icon>app_registration</mat-icon>
       <span>Cadastro</span>
     </button>
-    <button *ngIf="tokenService.usuarioAutenticado()" mat-menu-item routerLink="/painel-admin">
+    <button *ngIf="tokenService.usuarioAutenticado() && adminService.retornoAdmin()" mat-menu-item routerLink="/painel-admin">
       <mat-icon>person</mat-icon>
       <span>Minha conta</span>
     </button>
