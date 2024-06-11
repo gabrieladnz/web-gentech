@@ -143,4 +143,16 @@ export class UserServiceService extends RequestService {
       throw errorResponse;
     }
   }
+
+  public async listarCategorias(): Promise<ListarCategoriasResponse> {
+    try {
+      return await lastValueFrom(this.httpClient.get<ListarCategoriasResponse>(`${this.BASE_URL}/category`));
+    } catch (error) {
+      const errorResponse: ErrorResponse = {
+        success: false,
+        message: 'Erro ao listar categorias.',
+      };
+      throw errorResponse;
+    }
+  }
 }

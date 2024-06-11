@@ -111,3 +111,12 @@ export interface ListarTodosArtigosResponse extends SuccessResponse {
     ]
   }
 }
+
+export interface ListarCategoriasResponse extends SuccessResponse {
+  data: {
+    categories: {
+      category: string,
+    }[];
+  };
+}
+
