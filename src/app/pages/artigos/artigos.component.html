@@ -12,11 +12,17 @@
       <div style="display: flex">
         <input type="search" (input)="filtrarInput($event)" class="body-artigos__head__search__input"
           placeholder="Buscar artigo..." />
-        <button mat-mini-fab><mat-icon>arrow_drop_down</mat-icon></button>
+        <button mat-mini-fab [matMenuTriggerFor]="menu"><mat-icon>arrow_drop_down</mat-icon></button>
       </div>
     </div>
   </section>
 
+  <mat-menu #menu="matMenu">
+    <mat-label style="font-weight: 600;">Filtre por categoria:</mat-label>
+    <button mat-menu-item *ngFor="let categoria of listaCategorias" (click)="filtrarPorCategoria(categoria.category)" [ngClass]="{'selecionado': categoria.category === categoriaSelecionada}">
+      {{ categoria.category }}
+    </button>
+  </mat-menu>
   <!-- Loading  -->
   <figure *ngIf="carregando" style="display: flex; justify-content: center; margin-top: 40px">
     <div class="custom-loader"></div>

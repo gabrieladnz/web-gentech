@@ -120,3 +120,18 @@ export interface ListarCategoriasResponse extends SuccessResponse {
   };
 }
 
+export interface ListarForumsResponse extends SuccessResponse {
+  data: {
+    forums: {
+      slug: string;
+      title: string;
+      description: string;
+      createdAt: string;
+      author: {
+        fullName: string;
+        userName: string;
+        profilePhotoUrl: string;
+      };
+    }[];
+  };
+}

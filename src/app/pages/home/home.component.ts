@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { UserServiceService } from '../../services/user/user-service.service';
 import { ErrorResponse } from '../../models/http/interface-http';
-import { Artigo } from '../artigos/artigo.interface';
+import { Artigo, Categorias } from '../artigos/artigo.interface';
 import { Router } from '@angular/router';
 
 @Component({
@@ -12,23 +12,12 @@ import { Router } from '@angular/router';
 export class HomeComponent {
   public errorMessage = '';
   public carregando = true;
-  // objeto temporário
-  protected listaCategorias = [
-    {
-      categoria: 'IA'
-    },
-    {
-      categoria: 'Computação'
-    },
-    {
-      categoria: 'Machine Learning'
-    }
-  ];
-
+  protected listaCategorias: Categorias[] = [];;
   protected listaArtigos: Artigo[] = [];;
 
   public constructor(private userService: UserServiceService, private router: Router) {
     this.listarArtigos();
+    this.retornarCategorias();
   }
 
   protected async listarArtigos(): Promise<void> {
@@ -49,5 +38,14 @@ export class HomeComponent {
   protected scrollSectionSobre(): void {
     const element = document.getElementById('sobre');
     (element) ? element.scrollIntoView({ behavior: 'smooth' }) : "";
+  }
+
+  protected async retornarCategorias(): Promise<void> {
+    try {
+      const response = await this.userService.listarCategorias();
+      this.listaCategorias = response.data.categories;
+    } catch (error) {
+      this.errorMessage = `${(error as ErrorResponse).message}`;
+    }
   }
  }

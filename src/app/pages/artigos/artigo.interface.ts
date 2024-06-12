@@ -17,3 +17,7 @@ export interface Artigo {
   author: Author;
   category?: Category;
 }
+
+export interface Categorias {
+  category: string;
+}

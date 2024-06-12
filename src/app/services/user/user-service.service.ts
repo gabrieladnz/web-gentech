@@ -3,7 +3,7 @@ import { RequestService } from '../request/request.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, lastValueFrom } from 'rxjs';
 import { ErrorResponse } from '../../models/http/interface-http';
-import { CriarArtigoRequest, CriarArtigoResponse, DeletarArtigoRequest, DeletarArtigoResponse, EditarArtigoResponse, ListarTodosArtigosResponse, LoginRequest, LoginResponse } from './user-service.interface';
+import { CriarArtigoRequest, CriarArtigoResponse, DeletarArtigoRequest, DeletarArtigoResponse, EditarArtigoResponse, ListarCategoriasResponse, ListarForumsResponse, ListarTodosArtigosResponse, LoginRequest, LoginResponse } from './user-service.interface';
 import { CadastroRequest, CadastroResponse } from './user-service.interface';
 import { TokenService } from '../token/token.service';
 
@@ -155,4 +155,18 @@ export class UserServiceService extends RequestService {
       throw errorResponse;
     }
   }
+
+  public async listarForuns(): Promise<ListarForumsResponse> {
+    try {
+      return await lastValueFrom(this.httpClient.get<ListarForumsResponse>(`${this.BASE_URL}/forum`));
+    } catch (error) {
+      const errorResponse: ErrorResponse = {
+        success: false,
+        message: 'Erro ao listar fóruns.',
+      };
+      throw errorResponse;
+    }
+  }
+
+  public async criarForum(): Promise<void>{}
 }
