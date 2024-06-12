@@ -7,6 +7,7 @@ import { ErrorResponse } from '../../models/http/interface-http';
 import { UserServiceService } from '../../services/user/user-service.service';
 import { Forum } from './forum.interface';
 import { AdminService } from '../../services/admin/admin.service';
+import { FormControl } from '@angular/forms';
 @Component({
   selector: 'app-forum',
   templateUrl: './forum.component.html',
@@ -18,6 +19,7 @@ export class ForumComponent {
   protected forunsFiltrados: Forum[] = [];
   public carregando = true;
   public errorMessage = '';
+  protected content = new FormControl('');
 
   public constructor(private location: Location, public tokenService: TokenService, public dialog: MatDialog, private userService: UserServiceService, public adminService: AdminService) {
     this.exibirForuns();
@@ -57,6 +59,16 @@ export class ForumComponent {
       this.errorMessage = `${(error as ErrorResponse).message}`;
     } finally {
       this.exibirForuns();
+    }
+  }
+
+  protected async comentarForum(slug: string): Promise<void> {
+    try {
+      await this.userService.comentarForum(slug, this.content.value);
+    } catch (error) {
+      this.errorMessage = `${(error as ErrorResponse).message}`;
+    } finally {
+      this.content.reset();
     }
   }
 }

@@ -194,10 +194,10 @@ export class UserServiceService extends RequestService {
     }
   }
 
-  public async comentarForum(slug: string, data: ComentarForumRequest): Promise<ComentarForumResponse> {
+  public async comentarForum(slug: string, content: string | null): Promise<ComentarForumResponse> {
     try {
       const headers = new HttpHeaders({ 'Authorization': `Bearer ${this.token}` });
-      return await lastValueFrom(this.httpClient.post<ComentarForumResponse>(`${this.BASE_URL}/publication/edit/${slug}`, data, { headers }))
+      return await lastValueFrom(this.httpClient.post<ComentarForumResponse>(`${this.BASE_URL}/comment/forum/${slug}`, { content }, { headers }))
     } catch (error) {
       const errorResponse: ErrorResponse = {
         success: false,
