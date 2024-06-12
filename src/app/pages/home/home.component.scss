@@ -62,7 +62,7 @@
         border-radius: 15px;
         // width: auto;
         width: 25%;
-        height: 100%;
+        height: auto;
         cursor: pointer;
 
         &__imagem {
@@ -73,6 +73,7 @@
           background-color: #fffdfd;
           padding: 1em;
           border-radius: 15px;
+          height: 100%;
 
           p {
             color: #6c6262;
