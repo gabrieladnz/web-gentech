@@ -180,3 +180,26 @@ export interface ComentarForumResponse extends SuccessResponse {
     };
   };
 }
+
+
+export interface ConsultarArtigoIndividualResponse extends SuccessResponse {
+  data: {
+    publication: {
+      slug: string,
+      title: string,
+      publicationContent: string,
+      coverImageUrl: string,
+      createAt: string,
+      updateAt: Date,
+      author: {
+        fullName: string,
+        username: string,
+        profilePhotoUrl: string
+      },
+      category: {
+        name: string
+      }
+    }
+  }
+}
+

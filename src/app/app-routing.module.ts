@@ -36,7 +36,7 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: 'artigo-selecionado',
+    path: 'artigo-selecionado/:slug',
     component: ArtigoSelecionadoComponent
   },
   {
@@ -47,8 +47,8 @@ const routes: Routes = [
     path: 'forum-selecionado',
     component: ForumSelecionadoComponent
   },
-  { path: 'perfil-autor', 
-    component: PerfilAutorComponent 
+  { path: 'perfil-autor',
+    component: PerfilAutorComponent
   },
   // Rota para capturar caminhos não correspondentes
   {

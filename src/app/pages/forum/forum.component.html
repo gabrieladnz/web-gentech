@@ -40,7 +40,7 @@
       <article class="page-forum__content__post__forum">
         <div style="display: flex; justify-content: space-between;">
           <h3 class="page-forum__content__post__forum__title">{{ forumLista.title }}</h3>
-          <mat-icon [matMenuTriggerFor]="menu">more_vert</mat-icon>
+          <mat-icon [matMenuTriggerFor]="menu" *ngIf="adminService.retornoAdmin()">more_vert</mat-icon>
         </div>
 
         <p class="page-forum__content__post__forum__author">{{ forumLista.author.fullName }}</p>

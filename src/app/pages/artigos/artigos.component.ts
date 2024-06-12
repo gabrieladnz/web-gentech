@@ -77,7 +77,8 @@ export class ArtigosComponent {
   }
 
   protected abrirArtigo(dadosArtigo: any): void {
-    this.router.navigate(["/artigo-selecionado"], { state: { dadosArtigo } })
+    this.router.navigate(["/artigo-selecionado", dadosArtigo.slug]);
+    // this.router.navigate(["/artigo-selecionado"], { state: { dadosArtigo } })
   }
 
   protected async retornarCategorias(): Promise<void> {

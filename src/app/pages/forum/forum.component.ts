@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ErrorResponse } from '../../models/http/interface-http';
 import { UserServiceService } from '../../services/user/user-service.service';
 import { Forum } from './forum.interface';
+import { AdminService } from '../../services/admin/admin.service';
 @Component({
   selector: 'app-forum',
   templateUrl: './forum.component.html',
@@ -18,7 +19,7 @@ export class ForumComponent {
   public carregando = true;
   public errorMessage = '';
 
-  public constructor(private location: Location, public tokenService: TokenService, public dialog: MatDialog, private userService: UserServiceService) {
+  public constructor(private location: Location, public tokenService: TokenService, public dialog: MatDialog, private userService: UserServiceService, public adminService: AdminService) {
     this.exibirForuns();
   }
 

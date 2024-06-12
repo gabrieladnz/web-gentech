@@ -3,7 +3,7 @@ import { RequestService } from '../request/request.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, lastValueFrom } from 'rxjs';
 import { ErrorResponse } from '../../models/http/interface-http';
-import { ComentarForumRequest, ComentarForumResponse, CriarArtigoRequest, CriarArtigoResponse, CriarForumRequest, CriarForumResponse, DeletarArtigoRequest, DeletarArtigoResponse, DeletarForumResponse, EditarArtigoResponse, ListarCategoriasResponse, ListarForumsResponse, ListarTodosArtigosResponse, LoginRequest, LoginResponse } from './user-service.interface';
+import { ComentarForumRequest, ComentarForumResponse, ConsultarArtigoIndividualResponse, CriarArtigoRequest, CriarArtigoResponse, CriarForumRequest, CriarForumResponse, DeletarArtigoRequest, DeletarArtigoResponse, DeletarForumResponse, EditarArtigoResponse, ListarCategoriasResponse, ListarForumsResponse, ListarTodosArtigosResponse, LoginRequest, LoginResponse } from './user-service.interface';
 import { CadastroRequest, CadastroResponse } from './user-service.interface';
 import { TokenService } from '../token/token.service';
 
@@ -202,6 +202,18 @@ export class UserServiceService extends RequestService {
       const errorResponse: ErrorResponse = {
         success: false,
         message: 'Erro ao comentar fórum.',
+      };
+      throw errorResponse;
+    }
+  }
+
+  public async consultarArtigoSelecionado(slug: string): Promise<ConsultarArtigoIndividualResponse> {
+    try {
+      return await lastValueFrom(this.httpClient.get<ConsultarArtigoIndividualResponse>(`${this.BASE_URL}/publication/${slug}`));
+    } catch (error) {
+      const errorResponse: ErrorResponse = {
+        success: false,
+        message: 'Erro ao consultar artigo.',
       };
       throw errorResponse;
     }
