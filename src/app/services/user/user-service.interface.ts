@@ -34,6 +34,15 @@ export interface DeletarArtigoRequest {
   slug: string;
 }
 
+export interface CriarForumRequest {
+  title: string;
+  description: string;
+}
+
+export interface ComentarForumRequest {
+  content: string;
+}
+
 /** Interface padrão dos dados recebidos na Response */
 export interface CadastroResponse extends SuccessResponse {
   data: {};
@@ -46,7 +55,7 @@ export interface CadastroResponse extends SuccessResponse {
 export interface LoginResponse extends SuccessResponse {
   data: {
     token: string;
-    isAdmin:  boolean;
+    isAdmin: boolean;
   };
 }
 
@@ -133,5 +142,41 @@ export interface ListarForumsResponse extends SuccessResponse {
         profilePhotoUrl: string;
       };
     }[];
+  };
+}
+
+export interface CriarForumResponse extends SuccessResponse {
+  data: {
+    forums: {
+      slug: string;
+      title: string;
+      description: string;
+      createdAt: string;
+      author: {
+        fullName: string;
+        userName: string;
+        profilePhotoUrl: string;
+      };
+    }[];
+  };
+}
+
+export interface DeletarForumResponse extends SuccessResponse {
+  data: {}
+}
+
+export interface ComentarForumResponse extends SuccessResponse {
+  data: {
+    comment: {
+      id: string;
+      content: string;
+      slugReference: string;
+      createdAt: string;
+      author: {
+        fullName: string;
+        userName: string;
+        profilePhotoUrl: string;
+      };
+    };
   };
 }

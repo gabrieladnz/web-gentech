@@ -53,11 +53,14 @@
   &__content {
     display: flex;
     justify-content: center;
+    flex-direction: column;
+    align-items: center;
     margin-top: 50px;
     width: 90%;
 
     &__post {
       width: 55%;
+      margin-bottom: 50px;
       background-color: #356B8C;
       border-radius: 15px;
       cursor: pointer;

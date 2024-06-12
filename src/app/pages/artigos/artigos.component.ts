@@ -22,7 +22,6 @@ export class ArtigosComponent {
   protected listaCategorias: Categorias[] = [];
   protected categoriaSelecionada: string = "";
 
-
   constructor(private location: Location, public tokenService: TokenService, private userService: UserServiceService, public dialog: MatDialog, private router: Router, public adminService: AdminService) {
     this.exibirArtigos();
     this.retornarCategorias();

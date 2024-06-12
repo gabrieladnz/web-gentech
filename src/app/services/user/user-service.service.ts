@@ -3,7 +3,7 @@ import { RequestService } from '../request/request.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, lastValueFrom } from 'rxjs';
 import { ErrorResponse } from '../../models/http/interface-http';
-import { CriarArtigoRequest, CriarArtigoResponse, DeletarArtigoRequest, DeletarArtigoResponse, EditarArtigoResponse, ListarCategoriasResponse, ListarForumsResponse, ListarTodosArtigosResponse, LoginRequest, LoginResponse } from './user-service.interface';
+import { ComentarForumRequest, ComentarForumResponse, CriarArtigoRequest, CriarArtigoResponse, CriarForumRequest, CriarForumResponse, DeletarArtigoRequest, DeletarArtigoResponse, DeletarForumResponse, EditarArtigoResponse, ListarCategoriasResponse, ListarForumsResponse, ListarTodosArtigosResponse, LoginRequest, LoginResponse } from './user-service.interface';
 import { CadastroRequest, CadastroResponse } from './user-service.interface';
 import { TokenService } from '../token/token.service';
 
@@ -168,5 +168,42 @@ export class UserServiceService extends RequestService {
     }
   }
 
-  public async criarForum(): Promise<void>{}
+  public async criarForum(data: CriarForumRequest): Promise<CriarForumResponse>{
+    try {
+      const headers = new HttpHeaders({ 'Authorization': `Bearer ${this.token}` });
+      return await lastValueFrom(this.httpClient.post<CriarForumResponse>(this.BASE_URL + '/forum/create', data, { headers }))
+    } catch (error) {
+      const errorResponse: ErrorResponse = {
+        success: false,
+        message: 'Erro ao criar fórum.',
+      };
+      throw errorResponse;
+    }
+  }
+
+  public async deletarForum(slug: string): Promise<DeletarForumResponse> {
+    try {
+      const headers = new HttpHeaders({ 'Authorization': `Bearer ${this.token}` });
+      return await lastValueFrom(this.httpClient.delete<DeletarForumResponse>(`${this.BASE_URL}/forum/delete/${slug}`, { headers }));
+    } catch (error) {
+      const errorResponse: ErrorResponse = {
+        success: false,
+        message: 'Erro ao deletar fórum.',
+      };
+      throw errorResponse;
+    }
+  }
+
+  public async comentarForum(slug: string, data: ComentarForumRequest): Promise<ComentarForumResponse> {
+    try {
+      const headers = new HttpHeaders({ 'Authorization': `Bearer ${this.token}` });
+      return await lastValueFrom(this.httpClient.post<ComentarForumResponse>(`${this.BASE_URL}/publication/edit/${slug}`, data, { headers }))
+    } catch (error) {
+      const errorResponse: ErrorResponse = {
+        success: false,
+        message: 'Erro ao comentar fórum.',
+      };
+      throw errorResponse;
+    }
+  }
 }
