@@ -13,7 +13,9 @@ export class HomeComponent {
   public errorMessage = '';
   public carregando = true;
   protected listaCategorias: Categorias[] = [];;
-  protected listaArtigos: Artigo[] = [];;
+  protected listaArtigos: Artigo[] = [];
+  protected categoriaSelecionada: string = "IA";
+  protected artigosFiltrados: any;
 
   public constructor(private userService: UserServiceService, private router: Router) {
     this.listarArtigos();
@@ -44,8 +46,18 @@ export class HomeComponent {
     try {
       const response = await this.userService.listarCategorias();
       this.listaCategorias = response.data.categories;
+      this.listaCategorias.reverse();
     } catch (error) {
       this.errorMessage = `${(error as ErrorResponse).message}`;
     }
   }
- }
+
+  protected selecionarCategoria(categoriaSelecionada: string): void {
+    this.categoriaSelecionada = categoriaSelecionada;
+    this.filtrarArtigosPorCategorias();
+  }
+
+  protected filtrarArtigosPorCategorias(): void {
+    this.artigosFiltrados = this.listaArtigos.filter(artigo => artigo.category?.name === this.categoriaSelecionada);
+  }
+}
