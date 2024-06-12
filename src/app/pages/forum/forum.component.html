@@ -10,7 +10,6 @@
     <!-- Barra de Pesquisa -->
     <div class="page-forum__search">
       <h1>Fórum</h1>
-      <!-- <p>Junte-se à nossa comunidade e participe ativamente de discussões interessantes,<br>além de criar seus próprios fóruns!</p> -->
       <div style="display: flex;">
         <input type="search" (input)="filtrarInput($event)"  class="page-forum__search__input" placeholder="Buscar fórum..." />
         <button *ngIf="tokenService.usuarioAutenticado()" (click)="publicarForum()"
@@ -47,7 +46,8 @@
         <p class="page-forum__content__post__forum__preview">{{ forumLista.description }}</p>
 
         <div class="page-forum__content__post__forum__comment-button">
-          <button type="button">Comente aqui</button>
+          <button *ngIf="!tokenService.usuarioAutenticado()">Faça login para participar da discussão!</button>
+          <input *ngIf="tokenService.usuarioAutenticado()" style="border: none; background: none; outline: 0;" placeholder="Comente aqui">
           <mat-icon>send</mat-icon>
         </div>
       </article>

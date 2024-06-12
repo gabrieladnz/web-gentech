@@ -25,7 +25,7 @@ export class ForumComponent {
   protected retornarPagina(): void { this.location.back(); }
 
   protected publicarForum(): void {
-    this.dialog.open(ModalPublicarForumComponent, { disableClose: true,  width: '500px' });
+    this.dialog.open(ModalPublicarForumComponent, { disableClose: true, width: '500px' });
   }
 
   protected filtrarInput(event: Event): void {
@@ -37,7 +37,6 @@ export class ForumComponent {
   protected async exibirForuns(): Promise<void> {
     try {
       const retorno = await this.userService.listarForuns();
-      console.log(retorno.data.forums);
       this.foruns = retorno.data.forums;
       this.forunsFiltrados = [...this.foruns]
     } catch (error) {
