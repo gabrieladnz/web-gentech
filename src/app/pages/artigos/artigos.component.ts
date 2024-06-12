@@ -65,7 +65,8 @@ export class ArtigosComponent {
         publicationContent: dadosArtigo.publicationContent,
         category: dadosArtigo.category.name,
         coverImageUrl: dadosArtigo.coverImageUrl
-      }
+      },
+      width: '500px'
     });
 
     dialogRef.afterClosed().subscribe(retorno => {

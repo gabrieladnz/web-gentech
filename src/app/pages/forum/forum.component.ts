@@ -25,7 +25,7 @@ export class ForumComponent {
   protected retornarPagina(): void { this.location.back(); }
 
   protected publicarForum(): void {
-    this.dialog.open(ModalPublicarForumComponent, { disableClose: true,  width: '600px' });
+    this.dialog.open(ModalPublicarForumComponent, { disableClose: true,  width: '500px' });
   }
 
   protected filtrarInput(event: Event): void {
