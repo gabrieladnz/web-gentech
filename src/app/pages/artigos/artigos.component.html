@@ -62,9 +62,11 @@
 
       <mat-menu #menu="matMenu">
         <button mat-menu-item (click)="editarArtigoSelecionado(artigoListado)">
+          <mat-icon>edit</mat-icon>
           Editar
         </button>
         <button mat-menu-item (click)="deletarArtigoSelecionado(artigoListado.slug)">
+          <mat-icon>delete</mat-icon>
           Excluir
         </button>
       </mat-menu>

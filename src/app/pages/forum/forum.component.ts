@@ -48,4 +48,14 @@ export class ForumComponent {
       this.carregando = false;
     }
   }
+
+  protected async deletarForumSelecionado(slug: string): Promise<void> {
+    try {
+      await this.userService.deletarForum(slug);
+    } catch (error) {
+      this.errorMessage = `${(error as ErrorResponse).message}`;
+    } finally {
+      this.exibirForuns();
+    }
+  }
 }

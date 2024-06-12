@@ -11,7 +11,8 @@
     <div class="page-forum__search">
       <h1>Fórum</h1>
       <div style="display: flex;">
-        <input type="search" (input)="filtrarInput($event)"  class="page-forum__search__input" placeholder="Buscar fórum..." />
+        <input type="search" (input)="filtrarInput($event)" class="page-forum__search__input"
+          placeholder="Buscar fórum..." />
         <button *ngIf="tokenService.usuarioAutenticado()" (click)="publicarForum()"
           mat-mini-fab><mat-icon>add</mat-icon></button>
       </div>
@@ -39,7 +40,7 @@
       <article class="page-forum__content__post__forum">
         <div style="display: flex; justify-content: space-between;">
           <h3 class="page-forum__content__post__forum__title">{{ forumLista.title }}</h3>
-          <mat-icon>more_vert</mat-icon>
+          <mat-icon [matMenuTriggerFor]="menu">more_vert</mat-icon>
         </div>
 
         <p class="page-forum__content__post__forum__author">{{ forumLista.author.fullName }}</p>
@@ -47,10 +48,18 @@
 
         <div class="page-forum__content__post__forum__comment-button">
           <button *ngIf="!tokenService.usuarioAutenticado()">Faça login para participar da discussão!</button>
-          <input *ngIf="tokenService.usuarioAutenticado()" style="border: none; background: none; outline: 0;" placeholder="Comente aqui">
+          <input *ngIf="tokenService.usuarioAutenticado()" style="border: none; background: none; outline: 0;"
+            placeholder="Comente aqui">
           <mat-icon>send</mat-icon>
         </div>
       </article>
+
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="deletarForumSelecionado(forumLista.slug)">
+          <mat-icon>delete</mat-icon>
+          Excluir
+        </button>
+      </mat-menu>
     </div>
   </section>
 </main>
