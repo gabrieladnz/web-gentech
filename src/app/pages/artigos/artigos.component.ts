@@ -40,6 +40,7 @@ export class ArtigosComponent {
       const retorno = await this.userService.listarTodosArtigos();
       this.artigos = retorno.data.allPublication;
       this.artigosFiltrados = [...this.artigos];
+      this.artigosFiltrados.reverse();
       this.carregando = false;
     } catch (error) {
       this.errorMessage = `${(error as ErrorResponse).message}`;
