@@ -34,7 +34,8 @@ export class HomeComponent {
   }
 
   protected abrirArtigo(dadosArtigo: any): void {
-    this.router.navigate(["/artigo-selecionado"], { state: { dadosArtigo } })
+    const url = `/artigo-selecionado/${dadosArtigo.slug}`;
+    window.open(url, '_blank');
   }
 
   protected scrollSectionSobre(): void {

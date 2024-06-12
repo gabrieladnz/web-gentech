@@ -20,6 +20,7 @@ export class ArtigoSelecionadoComponent {
   protected profilePhotoUrl: string = '';
   protected slug!: string;
   public errorMessage = '';
+  public carregando: boolean = true;
 
   public constructor(private location: Location, private route: ActivatedRoute, private userService: UserServiceService) { }
 
@@ -46,6 +47,8 @@ export class ArtigoSelecionadoComponent {
 
     } catch (error) {
       this.errorMessage = `${(error as ErrorResponse).message}`;
+    } finally {
+      this.carregando = false;
     }
   }
 }

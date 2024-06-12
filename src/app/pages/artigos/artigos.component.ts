@@ -71,7 +71,6 @@ export class ArtigosComponent {
     });
 
     dialogRef.afterClosed().subscribe(retorno => {
-      console.log(retorno);
       this.exibirArtigos();
     });
   }

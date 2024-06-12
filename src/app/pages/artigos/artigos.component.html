@@ -43,7 +43,8 @@
           <mat-icon [matMenuTriggerFor]="menu">more_vert</mat-icon>
         </div>
         <h3 (click)="abrirArtigo(artigoListado)">{{ artigoListado.title }}</h3>
-        <div style="
+
+       <div style="
             display: flex;
             align-items: flex-end;
             justify-content: flex-start;
@@ -53,6 +54,7 @@
             {{ artigoListado.author.fullName }}
           </p>
         </div>
+
         <p (click)="abrirArtigo(artigoListado)">
           {{ artigoListado.publicationContent | slice : 0 : 400
           }}{{ artigoListado.publicationContent.length > 200 ? "..." : "" }}

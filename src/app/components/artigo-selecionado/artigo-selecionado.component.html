@@ -1,9 +1,13 @@
 <app-navbar></app-navbar>
+
 <main class="artigo-selecionado">
-  <div style="display: flex;
-  flex-direction: column;
-  align-content: center;
-  align-items: center;">
+
+  <!-- Loading  -->
+  <figure *ngIf="carregando" style="display: flex; justify-content: center; margin-top: 40px">
+    <div class="custom-loader"></div>
+  </figure>
+
+  <div *ngIf="!carregando" style="display: flex; flex-direction: column; align-content: center; align-items: center;">
     <section class="artigo-selecionado__introducao">
       <div class="artigo-selecionado__introducao__retornar">
         <mat-icon (click)="retornarPagina()">keyboard_backspace</mat-icon>
@@ -11,8 +15,8 @@
       </div>
 
       <div class="artigo-selecionado__introducao__categoria">
-        <button  mat-flat-button>{{ this.category }}</button>
-        <p>{{ this.createAt  | date: 'dd/MM/yyyy HH:mm' }}</p>
+        <button mat-flat-button>{{ this.category }}</button>
+        <p>{{ this.createAt | date: 'dd/MM/yyyy HH:mm' }}</p>
       </div>
 
       <h1>{{ this.title }}</h1>
@@ -33,7 +37,7 @@
         <img src="{{ this.coverImageUrl }}">
       </figure>
       <article class="artigo-selecionado__texto__paragrafo">
-         <markdown [data]="this.publicationContent"></markdown>
+        <markdown [data]="this.publicationContent"></markdown>
       </article>
     </section>
   </div>
