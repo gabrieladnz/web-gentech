@@ -44,7 +44,7 @@ const routes: Routes = [
     component: ForumComponent
   },
   {
-    path: 'forum-selecionado',
+    path: 'forum-selecionado/:slug',
     component: ForumSelecionadoComponent
   },
   { path: 'perfil-autor',

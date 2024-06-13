@@ -1,11 +1,12 @@
+<app-navbar></app-navbar>
+
 <main class="forum">
     <section class="forum__body">
         <section class="forum__body__comments">
             <article class="forum__body__comments__post">
                 <div class="forum__body__comments__post-content">
                     <figure class="forum__body__comments__post-content__user-icon">
-                        <img class="forum__user-icon" src="../../../assets/images/do-utilizador.png"
-                            alt="ícone do usuário">
+                      <img>
                     </figure>
                     <div class="forum__body__comments__post-content__text-section">
                         <header class="forum__body__comments__post-content__text-section__postagem">
@@ -14,16 +15,19 @@
                                 printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy
                                 text ever since the 1500s, when an unknown printer took a galle</p>
                         </header>
-                        <input type="text" placeholder="comente aqui"
-                            class="forum__body__comments__post-content__input">
+                        <div class="forum__body__comments__post-content__input">
+                          <button *ngIf="!tokenService.usuarioAutenticado()">Faça login para participar da discussão!</button>
+                          <input *ngIf="tokenService.usuarioAutenticado()" [formControl]="content" style="border: none; background: none; outline: 0; width: 100%;"
+                            placeholder="Comente aqui">
+                          <mat-icon (click)="comentarForum('nada')">send</mat-icon>
+                        </div>
                     </div>
                 </div>
             </article>
             <article class="forum__body__comments__comment">
                 <div class="forum__body__comments__comment-content">
                     <figure class="forum__body__comments__comment-content__profile-image">
-                        <img class="forum__user-icon" src="../../../assets/images/do-utilizador.png"
-                            alt="ícone do usuário">
+                      <img>
                     </figure>
                     <div class="forum__body__comments__comment-content__text-section">
                         <div>
@@ -47,3 +51,5 @@
         </section>
     </section>
 </main>
+
+<app-footer></app-footer>

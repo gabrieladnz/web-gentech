@@ -1,4 +1,9 @@
 import { Component } from '@angular/core';
+import { TokenService } from '../../services/token/token.service';
+import { AdminService } from '../../services/admin/admin.service';
+import { UserServiceService } from '../../services/user/user-service.service';
+import { ErrorResponse } from '../../models/http/interface-http';
+import { FormControl } from '@angular/forms';
 
 
 @Component({
@@ -7,9 +12,12 @@ import { Component } from '@angular/core';
   styleUrl: './forum-selecionado.component.scss'
 })
 export class ForumSelecionadoComponent {
-
   private isLiked: boolean = false
-  public likeImageSrc: string = 'assets/icons/curtir.svg'; // Caminho para a imagem 'curtir'
+  public likeImageSrc: string = 'assets/icons/curtir.svg';
+  protected content = new FormControl('');
+  public errorMessage = '';
+
+  public constructor(public tokenService: TokenService, public adminService: AdminService, public userService: UserServiceService) { }
 
   curtir() {
     this.isLiked = !this.isLiked //muda o estado entre true e false sempre que clicado
@@ -20,4 +28,13 @@ export class ForumSelecionadoComponent {
     }
   }
 
+  protected async comentarForum(slug: string): Promise<void> {
+    try {
+      await this.userService.comentarForum(slug, this.content.value);
+    } catch (error) {
+      this.errorMessage = `${(error as ErrorResponse).message}`;
+    } finally {
+      this.content.reset();
+    }
+  }
 }

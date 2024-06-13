@@ -33,18 +33,18 @@
   <section class="page-forum__content">
     <!-- Postagem -->
     <div [ngClass]="['elevar', 'page-forum__content__post']" *ngFor="let forumLista of forunsFiltrados">
-      <figure class="page-forum__content__post__imagem">
+      <figure class="page-forum__content__post__imagem" (click)="abrirForum(forumLista.slug)">
         <img>
       </figure>
 
       <article class="page-forum__content__post__forum">
         <div style="display: flex; justify-content: space-between;">
-          <h3 class="page-forum__content__post__forum__title">{{ forumLista.title }}</h3>
+          <h3 class="page-forum__content__post__forum__title" (click)="abrirForum(forumLista.slug)">{{ forumLista.title }}</h3>
           <mat-icon [matMenuTriggerFor]="menu" *ngIf="adminService.retornoAdmin()">more_vert</mat-icon>
         </div>
 
-        <p class="page-forum__content__post__forum__author">{{ forumLista.author.fullName }}</p>
-        <p class="page-forum__content__post__forum__preview">{{ forumLista.description }}</p>
+        <p class="page-forum__content__post__forum__author" (click)="abrirForum(forumLista.slug)">{{ forumLista.author.fullName }}</p>
+        <p class="page-forum__content__post__forum__preview" (click)="abrirForum(forumLista.slug)">{{ forumLista.description }}</p>
 
         <div class="page-forum__content__post__forum__comment-button">
           <button *ngIf="!tokenService.usuarioAutenticado()">Faça login para participar da discussão!</button>

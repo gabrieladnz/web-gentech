@@ -8,6 +8,7 @@ import { UserServiceService } from '../../services/user/user-service.service';
 import { Forum } from './forum.interface';
 import { AdminService } from '../../services/admin/admin.service';
 import { FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-forum',
   templateUrl: './forum.component.html',
@@ -21,7 +22,7 @@ export class ForumComponent {
   public errorMessage = '';
   protected content = new FormControl('');
 
-  public constructor(private location: Location, public tokenService: TokenService, public dialog: MatDialog, private userService: UserServiceService, public adminService: AdminService) {
+  public constructor(private location: Location, public tokenService: TokenService, public dialog: MatDialog, private userService: UserServiceService, public adminService: AdminService, public router: Router) {
     this.exibirForuns();
   }
 
@@ -70,5 +71,9 @@ export class ForumComponent {
     } finally {
       this.content.reset();
     }
+  }
+
+  protected abrirForum(slug: string): void {
+    this.router.navigate(["/forum-selecionado", slug]);
   }
 }
