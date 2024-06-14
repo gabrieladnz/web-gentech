@@ -1,5 +1,6 @@
 import { Timestamp } from 'rxjs';
 import { SuccessResponse } from '../../models/http/interface-http';
+import { Author } from '../../pages/artigos/artigo.interface';
 
 /** Interface padrão dos dados enviados na Request */
 export interface CadastroRequest {
@@ -78,53 +79,53 @@ export interface CriarArtigoResponse extends SuccessResponse {
 
 export interface EditarArtigoResponse extends SuccessResponse {
   data: {
-    slug: string,
-    title: string,
-    publicationContent: string,
-    coverImageUrl: string,
-    createAt: Date,
-    updateAt: Date,
+    slug: string;
+    title: string;
+    publicationContent: string;
+    coverImageUrl: string;
+    createAt: Date;
+    updateAt: Date;
     author: {
-      fullName: string,
-      username: string,
-      profilePhotoUrl: string
-    },
+      fullName: string;
+      username: string;
+      profilePhotoUrl: string;
+    };
     category: {
-      name: string
-    }
-  }
+      name: string;
+    };
+  };
 }
 
 export interface DeletarArtigoResponse extends SuccessResponse {
-  data: {}
+  data: {};
 }
 
 export interface ListarTodosArtigosResponse extends SuccessResponse {
   data: {
     allPublication: [
       {
-        slug: string,
-        title: string,
-        publicationContent: string,
-        coverImageUrl: string,
-        createAt: Date
+        slug: string;
+        title: string;
+        publicationContent: string;
+        coverImageUrl: string;
+        createAt: Date;
         author: {
-          fullName: string,
-          username: string,
-          profilePhotoUrl: string
-        },
+          fullName: string;
+          username: string;
+          profilePhotoUrl: string;
+        };
         category: {
-          name: string
-        }
-      },
-    ]
-  }
+          name: string;
+        };
+      }
+    ];
+  };
 }
 
 export interface ListarCategoriasResponse extends SuccessResponse {
   data: {
     categories: {
-      category: string,
+      category: string;
     }[];
   };
 }
@@ -162,7 +163,7 @@ export interface CriarForumResponse extends SuccessResponse {
 }
 
 export interface DeletarForumResponse extends SuccessResponse {
-  data: {}
+  data: {};
 }
 
 export interface ComentarForumResponse extends SuccessResponse {
@@ -181,25 +182,54 @@ export interface ComentarForumResponse extends SuccessResponse {
   };
 }
 
-
 export interface ConsultarArtigoIndividualResponse extends SuccessResponse {
   data: {
     publication: {
-      slug: string,
-      title: string,
-      publicationContent: string,
-      coverImageUrl: string,
-      createAt: string,
-      updateAt: Date,
+      slug: string;
+      title: string;
+      publicationContent: string;
+      coverImageUrl: string;
+      createAt: string;
+      updateAt: Date;
       author: {
-        fullName: string,
-        username: string,
-        profilePhotoUrl: string
-      },
+        fullName: string;
+        username: string;
+        profilePhotoUrl: string;
+      };
       category: {
-        name: string
+        name: string;
+      };
+    };
+  };
+}
+
+export interface ConsultarForumIndividualResponse extends SuccessResponse {
+  data: {
+    forum: {
+      slug: string;
+      title: string;
+      description: string;
+      createdAt: string;
+      author: Author;
+    };
+  };
+}
+
+export interface ConsultarComentariosForumResponse extends SuccessResponse {
+  data: {
+    comments: [
+      {
+        id: string;
+        content: string;
+        slugReference: string;
+        createdAt: string;
+        author: Author;
       }
-    }
-  }
+    ];
+  };
+}
+
+export interface DeletarComentarioForumResponse extends SuccessResponse {
+  data: {}
 }
 

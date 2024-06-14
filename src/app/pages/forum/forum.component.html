@@ -44,7 +44,9 @@
         </div>
 
         <p class="page-forum__content__post__forum__author" (click)="abrirForum(forumLista.slug)">{{ forumLista.author.fullName }}</p>
-        <p class="page-forum__content__post__forum__preview" (click)="abrirForum(forumLista.slug)">{{ forumLista.description }}</p>
+        <p class="page-forum__content__post__forum__preview" (click)="abrirForum(forumLista.slug)">
+          {{ forumLista.description | slice:0:50 }}{{ forumLista.description.length > 50 ? '...' : '' }}
+        </p>
 
         <div class="page-forum__content__post__forum__comment-button">
           <button *ngIf="!tokenService.usuarioAutenticado()">Faça login para participar da discussão!</button>

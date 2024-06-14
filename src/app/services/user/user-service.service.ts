@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { RequestService } from '../request/request.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, lastValueFrom } from 'rxjs';
+import { lastValueFrom } from 'rxjs';
 import { ErrorResponse } from '../../models/http/interface-http';
-import { ComentarForumRequest, ComentarForumResponse, ConsultarArtigoIndividualResponse, CriarArtigoRequest, CriarArtigoResponse, CriarForumRequest, CriarForumResponse, DeletarArtigoRequest, DeletarArtigoResponse, DeletarForumResponse, EditarArtigoResponse, ListarCategoriasResponse, ListarForumsResponse, ListarTodosArtigosResponse, LoginRequest, LoginResponse } from './user-service.interface';
+import { ComentarForumResponse, ConsultarArtigoIndividualResponse, ConsultarComentariosForumResponse, ConsultarForumIndividualResponse, CriarArtigoRequest, CriarArtigoResponse, CriarForumRequest, CriarForumResponse, DeletarArtigoRequest, DeletarArtigoResponse, DeletarComentarioForumResponse, DeletarForumResponse, EditarArtigoResponse, ListarCategoriasResponse, ListarForumsResponse, ListarTodosArtigosResponse, LoginRequest, LoginResponse } from './user-service.interface';
 import { CadastroRequest, CadastroResponse } from './user-service.interface';
 import { TokenService } from '../token/token.service';
 
@@ -168,7 +168,7 @@ export class UserServiceService extends RequestService {
     }
   }
 
-  public async criarForum(data: CriarForumRequest): Promise<CriarForumResponse>{
+  public async criarForum(data: CriarForumRequest): Promise<CriarForumResponse> {
     try {
       const headers = new HttpHeaders({ 'Authorization': `Bearer ${this.token}` });
       return await lastValueFrom(this.httpClient.post<CriarForumResponse>(this.BASE_URL + '/forum/create', data, { headers }))
@@ -214,6 +214,43 @@ export class UserServiceService extends RequestService {
       const errorResponse: ErrorResponse = {
         success: false,
         message: 'Erro ao consultar artigo.',
+      };
+      throw errorResponse;
+    }
+  }
+
+  public async consultarForumSelecionado(slug: string): Promise<ConsultarForumIndividualResponse> {
+    try {
+      return await lastValueFrom(this.httpClient.get<ConsultarForumIndividualResponse>(`${this.BASE_URL}/forum/${slug}`));
+    } catch (error) {
+      const errorResponse: ErrorResponse = {
+        success: false,
+        message: 'Erro ao consultar fórum.',
+      };
+      throw errorResponse;
+    }
+  }
+
+  public async consultarComentariosPorForum(slug: string): Promise<ConsultarComentariosForumResponse> {
+    try {
+      return await lastValueFrom(this.httpClient.get<ConsultarComentariosForumResponse>(`${this.BASE_URL}/comment/forum/${slug}`));
+    } catch (error) {
+      const errorResponse: ErrorResponse = {
+        success: false,
+        message: 'Erro ao consultar comentários do fórum.',
+      };
+      throw errorResponse;
+    }
+  }
+
+  public async deletarComentarioForum(commentId: string): Promise<DeletarComentarioForumResponse> {
+    try {
+      const headers = new HttpHeaders({ 'Authorization': `Bearer ${this.token}` });
+      return await lastValueFrom(this.httpClient.delete<DeletarComentarioForumResponse>(`${this.BASE_URL}/comment/delete/${commentId}`, { headers }));
+    } catch (error) {
+      const errorResponse: ErrorResponse = {
+        success: false,
+        message: 'Erro ao deletar comentário do fórum.',
       };
       throw errorResponse;
     }
