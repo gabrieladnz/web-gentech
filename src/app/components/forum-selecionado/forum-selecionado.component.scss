@@ -1,18 +1,20 @@
 .forum {
   background: #dfebf2;
   width: 100vw;
-  height: 100vh;
+  height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding: 1em;
 
   &__body {
     background-color: #356b8c;
     width: 60%;
     padding-top: 2em;
     // height: 80%;
-    margin-top: -5%;
+    margin-top: 20px;
+    margin-bottom: 20px;
     display: flex;
     flex-direction: column-reverse;
     border-radius: 1em;
