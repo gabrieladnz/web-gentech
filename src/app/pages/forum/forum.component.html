@@ -55,7 +55,7 @@
           <input *ngIf="tokenService.usuarioAutenticado()" [formControl]="content"
             style="border: none; background: none; outline: 0; width: 100%;" placeholder="Comente aqui">
           <button (click)="comentarForum(forumLista.slug)" [disabled]="!tokenService.usuarioAutenticado()">
-            <mat-icon>send</mat-icon>
+            <mat-icon style="cursor: pointer;">send</mat-icon>
           </button>
         </div>
       </article>
