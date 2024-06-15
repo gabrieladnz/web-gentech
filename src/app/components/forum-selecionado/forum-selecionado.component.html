@@ -23,7 +23,9 @@
                 <button *ngIf="!tokenService.usuarioAutenticado()">Faça login para participar da discussão!</button>
                 <input *ngIf="tokenService.usuarioAutenticado()" [formControl]="content"
                   style="border: none; background: none; outline: 0; width: 100%;" placeholder="Comente aqui">
-                <mat-icon (click)="comentarForum(slug)" style="cursor: pointer;">send</mat-icon>
+                <button (click)="comentarForum(slug)" [disabled]="!tokenService.usuarioAutenticado()">
+                  <mat-icon>send</mat-icon>
+                </button>
               </div>
             </div>
           </div>
