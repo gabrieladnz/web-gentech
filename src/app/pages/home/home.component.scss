@@ -46,6 +46,9 @@
         margin-right: 10px;
         border-radius: 25px;
         padding: 0 2em 0 2em;
+
+        background-color: #99B1BF !important;
+        color: #FFFFFF !important;
       }
     }
 
@@ -62,7 +65,7 @@
         border-radius: 15px;
         // width: auto;
         width: 25%;
-        height: 100%;
+        height: auto;
         cursor: pointer;
 
         &__imagem {
@@ -73,6 +76,7 @@
           background-color: #fffdfd;
           padding: 1em;
           border-radius: 15px;
+          height: 100%;
 
           p {
             color: #6c6262;
@@ -195,6 +199,11 @@
     gap: 10px;
     justify-content: center;
   }
+}
+
+// Hover do botão
+.home__artigos__categorias__botao.selecionado {
+  background-color: #0A2029 !important;
 }
 
 // Animações

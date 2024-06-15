@@ -12,11 +12,17 @@
       <div style="display: flex">
         <input type="search" (input)="filtrarInput($event)" class="body-artigos__head__search__input"
           placeholder="Buscar artigo..." />
-        <button mat-mini-fab><mat-icon>arrow_drop_down</mat-icon></button>
+        <button mat-mini-fab [matMenuTriggerFor]="menu"><mat-icon>arrow_drop_down</mat-icon></button>
       </div>
     </div>
   </section>
 
+  <mat-menu #menu="matMenu">
+    <mat-label style="font-weight: 600;">Filtre por categoria:</mat-label>
+    <button mat-menu-item *ngFor="let categoria of listaCategorias" (click)="filtrarPorCategoria(categoria.category)" [ngClass]="{'selecionado': categoria.category === categoriaSelecionada}">
+      {{ categoria.category }}
+    </button>
+  </mat-menu>
   <!-- Loading  -->
   <figure *ngIf="carregando" style="display: flex; justify-content: center; margin-top: 40px">
     <div class="custom-loader"></div>
@@ -37,7 +43,8 @@
           <mat-icon [matMenuTriggerFor]="menu">more_vert</mat-icon>
         </div>
         <h3 (click)="abrirArtigo(artigoListado)">{{ artigoListado.title }}</h3>
-        <div style="
+
+       <div style="
             display: flex;
             align-items: flex-end;
             justify-content: flex-start;
@@ -47,6 +54,7 @@
             {{ artigoListado.author.fullName }}
           </p>
         </div>
+
         <p (click)="abrirArtigo(artigoListado)">
           {{ artigoListado.publicationContent | slice : 0 : 400
           }}{{ artigoListado.publicationContent.length > 200 ? "..." : "" }}
@@ -56,9 +64,11 @@
 
       <mat-menu #menu="matMenu">
         <button mat-menu-item (click)="editarArtigoSelecionado(artigoListado)">
+          <mat-icon>edit</mat-icon>
           Editar
         </button>
         <button mat-menu-item (click)="deletarArtigoSelecionado(artigoListado.slug)">
+          <mat-icon>delete</mat-icon>
           Excluir
         </button>
       </mat-menu>

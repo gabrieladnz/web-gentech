@@ -1,49 +1,79 @@
+<app-navbar></app-navbar>
 <main class="forum">
-    <section class="forum__body">
-        <section class="forum__body__comments">
-            <article class="forum__body__comments__post">
-                <div class="forum__body__comments__post-content">
-                    <figure class="forum__body__comments__post-content__user-icon">
-                        <img class="forum__user-icon" src="../../../assets/images/do-utilizador.png"
-                            alt="ícone do usuário">
-                    </figure>
-                    <div class="forum__body__comments__post-content__text-section">
-                        <header class="forum__body__comments__post-content__text-section__postagem">
-                            <h2 class="forum__body__comments__post-content__title">titulo</h2>
-                            <p class="forum__body__comments__post-content__text">Lorem Ipsum is simply dummy text of the
-                                printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy
-                                text ever since the 1500s, when an unknown printer took a galle</p>
-                        </header>
-                        <input type="text" placeholder="comente aqui"
-                            class="forum__body__comments__post-content__input">
-                    </div>
+  <!-- Loading  -->
+  <figure *ngIf="carregando" style="display: flex; justify-content: center; margin-top: 40px">
+    <div class="custom-loader"></div>
+  </figure>
+
+  <section *ngIf="!carregando" class="forum__body">
+    <section class="forum__body__comments">
+      <div style="width: 100%;">
+        <article class="forum__body__comments__post">
+          <div class="forum__body__comments__post-content">
+            <figure class="forum__body__comments__post-content__img">
+              <img src="{{ this.profilePhoto }}">
+              <p>{{ this.fullName }}</p>
+            </figure>
+            <div class="forum__body__comments__post-content__text-section">
+              <header class="forum__body__comments__post-content__text-section__postagem">
+                <h2 class="forum__body__comments__post-content__title">{{ this.title }}</h2>
+                <p class="forum__body__comments__post-content__text">{{ this.description }}</p>
+              </header>
+              <div class="forum__body__comments__post-content__input">
+                <button *ngIf="!tokenService.usuarioAutenticado()">Faça login para participar da discussão!</button>
+                <input *ngIf="tokenService.usuarioAutenticado()" [formControl]="content"
+                  style="border: none; background: none; outline: 0; width: 100%;" placeholder="Comente aqui">
+                <mat-icon (click)="comentarForum(slug)" style="cursor: pointer;">send</mat-icon>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+      <!-- Comentários no fórum  -->
+      <div *ngFor="let comentario of comentariosDoForum" style="width: 90%;">
+        <article class="forum__body__comments__comment">
+          <div class="forum__body__comments__comment-content">
+            <figure class="forum__body__comments__comment-content__imagem">
+              <img src="{{ comentario.author.profilePhotoUrl }}">
+            </figure>
+            <div class="forum__body__comments__comment-content__text-section">
+              <div>
+                <div style="    display: flex;
+    justify-content: space-between;">
+                  <h4>{{ comentario.author.userName }}</h4>
+                  <mat-icon [matMenuTriggerFor]="menu" *ngIf="adminService.retornoAdmin()" style="cursor: pointer;">more_vert</mat-icon>
                 </div>
-            </article>
-            <article class="forum__body__comments__comment">
-                <div class="forum__body__comments__comment-content">
-                    <figure class="forum__body__comments__comment-content__profile-image">
-                        <img class="forum__user-icon" src="../../../assets/images/do-utilizador.png"
-                            alt="ícone do usuário">
-                    </figure>
-                    <div class="forum__body__comments__comment-content__text-section">
-                        <div>
-                            <h5 class="forum__body__comments__comment-content__text-section__title">titulo</h5>
-                            <p class="forum__body__comments__comment-content__text-section__text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galle.</p>
-                        </div>
-                        <footer class="forum__body__comments__coment-content__text-section__comment-actions">
-                            <button
+                <p class="forum__body__comments__comment-content__text-section__text">{{ comentario.content }}</p>
+              </div>
+
+              <mat-menu #menu="matMenu">
+                <button mat-menu-item (click)="deletarComentarioForum(comentario.id)">
+                  <mat-icon>delete</mat-icon>
+                  Excluir
+                </button>
+              </mat-menu>
+
+              <footer class="forum__body__comments__coment-content__text-section__comment-actions">
+                <!-- <button
                                 class="forum__body__comments__comment-content__text-section__comment-actions__button-comment"><img
-                                    src="../../../assets/icons/comentar.svg" alt="comentar"></button>
-                            <button
+                                    src="../../../assets/icons/comentar.svg" alt="comentar"></button> -->
+                <!-- <button
                                 class="forum__body__comments__comment-content__text-section__comment-actions__button-like"
                                 (click)=curtir()>
                                 <img [src]="likeImageSrc">
-                            </button>
-                        </footer>
-                    </div>
-                </div>
+                            </button> -->
+              </footer>
+            </div>
+          </div>
 
-            </article>
-        </section>
+        </article>
+      </div>
     </section>
+
+
+  </section>
+
+
 </main>
+
+<app-footer></app-footer>

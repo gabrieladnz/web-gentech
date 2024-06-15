@@ -27,8 +27,8 @@
   <!-- Seção artigos  -->
   <section class="home__artigos">
     <div class="home__artigos__categorias">
-      <button *ngFor="let categorias of listaCategorias" mat-flat-button class="home__artigos__categorias__botao">{{
-        categorias.categoria }}</button>
+      <button *ngFor="let categorias of listaCategorias" (click)="selecionarCategoria(categorias.category)"  [class.selecionado]="categoriaSelecionada === categorias.category" mat-flat-button class="home__artigos__categorias__botao">{{
+        categorias.category }}</button>
     </div>
     <!-- Loading  -->
     <figure *ngIf="carregando" style="display: flex; justify-content: center; margin-top: 40px;">
@@ -37,7 +37,7 @@
 
     <div class="home__artigos__artigos-principais">
 
-      <div *ngFor="let artigos of listaArtigos"  [ngClass]="['elevar', 'home__artigos__artigos-principais__card']"
+      <div *ngFor="let artigos of artigosFiltrados || listaArtigos"  [ngClass]="['elevar', 'home__artigos__artigos-principais__card']"
         (click)="abrirArtigo(artigos)">
         <figure class="home__artigos__artigos-principais__card__imagem">
           <img>

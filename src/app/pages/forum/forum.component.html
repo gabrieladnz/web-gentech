@@ -10,9 +10,9 @@
     <!-- Barra de Pesquisa -->
     <div class="page-forum__search">
       <h1>Fórum</h1>
-      <!-- <p>Junte-se à nossa comunidade e participe ativamente de discussões interessantes,<br>além de criar seus próprios fóruns!</p> -->
       <div style="display: flex;">
-        <input type="search" class="page-forum__search__input" placeholder="Buscar fórum..." />
+        <input type="search" (input)="filtrarInput($event)" class="page-forum__search__input"
+          placeholder="Buscar fórum..." />
         <button *ngIf="tokenService.usuarioAutenticado()" (click)="publicarForum()"
           mat-mini-fab><mat-icon>add</mat-icon></button>
       </div>
@@ -24,28 +24,44 @@
     <div class="custom-loader"></div>
   </figure>
 
+  <!-- Loading  -->
+  <figure *ngIf="carregando" style="display: flex; justify-content: center; margin-top: 40px">
+    <div class="custom-loader"></div>
+  </figure>
+
   <!-- Conteúdo Principal -->
   <section class="page-forum__content">
     <!-- Postagem -->
-    <div [ngClass]="['elevar', 'page-forum__content__post']">
-      <figure class="page-forum__content__post__imagem">
+    <div [ngClass]="['elevar', 'page-forum__content__post']" *ngFor="let forumLista of forunsFiltrados">
+      <figure class="page-forum__content__post__imagem" (click)="abrirForum(forumLista.slug)">
         <img>
       </figure>
 
       <article class="page-forum__content__post__forum">
         <div style="display: flex; justify-content: space-between;">
-          <h3 class="page-forum__content__post__forum__title">Título</h3>
-          <mat-icon>more_vert</mat-icon>
+          <h3 class="page-forum__content__post__forum__title" (click)="abrirForum(forumLista.slug)">{{ forumLista.title }}</h3>
+          <mat-icon [matMenuTriggerFor]="menu" *ngIf="adminService.retornoAdmin()">more_vert</mat-icon>
         </div>
 
-        <p class="page-forum__content__post__forum__author">Nome do Usuário</p>
-        <p class="page-forum__content__post__forum__preview">Prévia do conteúdo da postagem...</p>
+        <p class="page-forum__content__post__forum__author" (click)="abrirForum(forumLista.slug)">{{ forumLista.author.fullName }}</p>
+        <p class="page-forum__content__post__forum__preview" (click)="abrirForum(forumLista.slug)">
+          {{ forumLista.description | slice:0:50 }}{{ forumLista.description.length > 50 ? '...' : '' }}
+        </p>
 
         <div class="page-forum__content__post__forum__comment-button">
-          <button type="button">Comente aqui</button>
-          <mat-icon>send</mat-icon>
+          <button *ngIf="!tokenService.usuarioAutenticado()">Faça login para participar da discussão!</button>
+          <input *ngIf="tokenService.usuarioAutenticado()" [formControl]="content" style="border: none; background: none; outline: 0; width: 100%;"
+            placeholder="Comente aqui">
+          <mat-icon (click)="comentarForum(forumLista.slug)">send</mat-icon>
         </div>
       </article>
+
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="deletarForumSelecionado(forumLista.slug)">
+          <mat-icon>delete</mat-icon>
+          Excluir
+        </button>
+      </mat-menu>
     </div>
   </section>
 </main>

@@ -1,12 +1,21 @@
-<mat-dialog-content>
-  <h2>Criar fórum</h2>
+<mat-dialog-content class="form-forum">
+  <h2 class="form-forum__titulo">Criar fórum</h2>
   <p>Compartilhe suas ideias, descubra novos insights e promova discussões significativas sobre Inteligência Artificial!</p>
-  <form>
 
+  <form [formGroup]="criarForumForm" class="form-forum__formulario">
+    <mat-form-field>
+      <mat-label>Título</mat-label>
+      <input formControlName="title" matInput required>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Conteúdo</mat-label>
+      <textarea formControlName="description" matInput required></textarea>
+    </mat-form-field>
   </form>
 </mat-dialog-content>
 
-<mat-dialog-actions>
+<mat-dialog-actions class="form-forum__botoes">
   <button mat-button (click)="cancelarCriacao()">Cancelar</button>
-  <button mat-button cdkFocusInitial>Postar</button>
+  <button mat-button cdkFocusInitial (click)="criarForum()" [disabled]="criarForumForm.invalid">Postar</button>
 </mat-dialog-actions>

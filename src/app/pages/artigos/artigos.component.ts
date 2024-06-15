@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Location } from '@angular/common';
 import { ErrorResponse } from '../../models/http/interface-http';
 import { UserServiceService } from '../../services/user/user-service.service';
-import { Artigo } from './artigo.interface';
+import { Artigo, Categorias } from './artigo.interface';
 import { ModalEditarArtigoComponent } from '../../components/modais/modal-editar-artigo/modal-editar-artigo.component';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
@@ -19,9 +19,12 @@ export class ArtigosComponent {
   protected artigos: Artigo[] = [];
   protected artigosFiltrados: Artigo[] = [];
   public carregando = true;
+  protected listaCategorias: Categorias[] = [];
+  protected categoriaSelecionada: string = "";
 
   constructor(private location: Location, public tokenService: TokenService, private userService: UserServiceService, public dialog: MatDialog, private router: Router, public adminService: AdminService) {
     this.exibirArtigos();
+    this.retornarCategorias();
   }
 
   protected retornarPagina(): void { this.location.back(); }
@@ -37,6 +40,7 @@ export class ArtigosComponent {
       const retorno = await this.userService.listarTodosArtigos();
       this.artigos = retorno.data.allPublication;
       this.artigosFiltrados = [...this.artigos];
+      this.artigosFiltrados.reverse();
       this.carregando = false;
     } catch (error) {
       this.errorMessage = `${(error as ErrorResponse).message}`;
@@ -62,16 +66,31 @@ export class ArtigosComponent {
         publicationContent: dadosArtigo.publicationContent,
         category: dadosArtigo.category.name,
         coverImageUrl: dadosArtigo.coverImageUrl
-      }
+      },
+      width: '500px'
     });
 
     dialogRef.afterClosed().subscribe(retorno => {
-      console.log(retorno);
       this.exibirArtigos();
     });
   }
 
   protected abrirArtigo(dadosArtigo: any): void {
-    this.router.navigate(["/artigo-selecionado"], { state: { dadosArtigo } })
+    this.router.navigate(["/artigo-selecionado", dadosArtigo.slug]);
+    // this.router.navigate(["/artigo-selecionado"], { state: { dadosArtigo } })
+  }
+
+  protected async retornarCategorias(): Promise<void> {
+    try {
+      const response = await this.userService.listarCategorias();
+      this.listaCategorias = response.data.categories;
+    } catch (error) {
+      this.errorMessage = `${(error as ErrorResponse).message}`;
+    }
+  }
+
+  protected filtrarPorCategoria(categoria: string): void {
+    this.categoriaSelecionada = categoria;
+    this.artigosFiltrados = this.artigos.filter(artigo => artigo.category && artigo.category.name === categoria);
   }
 }
