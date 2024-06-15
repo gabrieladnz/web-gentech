@@ -81,7 +81,7 @@ export class UserServiceService extends RequestService {
   /**
    * Método para criar um novo artigo.
    */
-  public async criarArtigo(data: CriarArtigoRequest): Promise<CriarArtigoResponse> {
+  public async criarArtigo(data: any): Promise<CriarArtigoResponse> {
     try {
       const headers = new HttpHeaders({ 'Authorization': `Bearer ${this.token}` });
       return await lastValueFrom(this.httpClient.post<CriarArtigoResponse>(this.BASE_URL + '/publication/create', data, { headers }))
@@ -94,7 +94,7 @@ export class UserServiceService extends RequestService {
     }
   }
 
-  public async editarArtigoCriado(slug: string, data: CriarArtigoRequest): Promise<EditarArtigoResponse> {
+  public async editarArtigoCriado(slug: string, data: any): Promise<EditarArtigoResponse> {
     try {
       const headers = new HttpHeaders({ 'Authorization': `Bearer ${this.token}` });
       return await lastValueFrom(this.httpClient.patch<EditarArtigoResponse>(`${this.BASE_URL}/publication/edit/${slug}`, data, { headers }));

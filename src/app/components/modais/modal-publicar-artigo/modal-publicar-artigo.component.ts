@@ -7,51 +7,60 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'app-modal-publicar-artigo',
   templateUrl: './modal-publicar-artigo.component.html',
-  styleUrl: './modal-publicar-artigo.component.scss'
+  styleUrls: ['./modal-publicar-artigo.component.scss']
 })
 export class ModalPublicarArtigoComponent {
   public errorMessage = '';
-  protected criarArtigoForm!: FormGroup;
-  protected previaImagem: string | ArrayBuffer | null = null;
+  public criarArtigoForm!: FormGroup;
+  public previaImagem: string | ArrayBuffer | null = null;
 
-  public constructor(public dialogRef: MatDialogRef<ModalPublicarArtigoComponent>, private userService: UserServiceService, private formBuilder: FormBuilder) {
+  constructor(
+    public dialogRef: MatDialogRef<ModalPublicarArtigoComponent>,
+    private userService: UserServiceService,
+    private formBuilder: FormBuilder
+  ) {
     this.criarArtigoForm = this.formBuilder.group({
       title: ['', [Validators.required]],
       publicationContent: ['', [Validators.required]],
       coverImageUrl: [''],
-      category: [''],
+      category: ['']
     });
   }
 
-  protected cancelarCriacao(): void {
+  cancelarCriacao(): void {
     this.dialogRef.close();
   }
 
-  protected async criarArtigo(): Promise<void> {
+  async criarArtigo(): Promise<void> {
     try {
-      await this.userService.criarArtigo(this.criarArtigoForm.value);
+      const formData = new FormData();
+      formData.append('title', this.criarArtigoForm.get('title')?.value);
+      formData.append('publicationContent', this.criarArtigoForm.get('publicationContent')?.value);
+      formData.append('category', this.criarArtigoForm.get('category')?.value);
+
+      const coverImage = this.criarArtigoForm.get('coverImageUrl')?.value;
+      if (coverImage instanceof File) {
+        formData.append('coverImageUrl', coverImage, coverImage.name);
+      }
+
+      await this.userService.criarArtigo(formData);
       this.cancelarCriacao();
     } catch (error) {
       this.errorMessage = `${(error as ErrorResponse).message}`;
     }
   }
 
-  protected carregarImagem(event: Event): void {
+  processarImagem(event: Event): void {
     const input = event.target as HTMLInputElement;
-    (input.value) ? this.previaImagem = input.value : this.previaImagem = null;
+    if (input.files && input.files[0]) {
+      const file = input.files[0];
+      this.criarArtigoForm.patchValue({ coverImageUrl: file });
+
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.previaImagem = reader.result as string;
+      };
+      reader.readAsDataURL(file);
+    }
   }
-
-  // protected processarImagem(event: Event): void {
-  //   const input = event.target as HTMLInputElement;
-  //   if (input.files && input.files[0]) {
-  //     const file = input.files[0];
-  //     this.criarArtigoForm.patchValue({ image: file });
-
-  //     const reader = new FileReader();
-  //     reader.onload = () => {
-  //       this.previaImagem = reader.result;
-  //     };
-  //     reader.readAsDataURL(file);
-  //   }
-  // }
 }
