@@ -13,7 +13,6 @@ export class AuthInterceptor implements HttpInterceptor {
   ) { }
 
   public intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    console.log("ROTA INTERCEPTOR")
     const headers = new HttpHeaders().set('Authorization', `Bearer ${this.tokenService.get()}`);
     request = request.clone({ headers });
 

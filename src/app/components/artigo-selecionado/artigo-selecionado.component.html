@@ -1,9 +1,13 @@
 <app-navbar></app-navbar>
+
 <main class="artigo-selecionado">
-  <div style="display: flex;
-  flex-direction: column;
-  align-content: center;
-  align-items: center;">
+
+  <!-- Loading  -->
+  <figure *ngIf="carregando" style="display: flex; justify-content: center; margin-top: 40px">
+    <div class="custom-loader"></div>
+  </figure>
+
+  <div *ngIf="!carregando" style="display: flex; flex-direction: column; align-content: center; align-items: center;">
     <section class="artigo-selecionado__introducao">
       <div class="artigo-selecionado__introducao__retornar">
         <mat-icon (click)="retornarPagina()">keyboard_backspace</mat-icon>
@@ -11,29 +15,29 @@
       </div>
 
       <div class="artigo-selecionado__introducao__categoria">
-        <button  mat-flat-button>{{ category }}</button>
-        <p>{{ createAt  | date: 'dd/MM/yyyy HH:mm' }}</p>
+        <button mat-flat-button>{{ this.category }}</button>
+        <p>{{ this.createAt | date: 'dd/MM/yyyy HH:mm' }}</p>
       </div>
 
-      <h1>{{ title }}</h1>
+      <h1>{{ this.title }}</h1>
 
       <div class="artigo-selecionado__introducao__autor">
         <figure class="artigo-selecionado__introducao__autor__perfil">
-          <img src="{{ profilePhotoUrl }}">
+          <img src="{{ this.profilePhotoUrl }}">
         </figure>
         <article class="artigo-selecionado__introducao__autor__nome">
-          <p>{{ author }}</p>
-          <p style="color: #356b8c;">{{ username }}</p>
+          <p>{{ this.author }}</p>
+          <p style="color: #356b8c;">{{ this.username }}</p>
         </article>
       </div>
     </section>
 
     <section class="artigo-selecionado__texto">
       <figure class="artigo-selecionado__texto__imagem">
-        <img src="{{ coverImageUrl }}">
+        <img src="{{ this.coverImageUrl }}">
       </figure>
       <article class="artigo-selecionado__texto__paragrafo">
-         <markdown [data]="publicationContent"></markdown>
+        <markdown [data]="this.publicationContent"></markdown>
       </article>
     </section>
   </div>

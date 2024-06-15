@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { RequestService } from '../request/request.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, lastValueFrom } from 'rxjs';
+import { lastValueFrom } from 'rxjs';
 import { ErrorResponse } from '../../models/http/interface-http';
-import { CriarArtigoRequest, CriarArtigoResponse, DeletarArtigoRequest, DeletarArtigoResponse, EditarArtigoResponse, ListarTodosArtigosResponse, LoginRequest, LoginResponse } from './user-service.interface';
+import { ComentarForumResponse, ConsultarArtigoIndividualResponse, ConsultarComentariosForumResponse, ConsultarForumIndividualResponse, CriarArtigoRequest, CriarArtigoResponse, CriarForumRequest, CriarForumResponse, DeletarArtigoRequest, DeletarArtigoResponse, DeletarComentarioForumResponse, DeletarForumResponse, EditarArtigoResponse, ListarCategoriasResponse, ListarForumsResponse, ListarTodosArtigosResponse, LoginRequest, LoginResponse } from './user-service.interface';
 import { CadastroRequest, CadastroResponse } from './user-service.interface';
 import { TokenService } from '../token/token.service';
 
@@ -139,6 +139,118 @@ export class UserServiceService extends RequestService {
       const errorResponse: ErrorResponse = {
         success: false,
         message: 'Erro ao listar artigo por autor.',
+      };
+      throw errorResponse;
+    }
+  }
+
+  public async listarCategorias(): Promise<ListarCategoriasResponse> {
+    try {
+      return await lastValueFrom(this.httpClient.get<ListarCategoriasResponse>(`${this.BASE_URL}/category`));
+    } catch (error) {
+      const errorResponse: ErrorResponse = {
+        success: false,
+        message: 'Erro ao listar categorias.',
+      };
+      throw errorResponse;
+    }
+  }
+
+  public async listarForuns(): Promise<ListarForumsResponse> {
+    try {
+      return await lastValueFrom(this.httpClient.get<ListarForumsResponse>(`${this.BASE_URL}/forum`));
+    } catch (error) {
+      const errorResponse: ErrorResponse = {
+        success: false,
+        message: 'Erro ao listar fóruns.',
+      };
+      throw errorResponse;
+    }
+  }
+
+  public async criarForum(data: CriarForumRequest): Promise<CriarForumResponse> {
+    try {
+      const headers = new HttpHeaders({ 'Authorization': `Bearer ${this.token}` });
+      return await lastValueFrom(this.httpClient.post<CriarForumResponse>(this.BASE_URL + '/forum/create', data, { headers }))
+    } catch (error) {
+      const errorResponse: ErrorResponse = {
+        success: false,
+        message: 'Erro ao criar fórum.',
+      };
+      throw errorResponse;
+    }
+  }
+
+  public async deletarForum(slug: string): Promise<DeletarForumResponse> {
+    try {
+      const headers = new HttpHeaders({ 'Authorization': `Bearer ${this.token}` });
+      return await lastValueFrom(this.httpClient.delete<DeletarForumResponse>(`${this.BASE_URL}/forum/delete/${slug}`, { headers }));
+    } catch (error) {
+      const errorResponse: ErrorResponse = {
+        success: false,
+        message: 'Erro ao deletar fórum.',
+      };
+      throw errorResponse;
+    }
+  }
+
+  public async comentarForum(slug: string, content: string | null): Promise<ComentarForumResponse> {
+    try {
+      const headers = new HttpHeaders({ 'Authorization': `Bearer ${this.token}` });
+      return await lastValueFrom(this.httpClient.post<ComentarForumResponse>(`${this.BASE_URL}/comment/forum/${slug}`, { content }, { headers }))
+    } catch (error) {
+      const errorResponse: ErrorResponse = {
+        success: false,
+        message: 'Erro ao comentar fórum.',
+      };
+      throw errorResponse;
+    }
+  }
+
+  public async consultarArtigoSelecionado(slug: string): Promise<ConsultarArtigoIndividualResponse> {
+    try {
+      return await lastValueFrom(this.httpClient.get<ConsultarArtigoIndividualResponse>(`${this.BASE_URL}/publication/${slug}`));
+    } catch (error) {
+      const errorResponse: ErrorResponse = {
+        success: false,
+        message: 'Erro ao consultar artigo.',
+      };
+      throw errorResponse;
+    }
+  }
+
+  public async consultarForumSelecionado(slug: string): Promise<ConsultarForumIndividualResponse> {
+    try {
+      return await lastValueFrom(this.httpClient.get<ConsultarForumIndividualResponse>(`${this.BASE_URL}/forum/${slug}`));
+    } catch (error) {
+      const errorResponse: ErrorResponse = {
+        success: false,
+        message: 'Erro ao consultar fórum.',
+      };
+      throw errorResponse;
+    }
+  }
+
+  public async consultarComentariosPorForum(slug: string): Promise<ConsultarComentariosForumResponse> {
+    try {
+      return await lastValueFrom(this.httpClient.get<ConsultarComentariosForumResponse>(`${this.BASE_URL}/comment/forum/${slug}`));
+    } catch (error) {
+      const errorResponse: ErrorResponse = {
+        success: false,
+        message: 'Erro ao consultar comentários do fórum.',
+      };
+      throw errorResponse;
+    }
+  }
+
+  public async deletarComentarioForum(commentId: string): Promise<DeletarComentarioForumResponse> {
+    try {
+      const headers = new HttpHeaders({ 'Authorization': `Bearer ${this.token}` });
+      return await lastValueFrom(this.httpClient.delete<DeletarComentarioForumResponse>(`${this.BASE_URL}/comment/delete/${commentId}`, { headers }));
+    } catch (error) {
+      const errorResponse: ErrorResponse = {
+        success: false,
+        message: 'Erro ao deletar comentário do fórum.',
       };
       throw errorResponse;
     }
