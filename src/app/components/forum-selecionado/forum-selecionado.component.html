@@ -24,7 +24,7 @@
                 <input *ngIf="tokenService.usuarioAutenticado()" [formControl]="content"
                   style="border: none; background: none; outline: 0; width: 100%;" placeholder="Comente aqui">
                 <button (click)="comentarForum(slug)" [disabled]="!tokenService.usuarioAutenticado()">
-                  <mat-icon>send</mat-icon>
+                  <mat-icon style="cursor: pointer;">send</mat-icon>
                 </button>
               </div>
             </div>
@@ -43,7 +43,7 @@
                 <div style="    display: flex;
     justify-content: space-between;">
                   <h4>{{ comentario.author.userName }}</h4>
-                  <mat-icon [matMenuTriggerFor]="menu" *ngIf="adminService.retornoAdmin()" style="cursor: pointer;">more_vert</mat-icon>
+                  <mat-icon [matMenuTriggerFor]="menu" *ngIf="tokenService.usuarioAutenticado() && adminService.retornoAdmin()" style="cursor: pointer;">more_vert</mat-icon>
                 </div>
                 <p class="forum__body__comments__comment-content__text-section__text">{{ comentario.content }}</p>
               </div>
