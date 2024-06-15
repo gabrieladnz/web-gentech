@@ -28,7 +28,8 @@
     <!-- Seleção de foto do computador  -->
     <div style="margin-top: 16px; display: flex; flex-direction: column;">
       <label for="fileInput">Insira a capa do artigo:</label>
-      <input type="file" id="fileInput" formControlName="coverImageUrl" (change)="processarImagem($event)" accept="image/*">
+      <input type="file" id="fileInput" formControlName="coverImageUrl" (change)="processarImagem($event)"
+        accept="image/*">
     </div>
 
     <div *ngIf="previaImagem" style="margin-top: 10px; text-align: center;">
@@ -36,6 +37,7 @@
     </div>
   </form>
 </mat-dialog-content>
+
 <!-- Botões  -->
 <mat-dialog-actions style="display: flex; justify-content: center;">
   <button mat-button (click)="cancelarCriacao()">Cancelar</button>

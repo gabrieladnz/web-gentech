@@ -27,11 +27,11 @@ export class ModalPublicarArtigoComponent {
     });
   }
 
-  cancelarCriacao(): void {
+  protected cancelarCriacao(): void {
     this.dialogRef.close();
   }
 
-  async criarArtigo(): Promise<void> {
+  protected async criarArtigo(): Promise<void> {
     try {
       const formData = new FormData();
       formData.append('title', this.criarArtigoForm.get('title')?.value);
@@ -50,7 +50,7 @@ export class ModalPublicarArtigoComponent {
     }
   }
 
-  processarImagem(event: Event): void {
+  protected processarImagem(event: Event): void {
     const input = event.target as HTMLInputElement;
     if (input.files && input.files[0]) {
       const file = input.files[0];
