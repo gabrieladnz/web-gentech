@@ -47,7 +47,7 @@ export class ModalEditarArtigoComponent {
       if (coverImage instanceof File) {
         formData.append('coverImageUrl', coverImage, coverImage.name);
       } else {
-        formData.append('coverImageUrl', coverImage);
+        formData.append('coverImageUrl', new Blob([coverImage], { type: 'image/jpeg' }));
       }
 
       await this.userService.editarArtigoCriado(this.slug, formData);
@@ -57,13 +57,15 @@ export class ModalEditarArtigoComponent {
     }
   }
 
+  protected processarImagem(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files[0]) {
+      const file = input.files[0];
+      this.editarArtigoForm.patchValue({ coverImageUrl: file });
 
-  protected processarImagem(event: any): void {
-    const file = event.target.files[0];
-    if (file) {
       const reader = new FileReader();
-      reader.onload = (e: any) => {
-        this.previaImagem = e.target.result;
+      reader.onload = () => {
+        this.previaImagem = reader.result as string;
       };
       reader.readAsDataURL(file);
     }

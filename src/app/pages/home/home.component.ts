@@ -14,7 +14,7 @@ export class HomeComponent {
   public carregando = true;
   protected listaCategorias: Categorias[] = [];;
   protected listaArtigos: Artigo[] = [];
-  protected categoriaSelecionada: string = "IA";
+  protected categoriaSelecionada: string = "Tecnologia";
   protected artigosFiltrados: any;
 
   public constructor(private userService: UserServiceService, private router: Router) {
@@ -47,7 +47,6 @@ export class HomeComponent {
     try {
       const response = await this.userService.listarCategorias();
       this.listaCategorias = response.data.categories;
-      this.listaCategorias.reverse();
     } catch (error) {
       this.errorMessage = `${(error as ErrorResponse).message}`;
     }
