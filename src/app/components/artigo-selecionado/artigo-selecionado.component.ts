@@ -1,7 +1,7 @@
 import { UserServiceService } from './../../services/user/user-service.service';
 import { Component } from '@angular/core';
 import { Location } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ErrorResponse } from '../../models/http/interface-http';
 
 @Component({
@@ -22,7 +22,7 @@ export class ArtigoSelecionadoComponent {
   public errorMessage = '';
   public carregando: boolean = true;
 
-  public constructor(private location: Location, private route: ActivatedRoute, private userService: UserServiceService) { }
+  public constructor(private location: Location, public router: Router, private route: ActivatedRoute, private userService: UserServiceService) { }
 
   public ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -31,7 +31,7 @@ export class ArtigoSelecionadoComponent {
     });
   }
 
-  protected retornarPagina(): void { this.location.back(); }
+  public retornarPagina(): void {  this.router.navigate(['/']); }
 
   protected async carregarArtigo(): Promise<void> {
     try {

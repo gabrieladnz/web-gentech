@@ -10,9 +10,12 @@
   <div *ngIf="!carregando" style="display: flex; flex-direction: column; align-content: center;">
     <section class="artigo-selecionado__introducao">
       <div class="artigo-selecionado__introducao__retornar">
-        <mat-icon (click)="retornarPagina()">keyboard_backspace</mat-icon>
-        <button>Retornar</button>
+        <button mat-icon-button (click)="retornarPagina()">
+          <mat-icon>keyboard_backspace</mat-icon>
+        </button>
+        <button (click)="retornarPagina()" style="cursor: pointer;">Retornar</button>
       </div>
+
 
       <div class="artigo-selecionado__introducao__categoria">
         <button mat-flat-button>{{ this.category }}</button>
