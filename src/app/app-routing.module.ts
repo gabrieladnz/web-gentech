@@ -12,6 +12,7 @@ import { PerfilAutorComponent } from './pages/perfil-autor/perfil-autor.componen
 import { AuthGuard } from './services/auth-guard/auth.guard';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './services/auth-guard/auth.interceptor';
+import { SobreComponent } from './pages/sobre/sobre.component';
 
 const routes: Routes = [
   {
@@ -49,6 +50,10 @@ const routes: Routes = [
   },
   { path: 'perfil-autor',
     component: PerfilAutorComponent
+  },
+  {
+    path: 'sobre',
+    component: SobreComponent
   },
   // Rota para capturar caminhos não correspondentes
   {

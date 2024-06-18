@@ -1,0 +1,106 @@
+.sobre {
+  background-color: #DFEBF2;
+  min-height: 100%;
+  height: auto;
+  text-align: center;
+  padding-top: 2em;
+
+
+  &__titulo {
+    font-size: 40px;
+  }
+
+  &__subtitulo {
+    color: gray;
+  }
+
+  &__cards {
+    display: grid;
+    margin-top: 40px;
+    grid-template-columns: repeat(4, 0fr);
+    justify-content: center;
+    gap: 30px;
+    padding: 1em;
+
+    &__membro {
+      background-color: #fffdfd;
+      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.319);
+      border-radius: 15px;
+      padding: 1em;
+      transition: transform 0.3s ease;
+
+      &__imagem {
+        img {
+          border-radius: 9px;
+        }
+
+      }
+
+      &__nome-membro {}
+
+      &__funcao {
+        color: #6c6262;
+      }
+
+      &__linkedin {}
+    }
+  }
+}
+
+// Animação
+.sobre__titulo {
+  width: 9ch;
+  animation: typing 1.5s steps(9), blink-caret 0.5s step-end 1s forwards;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 3px solid;
+  margin: 0 auto;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+    border-right-color: currentColor;
+  }
+
+  to {
+    width: 9ch;
+    border-right-color: currentColor;
+  }
+}
+
+@keyframes blink-caret {
+
+  from,
+  to {
+    border-color: transparent;
+  }
+
+  50% {
+    border-color: currentColor;
+  }
+}
+
+// Resolução
+@media (max-width: 1200px) {
+  .sobre__cards {
+    grid-template-columns: repeat(3, 0fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .sobre__cards[_ngcontent-ng-c2089342856] {
+    grid-template-columns: repeat(2, 0fr);
+  }
+}
+
+@media (max-width: 425px) {
+  .sobre__cards[_ngcontent-ng-c2089342856][_ngcontent-ng-c2089342856] {
+    grid-template-columns: repeat(1, 0fr);
+  }
+}
+
+// Animação
+.sobre__cards__membro:hover {
+  transform: scale(1.05);
+}

@@ -42,6 +42,7 @@ import { ForumComponent } from './pages/forum/forum.component';
 import { ModalPublicarForumComponent } from './components/modais/modal-publicar-forum/modal-publicar-forum.component';
 import { PerfilAutorComponent } from './pages/perfil-autor/perfil-autor.component';
 import { MarkdownModule } from 'ngx-markdown';
+import { SobreComponent } from './pages/sobre/sobre.component';
 
 @NgModule({
   declarations: [
@@ -61,6 +62,7 @@ import { MarkdownModule } from 'ngx-markdown';
     ForumComponent,
     ModalPublicarForumComponent,
     PerfilAutorComponent,
+    SobreComponent,
   ],
   imports: [
     BrowserModule,

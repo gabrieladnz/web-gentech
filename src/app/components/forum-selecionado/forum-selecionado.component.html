@@ -1,30 +1,53 @@
 <app-navbar></app-navbar>
 <main class="forum">
   <!-- Loading  -->
-  <figure *ngIf="carregando" style="display: flex; justify-content: center; margin-top: 40px">
+  <figure
+    *ngIf="carregando"
+    style="display: flex; justify-content: center; margin-top: 40px"
+  >
     <div class="custom-loader"></div>
   </figure>
 
   <section *ngIf="!carregando" class="forum__body">
     <section class="forum__body__comments">
-      <div style="width: 100%;">
+      <div style="width: 100%">
         <article class="forum__body__comments__post">
           <div class="forum__body__comments__post-content">
             <figure class="forum__body__comments__post-content__img">
-              <img src="{{ this.profilePhoto }}">
+              <img src="{{ this.profilePhoto }}" />
               <p>{{ this.fullName }}</p>
             </figure>
             <div class="forum__body__comments__post-content__text-section">
-              <header class="forum__body__comments__post-content__text-section__postagem">
-                <h2 class="forum__body__comments__post-content__title">{{ this.title }}</h2>
-                <p class="forum__body__comments__post-content__text">{{ this.description }}</p>
+              <header
+                class="forum__body__comments__post-content__text-section__postagem"
+              >
+                <h2 class="forum__body__comments__post-content__title">
+                  {{ this.title }}
+                </h2>
+                <p class="forum__body__comments__post-content__text">
+                  {{ this.description }}
+                </p>
               </header>
               <div class="forum__body__comments__post-content__input">
-                <button *ngIf="!tokenService.usuarioAutenticado()">Faça login para participar da discussão!</button>
-                <input *ngIf="tokenService.usuarioAutenticado()" [formControl]="content"
-                  style="border: none; background: none; outline: 0; width: 100%;" placeholder="Comente aqui">
-                <button (click)="comentarForum(slug)" [disabled]="!tokenService.usuarioAutenticado()">
-                  <mat-icon style="cursor: pointer;">send</mat-icon>
+                <button *ngIf="!tokenService.usuarioAutenticado()">
+                  Faça login para participar da discussão!
+                </button>
+                <input
+                  *ngIf="tokenService.usuarioAutenticado()"
+                  [formControl]="content"
+                  style="
+                    border: none;
+                    background: none;
+                    outline: 0;
+                    width: 100%;
+                  "
+                  placeholder="Comente aqui"
+                />
+                <button
+                  (click)="comentarForum(slug)"
+                  [disabled]="!tokenService.usuarioAutenticado()"
+                >
+                  <mat-icon style="cursor: pointer">send</mat-icon>
                 </button>
               </div>
             </div>
@@ -32,30 +55,46 @@
         </article>
       </div>
       <!-- Comentários no fórum  -->
-      <div *ngFor="let comentario of comentariosDoForum" style="width: 90%;">
+      <div *ngFor="let comentario of comentariosDoForum" style="width: 90%">
         <article class="forum__body__comments__comment">
           <div class="forum__body__comments__comment-content">
             <figure class="forum__body__comments__comment-content__imagem">
-              <img src="{{ comentario.author.profilePhotoUrl }}">
+              <img src="{{ comentario.author.profilePhotoUrl }}" />
             </figure>
             <div class="forum__body__comments__comment-content__text-section">
               <div>
-                <div style="    display: flex;
-    justify-content: space-between;">
+                <div style="display: flex; justify-content: space-between">
                   <h4>{{ comentario.author.userName }}</h4>
-                  <mat-icon [matMenuTriggerFor]="menu" *ngIf="tokenService.usuarioAutenticado() && adminService.retornoAdmin()" style="cursor: pointer;">more_vert</mat-icon>
+                  <mat-icon
+                    [matMenuTriggerFor]="menu"
+                    *ngIf="
+                      tokenService.usuarioAutenticado() &&
+                      adminService.retornoAdmin()
+                    "
+                    style="cursor: pointer"
+                    >more_vert</mat-icon
+                  >
                 </div>
-                <p class="forum__body__comments__comment-content__text-section__text">{{ comentario.content }}</p>
+                <p
+                  class="forum__body__comments__comment-content__text-section__text"
+                >
+                  {{ comentario.content }}
+                </p>
               </div>
 
               <mat-menu #menu="matMenu">
-                <button mat-menu-item (click)="deletarComentarioForum(comentario.id)">
+                <button
+                  mat-menu-item
+                  (click)="deletarComentarioForum(comentario.id)"
+                >
                   <mat-icon>delete</mat-icon>
                   Excluir
                 </button>
               </mat-menu>
 
-              <footer class="forum__body__comments__coment-content__text-section__comment-actions">
+              <footer
+                class="forum__body__comments__coment-content__text-section__comment-actions"
+              >
                 <!-- <button
                                 class="forum__body__comments__comment-content__text-section__comment-actions__button-comment"><img
                                     src="../../../assets/icons/comentar.svg" alt="comentar"></button> -->
@@ -67,15 +106,10 @@
               </footer>
             </div>
           </div>
-
         </article>
       </div>
     </section>
-
-
   </section>
-
-
 </main>
 
 <app-footer></app-footer>
