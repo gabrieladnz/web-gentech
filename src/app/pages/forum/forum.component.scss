@@ -131,3 +131,14 @@
 .elevar:hover {
   transform: translateY(-3px);
 }
+
+// Responsividade - Tela Mobile
+@media (max-width: 425px) {
+  .page-forum__content__post {
+    width: auto;
+  }
+
+  .page-forum__search__input {
+    width: 60vw;
+  }
+}

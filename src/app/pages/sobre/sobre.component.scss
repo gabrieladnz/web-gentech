@@ -1,10 +1,10 @@
 .sobre {
-  background-color: #DFEBF2;
+  background-color: #dfebf2;
   min-height: 100%;
   height: auto;
   text-align: center;
   padding-top: 2em;
-
+  padding-bottom: 2em;
 
   &__titulo {
     font-size: 40px;
@@ -33,16 +33,17 @@
         img {
           border-radius: 9px;
         }
-
       }
 
-      &__nome-membro {}
+      &__nome-membro {
+      }
 
       &__funcao {
         color: #6c6262;
       }
 
-      &__linkedin {}
+      &__linkedin {
+      }
     }
   }
 }
@@ -70,7 +71,6 @@
 }
 
 @keyframes blink-caret {
-
   from,
   to {
     border-color: transparent;

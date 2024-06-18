@@ -1,26 +1,29 @@
 <app-navbar></app-navbar>
 <main class="forum">
   <!-- Loading  -->
-  <figure
-    *ngIf="carregando"
-    style="display: flex; justify-content: center; margin-top: 40px"
-  >
+  <figure *ngIf="carregando" style="display: flex; justify-content: center; margin-top: 40px">
     <div class="custom-loader"></div>
   </figure>
 
+  <!-- Fórum principal  -->
   <section *ngIf="!carregando" class="forum__body">
     <section class="forum__body__comments">
       <div style="width: 100%">
         <article class="forum__body__comments__post">
           <div class="forum__body__comments__post-content">
+            <!-- Perfil do autor do fórum  -->
             <figure class="forum__body__comments__post-content__img">
-              <img src="{{ this.profilePhoto }}" />
-              <p>{{ this.fullName }}</p>
+              <div>
+                <img src="{{ this.profilePhoto }}" />
+                <p>{{ this.fullName }}</p>
+              </div>
+              <article>
+                <p>{{ this.createdAt | date: 'dd/MM/yyyy HH:mm' }}</p>
+              </article>
             </figure>
+            <!-- Conteúdo do fórum  -->
             <div class="forum__body__comments__post-content__text-section">
-              <header
-                class="forum__body__comments__post-content__text-section__postagem"
-              >
+              <header class="forum__body__comments__post-content__text-section__postagem">
                 <h2 class="forum__body__comments__post-content__title">
                   {{ this.title }}
                 </h2>
@@ -32,21 +35,13 @@
                 <button *ngIf="!tokenService.usuarioAutenticado()">
                   Faça login para participar da discussão!
                 </button>
-                <input
-                  *ngIf="tokenService.usuarioAutenticado()"
-                  [formControl]="content"
-                  style="
+                <input *ngIf="tokenService.usuarioAutenticado()" [formControl]="content" style="
                     border: none;
                     background: none;
                     outline: 0;
                     width: 100%;
-                  "
-                  placeholder="Comente aqui"
-                />
-                <button
-                  (click)="comentarForum(slug)"
-                  [disabled]="!tokenService.usuarioAutenticado()"
-                >
+                  " placeholder="Comente aqui..." />
+                <button (click)="comentarForum(slug)" [disabled]="!tokenService.usuarioAutenticado()">
                   <mat-icon style="cursor: pointer">send</mat-icon>
                 </button>
               </div>
@@ -64,37 +59,29 @@
             <div class="forum__body__comments__comment-content__text-section">
               <div>
                 <div style="display: flex; justify-content: space-between">
-                  <h4>{{ comentario.author.userName }}</h4>
-                  <mat-icon
-                    [matMenuTriggerFor]="menu"
-                    *ngIf="
+                  <article style="display: flex; align-items: center;">
+                    <h4>{{ comentario.author.userName }}</h4>
+                    <p style="color: gray; margin-left: 5px; font-size: 12px;">às {{ comentario.createdAt | date: 'HH:mm' }}</p>
+                  </article>
+
+                  <mat-icon [matMenuTriggerFor]="menu" *ngIf="
                       tokenService.usuarioAutenticado() &&
                       adminService.retornoAdmin()
-                    "
-                    style="cursor: pointer"
-                    >more_vert</mat-icon
-                  >
+                    " style="cursor: pointer">more_vert</mat-icon>
                 </div>
-                <p
-                  class="forum__body__comments__comment-content__text-section__text"
-                >
+                <p class="forum__body__comments__comment-content__text-section__text">
                   {{ comentario.content }}
                 </p>
               </div>
 
               <mat-menu #menu="matMenu">
-                <button
-                  mat-menu-item
-                  (click)="deletarComentarioForum(comentario.id)"
-                >
+                <button mat-menu-item (click)="deletarComentarioForum(comentario.id)">
                   <mat-icon>delete</mat-icon>
                   Excluir
                 </button>
               </mat-menu>
 
-              <footer
-                class="forum__body__comments__coment-content__text-section__comment-actions"
-              >
+              <footer class="forum__body__comments__coment-content__text-section__comment-actions">
                 <!-- <button
                                 class="forum__body__comments__comment-content__text-section__comment-actions__button-comment"><img
                                     src="../../../assets/icons/comentar.svg" alt="comentar"></button> -->
